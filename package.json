@@ -1,0 +1,92 @@
+{
+  "name": "blog_4_dev",
+  "description": "Blog for Developers",
+  "author": {
+    "name": "Nguyen Huu Trung",
+    "email": "huutrung.mmt@gmail.com"
+  },
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "debug": "NODE_OPTIONS='--inspect' next dev",
+    "analyze": "ANALYZE=true next build",
+    "build": "next build",
+    "postbuild": "next-sitemap",
+    "start": "next start",
+    "clean": "rm -rf node_modules package-lock.json yarn.lock",
+    "lint:eslint": "eslint --max-warnings 0  \"src/**/*.{ts,tsx}\" --fix",
+    "lint:prettier": "prettier --write  \"src/**/*.{js,json,tsx}\"",
+    "lint:stylelint": "stylelint --max-warnings 0  \"src/**/*.{css,scss}\" --fix",
+    "format": "npm run lint:eslint && npm run lint:prettier && npm run lint:stylelint",
+    "prepare": "husky install",
+    "test": "jest --watch",
+    "test:ci": "jest --ci"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.3.0",
+    "@fortawesome/free-brands-svg-icons": "^6.3.0",
+    "@fortawesome/react-fontawesome": "0.2.0",
+    "@next/font": "13.1.6",
+    "@reduxjs/toolkit": "^1.9.2",
+    "@types/node": "^18.13.0",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "clsx": "^1.2.1",
+    "next": "^13.1.6",
+    "next-seo": "^5.15.0",
+    "next-sitemap": "^3.1.52",
+    "nextjs-progressbar": "^0.0.16",
+    "plaiceholder": "^2.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
+    "redux-persist": "^6.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.4.3",
+    "@commitlint/config-conventional": "^17.4.3",
+    "@next/bundle-analyzer": "^13.1.6",
+    "@tailwindcss/typography": "^0.5.9",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@types/jest": "^29.4.0",
+    "@typescript-eslint/eslint-plugin": "^5.52.0",
+    "@typescript-eslint/parser": "^5.52.0",
+    "autoprefixer": "^10.4.13",
+    "eslint": "8.34.0",
+    "eslint-config-next": "13.1.6",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "husky": "^8.0.3",
+    "jest": "^29.4.3",
+    "jest-environment-jsdom": "^29.4.3",
+    "lint-staged": "^13.1.2",
+    "postcss": "^8.4.21",
+    "prettier": "^2.8.4",
+    "prettier-plugin-tailwindcss": "^0.2.3",
+    "sass": "^1.58.1",
+    "stylelint": "^15.1.0",
+    "stylelint-config-prettier": "^9.0.5",
+    "stylelint-config-standard": "^30.0.1",
+    "stylelint-order": "^6.0.2",
+    "tailwind": "^4.0.0",
+    "typescript": "4.9.5"
+  },
+  "browserslist": {
+    "production": [
+      ">0.01%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      ">0.01%",
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

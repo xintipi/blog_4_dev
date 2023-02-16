@@ -1,0 +1,32 @@
+.footer-section {
+  &-title {
+    @apply text-primary mb-42px text-lg;
+  }
+
+  &-content-response {
+    @apply border-b border-solid border-borderColor py-25px first:pt-0 last:border-none;
+    &-wrapper {
+      @apply overflow-auto;
+      h4 {
+        @apply text-primary text-15px font-normal leading-23px mb-2;
+      }
+    }
+  }
+
+  &-content-img {
+    @apply w-14 h-14 mr-4.5 float-left;
+  }
+
+  &-content-twitt {
+    @apply mt-5.5 first:mt-1 pb-7px pl-11 relative last:border-none border-b border-solid border-borderColor;
+    svg {
+      @apply text-blueColor text-27px absolute top-1 left-0;
+    }
+    h4 {
+      @apply inline text-15px mb-2;
+    }
+    time {
+      @apply inline text-primary text-13px ml-2.5;
+    }
+  }
+}

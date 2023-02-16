@@ -1,0 +1,116 @@
+.font-primary {
+  @apply font-sans text-paragraph text-primary;
+}
+
+.font-secondary {
+  @apply font-serif text-paragraph-secondary-mobile md:text-paragraph-secondary text-primary;
+}
+
+.h1 {
+  @apply text-3xl md:text-4xl leading-10 md:leading-46px;
+}
+
+.h2 {
+  @apply text-h2 font-black mb-2;
+}
+
+.social-icon {
+  @apply mx-3px border border-solid border-borderColor text-lg text-white rounded-full h-34px w-34px flex items-center justify-center bg-socialIconsBgColor hover:bg-secondary hover:border-secondary transition-colors duration-200;
+}
+
+.btn {
+  @apply border border-solid border-primary rounded-30 py-2.5 px-8.5 text-primary transition-colors leading-tight hover:bg-secondary hover:border-secondary hover:text-white hover:no-underline;
+}
+
+.last-project-one {
+  .btn {
+    @apply text-13px py-2 px-5
+  }
+}
+
+.btn-small {
+  @apply bg-white shadow-block rounded-2xl py-1.5 px-5.5 text-15px hover:underline hover:bg-primary transition-colors duration-200;
+}
+
+.light-link {
+  @apply text-primary hover:text-secondary hover:underline transition-colors duration-200;
+}
+
+.active-link {
+  @apply text-secondary hover:underline;
+}
+
+.arrow {
+  @apply bg-white text-primary opacity-70 px-0.5 rounded-20 shadow-arrow hover:opacity-100 h-[37px] first:mr-2.5;
+}
+
+#menu-animate-icon {
+  span {
+    @apply block absolute h-0.25 w-full bg-primary opacity-100 left-0 rotate-0 transition duration-200;
+  }
+  &.open {
+    span {
+      @apply first:rotate-45 even:w-0 even:opacity-0 even:top-2 last:-rotate-45 last:left-0;
+    }
+  }
+}
+
+.noscroll {
+  @apply overflow-hidden;
+}
+
+.mobile-nav {
+  @apply hidden bg-white py-2.5 fixed h-full overflow-scroll z-50 shadow-mobileNav w-full;
+  &-open {
+    @apply block;
+  }
+  #mobile-menu > ul {
+    @apply overflow-auto h-full pb-75px;
+    li {
+      @apply mx-0;
+      &.buyproducts-link {
+        a {
+          @apply flex;
+        }
+      }
+      a {
+        @apply block py-4.5 border-b border-solid border-borderColor text-primary w-full;
+        &.dropdown-toggle {
+          @apply after:right-0 relative;
+          &.show {
+            @apply after:rotate-180
+          }
+        }
+      }
+    }
+  }
+}
+
+.dropdown-menu {
+  @apply hidden static lg:absolute top-54px w-full lg:w-190px bg-white lg:shadow-dropdown z-50;
+  &.show {
+    @apply block;
+  }
+  li {
+    @apply relative lg:border-b lg:border-solid lg:border-borderColor text-15px after:absolute after:top-[calc(50%-4px)] after:right-5.5 after:h-2 after:w-2 after:rounded-lg hover:bg-hoverColor;
+    a {
+      @apply block py-4 px-5.5 text-primary;
+    }
+  }
+}
+
+.banner-wrapper {
+  @apply relative bg-white shadow-block p-1.5 mb-5;
+
+  &-wrapper-content {
+    @apply absolute z-10 py-5.5 px-7.5 bg-bannerMobileBg group-hover:bg-bannerHover transition-colors duration-200 ease-in-out;
+  }
+}
+
+.category-tag {
+  @apply text-xs text-white border-white border border-solid rounded-10 uppercase py-0.25 px-2;
+}
+
+.form-control {
+  @apply border-b border-solid border-primary text-15px text-primary py-3 leading-6 outline-0 bg-transparent w-full;
+}

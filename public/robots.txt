@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: example.com
+
+# Sitemaps
+Sitemap: example.com/sitemap.xml

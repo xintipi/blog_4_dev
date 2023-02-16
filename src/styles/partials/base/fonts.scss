@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+/* lato-regular - latin-ext_latin */
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../../../../public/fonts/lato-v20-latin-ext_latin-regular.woff2') format('woff2'),
+    url('../../../../public/fonts/lato-v20-latin-ext_latin-regular.woff') format('woff'),
+    url('../../../../public/fonts/lato-v20-latin-ext_latin-regular.ttf') format('truetype');
+}
+/* lato-900 - latin-ext_latin */
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 900;
+    src: url('../../../../public/fonts/lato-v20-latin-ext_latin-900.woff2') format('woff2'),
+    url('../../../../public/fonts/lato-v20-latin-ext_latin-900.woff') format('woff'),
+    url('../../../../public/fonts/lato-v20-latin-ext_latin-900.ttf') format('truetype');
+}
+/* lato-700 - latin-ext_latin */
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../../../../public/fonts/lato-v20-latin-ext_latin-700.woff2') format('woff2'),
+    url('../../../../public/fonts/lato-v20-latin-ext_latin-700.woff') format('woff'),
+    url('../../../../public/fonts/lato-v20-latin-ext_latin-700.ttf') format('truetype');
+}
+
+/* merriweather-regular - latin-ext_latin */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../../../../public/fonts/merriweather-v27-latin-ext_latin-regular.woff2') format('woff2'),
+    url('../../../../public/fonts/merriweather-v27-latin-ext_latin-regular.woff') format('woff'),
+    url('../../../../public/fonts/merriweather-v27-latin-ext_latin-regular.ttf') format('truetype');
+}
+/* merriweather-700 - latin-ext_latin */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../../../../public/fonts/merriweather-v27-latin-ext_latin-700.woff2') format('woff2'),
+    url('../../../../public/fonts/merriweather-v27-latin-ext_latin-700.woff') format('woff'),
+    url('../../../../public/fonts/merriweather-v27-latin-ext_latin-700.ttf') format('truetype');
+}
+/* merriweather-900 - latin-ext_latin */
+@font-face {
+    font-family: 'Merriweather';
+    font-style: normal;
+    font-weight: 900;
+    src: url('../../../../public/fonts/merriweather-v27-latin-ext_latin-900.woff2') format('woff2'),
+    url('../../../../public/fonts/merriweather-v27-latin-ext_latin-900.woff') format('woff'),
+    url('../../../../public/fonts/merriweather-v27-latin-ext_latin-900.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Pe-icon-7-stroke';
+    src: url('../../../../public/fonts/Pe-icon-7-stroke.woff') format('woff'),
+    url('../../../../public/fonts/Pe-icon-7-stroke.ttf') format('truetype');
+}
