@@ -2,20 +2,24 @@ import clsx from 'clsx'
 import { debounce } from 'lodash-es'
 import { RefObject, useEffect, useRef } from 'react'
 
+import { DeviceDemension } from '@/enums/deviceDemension'
+
 interface HeaderMobileProps {
   mobileNav: boolean
   headerRef: RefObject<HTMLDivElement>
 }
+
+const TIMEOUT = 100
 
 export default function HeaderMobile({ mobileNav, headerRef }: HeaderMobileProps) {
   const mobileMenuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     mobileMenuInit()
-    setTimeout(mobileNavDropdown, 100)
+    setTimeout(mobileNavDropdown, TIMEOUT)
     window.addEventListener('resize', function () {
       mobileMenuInit()
-      setTimeout(mobileNavDropdown, 100)
+      setTimeout(mobileNavDropdown, TIMEOUT)
     })
   }, [headerRef])
 
@@ -31,7 +35,7 @@ export default function HeaderMobile({ mobileNav, headerRef }: HeaderMobileProps
   }
 
   const mobileMenuInit = debounce(() => {
-    const maxWidth = 992
+    const maxWidth = DeviceDemension.maxWidth
     const menuContents = headerRef.current?.innerHTML
     if (window.innerWidth < maxWidth) {
       if (typeof menuContents === 'string') {
@@ -39,7 +43,7 @@ export default function HeaderMobile({ mobileNav, headerRef }: HeaderMobileProps
         target.innerHTML = menuContents
       }
     }
-  }, 100)
+  }, TIMEOUT)
 
   return (
     <nav

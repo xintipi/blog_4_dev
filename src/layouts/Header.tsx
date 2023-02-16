@@ -1,7 +1,8 @@
 import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
-import { forwardRef, MouseEvent, RefObject, useEffect, useRef, useState } from 'react'
+import { useRouter } from 'next/router'
+import { forwardRef, MouseEvent, useRef, useState } from 'react'
 
 import styles from '@/styles/modules/Header.module.scss'
 
@@ -15,6 +16,8 @@ const Header = forwardRef<HTMLDivElement, HeaderProps>((props, ref) => {
 
   const searchFormRef = useRef<HTMLFormElement>(null)
   const topSearchBtnRef = useRef<HTMLDivElement>(null)
+
+  const router = useRouter()
 
   const onHandlerSearch = () => {
     const target = topSearchBtnRef.current as HTMLDivElement
@@ -150,11 +153,12 @@ const Header = forwardRef<HTMLDivElement, HeaderProps>((props, ref) => {
             </li>
             <li className="buyproducts-link ml-auto flex">
               <Link
+                href="/"
                 className="group flex items-center text-secondary "
-                href="/shop"
-                title="Buy products">
-                <i className="pe-7s-cart mr-2.5 text-2xl"></i>
-                <span className="group-hover:underline">Buy products</span>
+                title="Change locale"
+                locale={router.locale ? (router.locale === 'en' ? 'vi' : 'en') : 'en'}>
+                <i className="pe-7s-switch mr-2.5 text-2xl"></i>
+                <span className="group-hover:underline">Change locale</span>
               </Link>
             </li>
           </ul>
