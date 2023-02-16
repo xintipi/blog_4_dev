@@ -1,7 +1,7 @@
 declare global {
-    interface Window {
-        gtag: any
-    }
+  interface Window {
+    gtag: any
+  }
 }
 
 declare module 'gtag.js'

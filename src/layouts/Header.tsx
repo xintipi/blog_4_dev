@@ -1,10 +1,34 @@
+import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
+import { forwardRef, MouseEvent, RefObject, useEffect, useRef, useState } from 'react'
 
 import styles from '@/styles/modules/Header.module.scss'
-import clsx from 'clsx'
 
-export default function Header() {
+interface HeaderProps {
+  mobileNav: (open: boolean) => void
+}
+
+// eslint-disable-next-line react/display-name
+const Header = forwardRef<HTMLDivElement, HeaderProps>((props, ref) => {
+  const [open, setOpen] = useState<boolean>(false)
+
+  const searchFormRef = useRef<HTMLFormElement>(null)
+  const topSearchBtnRef = useRef<HTMLDivElement>(null)
+
+  const onHandlerSearch = () => {
+    const target = topSearchBtnRef.current as HTMLDivElement
+    target.style.display = 'none'
+    searchFormRef.current?.classList.remove('hidden')
+  }
+
+  const onHandlerToggleMenu = (event: MouseEvent<HTMLDivElement>) => {
+    event.preventDefault()
+    document.documentElement.classList.toggle('noscroll')
+    setOpen(!open)
+    props.mobileNav(!open)
+  }
+
   return (
     <header className="bg-white shadow-header">
       <div className="container mx-auto">
@@ -14,9 +38,9 @@ export default function Header() {
             'border-b-border flex items-center justify-between border-borderColor pt-5 pb-3.5 lg:border-b'
           )}>
           <div className="header-top-logo">
-            <a href="#" title="Logo">
+            <Link href="/" title="Logo">
               <Image src="/img/webp/logo_2x.webp" alt="Dblog Logo" width={32} height={32} />
-            </a>
+            </Link>
           </div>
           <div className="header-top-text hidden lg:block">
             <p className="font-primary">
@@ -33,26 +57,33 @@ export default function Header() {
           </div>
           <div className="relative flex items-center">
             <div className="header-top-search mr-2.5 lg:mr-0">
-              <div className="header-top-search-btn h-7 w-7">
+              <div
+                onClick={onHandlerSearch}
+                className="header-top-search-btn h-7 w-7"
+                ref={topSearchBtnRef}>
                 <i className="pe-7s-search cursor-pointer text-3xl text-primary"></i>
               </div>
               <form
+                ref={searchFormRef}
                 id="search-form"
-                className="absolute top-[calc(50%-24px)] right-0 mr-10 hidden w-200px lg:mr-0"
-                action="#"
-                method="get">
+                className="absolute top-[calc(50%-24px)] right-0 mr-10 hidden w-200px lg:mr-0">
                 <input type="text" className="form-control" placeholder="Search..."></input>
                 <button
                   className="absolute top-[calc(50%-23px)] right-3px text-3xl text-primary"
-                  type="submit">
+                  type="button">
                   <i className="pe-7s-search"></i>
                 </button>
               </form>
             </div>
             <Link href="#" className="light-link" title="Menu">
               <div
+                onClick={onHandlerToggleMenu}
                 id="menu-animate-icon"
-                className="relative ml-2.5 block h-4.5 w-6 rotate-0 cursor-pointer transition-transform lg:hidden">
+                className={clsx({
+                  'relative ml-2.5 block h-4.5 w-6 rotate-0 cursor-pointer transition-transform lg:hidden':
+                    true,
+                  open,
+                })}>
                 <span className="top-0 origin-left"></span>
                 <span className="top-2 origin-left"></span>
                 <span className="top-4 origin-left"></span>
@@ -60,11 +91,11 @@ export default function Header() {
             </Link>
           </div>
         </div>
-        <nav className="header-nav hidden py-5 lg:block">
+        <nav className="header-nav hidden py-5 lg:block" ref={ref}>
           <ul className="block lg:flex">
             <li className="ml-0 mr-5">
-              <Link href="/" className="active-link" title="Start page">
-                Start page
+              <Link href="/" className="active-link" title="Home">
+                Home
               </Link>
             </li>
             <li className="group relative mx-5">
@@ -131,4 +162,6 @@ export default function Header() {
       </div>
     </header>
   )
-}
+})
+
+export default Header

@@ -12,7 +12,11 @@ const nextConfig = {
     // your project has type errors.
     // !! WARN !!
     ignoreBuildErrors: true,
-  }
+  },
+  i18n: {
+    locales: ['en', 'vi'],
+    defaultLocale: 'en',
+  },
 }
 
 module.exports = withBundleAnalyzer({

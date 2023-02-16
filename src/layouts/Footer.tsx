@@ -1,8 +1,8 @@
+import { faGithub, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
-import clsx from 'clsx'
-import { faTwitter, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import styles from '@/styles/modules/Footer.module.scss'
 

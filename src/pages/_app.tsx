@@ -1,10 +1,11 @@
 import '@/styles/index.scss'
+
 import type { AppProps } from 'next/app'
-import { useEffect, useState } from 'react'
-import { Provider } from 'react-redux'
 import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/router'
 import NextNProgress from 'nextjs-progressbar'
+import { useEffect, useState } from 'react'
+import { Provider } from 'react-redux'
 
 import GoogleAnalytics from '@/components/UI/partials/GoogleAnalytics'
 import { Store, store } from '@/store'
