@@ -8,10 +8,6 @@ import Document, {
   NextScript,
 } from 'next/document'
 import React from 'react'
-import clsx from 'clsx'
-import styles from '@/styles/modules/Footer.module.scss'
-import Image from 'next/image'
-import Link from 'next/link'
 
 interface ExtendDocumentProps extends DocumentInitialProps {
   lang: string
