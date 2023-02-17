@@ -24,7 +24,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     <>
       <GoogleAnalytics pageTitle={pageTitle} />
 
-      <NextNProgress color="rgb(117,117,117)" height={3} options={{ showSpinner: true }} />
+      <NextNProgress color="rgb(117,117,117)" height={3} options={{ showSpinner: false }} />
 
       <Provider store={store as Store}>
         <Component {...pageProps} />

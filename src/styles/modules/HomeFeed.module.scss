@@ -1,5 +1,8 @@
 .banner-wrapper {
   @apply relative bg-white shadow-block p-1.5 mb-5;
+  .group {
+    @apply w-full h-auto;
+  }
   &-content {
     @apply absolute z-10 py-5.5 px-7.5 bg-bannerMobileBg group-hover:bg-bannerHover transition-colors duration-200 ease-in-out;
     width: calc(100% - 12px);

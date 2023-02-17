@@ -9,7 +9,7 @@ interface HeaderMobileProps {
   headerRef: RefObject<HTMLDivElement>
 }
 
-const TIMEOUT = 100
+const TIMEOUT = 200
 
 export default function AppHeaderMobile({ mobileNav, headerRef }: HeaderMobileProps) {
   const mobileMenuRef = useRef<HTMLDivElement>(null)
