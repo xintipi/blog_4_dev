@@ -30,16 +30,6 @@ export default function HomeFeed({
 
   return (
     <div className={clsx(styles['banner-wrapper'])}>
-      <Image
-        onLoad={onLoadCallBack}
-        src={sourceImg}
-        alt={altImage}
-        width="0"
-        height="0"
-        loading="lazy"
-        sizes="100vw"
-        className="h-auto w-full"
-      />
       {isImageReady && (
         <Link href="/blog-post" className={clsx(styles.group)} title={title}>
           <div className={clsx(styles['banner-wrapper-content'])}>
@@ -51,6 +41,16 @@ export default function HomeFeed({
           </div>
         </Link>
       )}
+      <Image
+        onLoad={onLoadCallBack}
+        src={sourceImg}
+        alt={altImage}
+        width="0"
+        height="0"
+        loading="lazy"
+        sizes="100vw"
+        className="h-auto w-full"
+      />
     </div>
   )
 }
