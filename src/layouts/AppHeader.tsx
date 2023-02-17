@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import { ChangeEvent, forwardRef, MouseEvent, useRef, useState } from 'react'
+import { ChangeEvent, MouseEvent, useRef, useState } from 'react'
 
 import styles from '@/styles/modules/AppFooter.module.scss'
 
@@ -11,7 +11,7 @@ interface HeaderProps {
   mobileNav: (open: boolean) => void
 }
 
-const AppHeader = forwardRef<HTMLDivElement, HeaderProps>((props, ref) => {
+export default function AppHeader(props: HeaderProps) {
   const [open, setOpen] = useState<boolean>(false)
 
   const searchFormRef = useRef<HTMLFormElement>(null)
@@ -92,7 +92,7 @@ const AppHeader = forwardRef<HTMLDivElement, HeaderProps>((props, ref) => {
             </Link>
           </div>
         </div>
-        <nav className="header-nav hidden py-5 lg:block" ref={ref}>
+        <nav className="header-nav hidden py-5 lg:block">
           <ul className="block lg:flex">
             <li className="ml-0 mr-5">
               <Link href="/" className="active-link" title={t<string>('header_home')}>
@@ -157,7 +157,7 @@ const AppHeader = forwardRef<HTMLDivElement, HeaderProps>((props, ref) => {
               <select
                 onChange={handleLocaleChange}
                 value={router.locale}
-                className="group flex items-center bg-white text-secondary outline-none">
+                className="change-language group flex items-center bg-white text-secondary outline-none">
                 <option value="en" className="group-hover:underline">
                   English
                 </option>
@@ -171,6 +171,4 @@ const AppHeader = forwardRef<HTMLDivElement, HeaderProps>((props, ref) => {
       </div>
     </header>
   )
-})
-
-export default AppHeader
+}

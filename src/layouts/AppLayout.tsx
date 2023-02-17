@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
 import { OpenGraph } from 'next-seo/lib/types'
-import { ReactNode, useCallback, useEffect, useRef, useState } from 'react'
+import { ReactNode, useCallback, useEffect, useState } from 'react'
 
 import AppFooter from '@/layouts/AppFooter'
 import AppHeader from '@/layouts/AppHeader'
@@ -26,7 +26,6 @@ export default function AppLayout({
 }: AppLayoutProps) {
   const [metaTile, setMetaTile] = useState<string>()
   const [mobileNav, setMobileNav] = useState<boolean>(false)
-  const headerRef = useRef<HTMLDivElement>(null)
 
   const { pathname } = useRouter()
 
@@ -51,9 +50,9 @@ export default function AppLayout({
         openGraph={openGraph}
       />
 
-      <AppHeader mobileNav={onHandleMobileNav} ref={headerRef} />
+      <AppHeader mobileNav={onHandleMobileNav} />
 
-      <AppHeaderMobile mobileNav={mobileNav} headerRef={headerRef} />
+      <AppHeaderMobile mobileNav={mobileNav} />
 
       {children}
 
