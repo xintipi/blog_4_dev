@@ -37,6 +37,7 @@ export default function HomeFeed({
         alt={altImage}
         width="0"
         height="0"
+        loading="lazy"
         sizes="100vw"
         className="h-auto w-full"
       />
