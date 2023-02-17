@@ -18,10 +18,12 @@ export default function AppFooter() {
                 <li className={clsx(styles['footer-section-content-response'])}>
                   <Image
                     src="/img/webp/profile-picture2_2x.webp"
-                    className={clsx(styles['footer-section-content-img'])}
+                    className={clsx(styles['footer-section-content-img'], 'h-auto w-full')}
                     alt="Profile Picture"
-                    width={56}
-                    height={56}
+                    width="0"
+                    height="0"
+                    sizes="100vw"
+                    priority
                   />
                   <div className={clsx(styles['footer-section-content-response-wrapper'])}>
                     <h4>

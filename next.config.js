@@ -1,10 +1,9 @@
 /** @type {import('next').NextConfig} */
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { i18n } = require('./next-i18next.config.js')
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-})
+const { withPlaiceholder } = require('@plaiceholder/next')
+// const withBundleAnalyzer = require('@next/bundle-analyzer')({
+//   enabled: process.env.ANALYZE === 'true',
+// })
 
 const nextConfig = {
   reactStrictMode: true,
@@ -20,8 +19,13 @@ const nextConfig = {
   env: {
     NEXT_PUBLIC_APP_NAME: 'DEV Blog 👩‍💻👨‍💻',
   },
+  images: {
+    domains: ['i.ibb.co'],
+  },
 }
 
-module.exports = withBundleAnalyzer({
-  ...nextConfig,
-})
+module.exports = withPlaiceholder(nextConfig)
+
+// module.exports = withBundleAnalyzer({
+//   ...nextConfig,
+// })

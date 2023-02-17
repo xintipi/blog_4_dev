@@ -1,55 +1,37 @@
 import clsx from 'clsx'
-import Image from 'next/image'
+import Image, { ImageLoaderProps } from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 
+import { FeedsResponse } from '@/data/feeds'
 import styles from '@/styles/modules/HomeFeed.module.scss'
 
-interface HomeFeedProps {
-  title: string
-  categoryTag: string
-  bannerTime: string
-  dateTime: string
-  sourceImg: string
-  altImage: string
+interface HomeFeed {
+  feed: FeedsResponse | undefined
+  image: ImageLoaderProps
 }
 
-export default function HomeFeed({
-  title,
-  categoryTag,
-  bannerTime,
-  dateTime,
-  sourceImg,
-  altImage,
-}: HomeFeedProps) {
+export default function HomeFeed({ feed, image }: HomeFeed) {
   const [isImageReady, setIsImageReady] = useState<boolean>(false)
-
-  const onLoadCallBack = () => {
-    setIsImageReady(true)
-  }
 
   return (
     <div className={clsx(styles['banner-wrapper'])}>
       {isImageReady && (
-        <Link href="/blog-post" className={clsx(styles.group)} title={title}>
+        <Link href="/blog-post" className={clsx(styles.group)} title={feed?.title}>
           <div className={clsx(styles['banner-wrapper-content'])}>
-            <h2 className="h2 text-white">{title}</h2>
-            <span className={clsx(styles['category-tag'])}>{categoryTag}</span>
-            <time dateTime={dateTime} className={clsx(styles['banner-time'])}>
-              {bannerTime}
+            <h2 className="h2 text-white">{feed?.title}</h2>
+            <span className={clsx(styles['category-tag'])}>{feed?.categoryTag}</span>
+            <time dateTime={feed?.dateTime} className={clsx(styles['banner-time'])}>
+              {feed?.bannerTime}
             </time>
           </div>
         </Link>
       )}
       <Image
-        onLoad={onLoadCallBack}
-        src={sourceImg}
-        alt={altImage}
-        width="0"
-        height="0"
-        loading="lazy"
-        sizes="100vw"
-        className="h-auto w-full"
+        {...image}
+        alt={feed?.thumbnailAlt as string}
+        placeholder="blur"
+        onLoad={() => setIsImageReady(true)}
       />
     </div>
   )
