@@ -2,7 +2,8 @@ import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { forwardRef, MouseEvent, useRef, useState } from 'react'
+import { useTranslation } from 'next-i18next'
+import { ChangeEvent, forwardRef, MouseEvent, useRef, useState } from 'react'
 
 import styles from '@/styles/modules/Header.module.scss'
 
@@ -10,14 +11,24 @@ interface HeaderProps {
   mobileNav: (open: boolean) => void
 }
 
-// eslint-disable-next-line react/display-name
 const Header = forwardRef<HTMLDivElement, HeaderProps>((props, ref) => {
   const [open, setOpen] = useState<boolean>(false)
 
   const searchFormRef = useRef<HTMLFormElement>(null)
   const topSearchBtnRef = useRef<HTMLDivElement>(null)
 
+  const { t } = useTranslation('header')
   const router = useRouter()
+
+  const handleLocaleChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    const value = event.target.value
+
+    router
+      .push(router.route, router.asPath, {
+        locale: value,
+      })
+      .then((r) => r)
+  }
 
   const onHandlerSearch = () => {
     const target = topSearchBtnRef.current as HTMLDivElement
@@ -47,13 +58,13 @@ const Header = forwardRef<HTMLDivElement, HeaderProps>((props, ref) => {
           </div>
           <div className="header-top-text hidden lg:block">
             <p className="font-primary">
-              <span className="italic">“Modern Javascript”</span>
-              <span>book is available!</span>
+              <span className="italic">“{t('header_modern_js')}”</span>
+              <span>{t('header_book_available')}</span>
               <Link
                 href="/shop"
                 className="header-top-text-link relative text-secondary hover:text-primary hover:underline"
                 title="Modern Javascript Book">
-                Check out
+                {t('header_checkout')}
                 <i className="pe-7s-angle-right absolute text-2xl"></i>
               </Link>
             </p>
@@ -97,16 +108,16 @@ const Header = forwardRef<HTMLDivElement, HeaderProps>((props, ref) => {
         <nav className="header-nav hidden py-5 lg:block" ref={ref}>
           <ul className="block lg:flex">
             <li className="ml-0 mr-5">
-              <Link href="/" className="active-link" title="Home">
-                Home
+              <Link href="/" className="active-link" title={t<string>('header_home')}>
+                {t('header_home')}
               </Link>
             </li>
             <li className="group relative mx-5">
               <Link
                 href="#"
                 className="dropdown-toggle light-link pb-10 after:absolute after:top-[calc(50%-18px)] after:-ml-0.5 after:font-icons after:text-24px after:transition-all after:content-['\e688'] lg:group-hover:after:rotate-180"
-                title="Blog articles">
-                Blog articles
+                title={t<string>('header_blog_articles')}>
+                {t('header_blog_articles')}
               </Link>
               <ul className="dropdown-menu hidden lg:group-hover:block">
                 <li className="after:bg-blueColor">
@@ -125,41 +136,47 @@ const Header = forwardRef<HTMLDivElement, HeaderProps>((props, ref) => {
                   </Link>
                 </li>
                 <li className="after:bg-greenColor">
-                  <Link href="/blog-list" title="Blog raphic articles">
+                  <Link href="/blog-list" title="Graphic">
                     Graphic
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog-list" title="Blog Post">
-                    Blog Post
+                  <Link href="/blog-list" title={t<string>('header_blog_posts')}>
+                    {t('header_blog_posts')}
                   </Link>
                 </li>
               </ul>
             </li>
             <li className="mx-5">
-              <Link href="/about-me" className="light-link" title="About me">
-                About me
+              <Link href="/about-me" className="light-link" title={t<string>('header_about')}>
+                {t('header_about')}
               </Link>
             </li>
             <li className="mx-5">
-              <Link href="/portfolio" className="light-link" title="My projects">
-                My projects
+              <Link
+                href="/portfolio"
+                className="light-link"
+                title={t<string>('header_my_projects')}>
+                {t('header_my_projects')}
               </Link>
             </li>
             <li className="mx-5">
-              <Link href="/contact" className="light-link" title="Contact me">
-                Contact me
+              <Link href="/contact" className="light-link" title={t<string>('header_contact')}>
+                {t('header_contact')}
               </Link>
             </li>
             <li className="buyproducts-link ml-auto flex">
-              <Link
-                href="/"
-                className="group flex items-center text-secondary "
-                title="Change locale"
-                locale={router.locale ? (router.locale === 'en' ? 'vi' : 'en') : 'en'}>
-                <i className="pe-7s-switch mr-2.5 text-2xl"></i>
-                <span className="group-hover:underline">Change locale</span>
-              </Link>
+              <select
+                onChange={handleLocaleChange}
+                value={router.locale}
+                className="group flex items-center bg-white text-secondary outline-none">
+                <option value="en" className="group-hover:underline">
+                  🇺🇸 English
+                </option>
+                <option value="vi" className="group-hover:underline">
+                  🇻🇳 Vietnam
+                </option>
+              </select>
             </li>
           </ul>
         </nav>

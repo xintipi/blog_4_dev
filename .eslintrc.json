@@ -36,6 +36,7 @@
     "prettier/prettier": ["error", {}, { "usePrettierrc": true }],
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
+    "react/display-name": "off",
     "react/no-unescaped-entities": "off",
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",

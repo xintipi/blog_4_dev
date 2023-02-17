@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { i18n } = require('./next-i18next.config.js')
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
@@ -13,10 +16,7 @@ const nextConfig = {
     // !! WARN !!
     ignoreBuildErrors: true,
   },
-  i18n: {
-    locales: ['en', 'vi'],
-    defaultLocale: 'en',
-  },
+  i18n,
 }
 
 module.exports = withBundleAnalyzer({

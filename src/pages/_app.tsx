@@ -3,6 +3,7 @@ import '@/styles/index.scss'
 import type { AppProps } from 'next/app'
 import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/router'
+import { appWithTranslation } from 'next-i18next'
 import NextNProgress from 'nextjs-progressbar'
 import { useEffect, useState } from 'react'
 import { Provider } from 'react-redux'
@@ -10,7 +11,7 @@ import { Provider } from 'react-redux'
 import GoogleAnalytics from '@/components/UI/partials/GoogleAnalytics'
 import { Store, store } from '@/store'
 
-export default function App({ Component, pageProps }: AppProps) {
+const App = ({ Component, pageProps }: AppProps) => {
   const [pageTitle, setPageTitle] = useState<string>('')
   const pathname = usePathname()
   const { query } = useRouter()
@@ -36,3 +37,5 @@ export default function App({ Component, pageProps }: AppProps) {
     </>
   )
 }
+
+export default appWithTranslation(App)
