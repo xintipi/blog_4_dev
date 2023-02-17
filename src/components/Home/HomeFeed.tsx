@@ -39,7 +39,6 @@ export default function HomeFeed({
         height="0"
         sizes="100vw"
         className="h-auto w-full"
-        priority
       />
     </div>
   )

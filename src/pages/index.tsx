@@ -1,5 +1,6 @@
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useMemo } from 'react'
 
 import HomeFeedSection from '@/components/Home/HomeFeedSection'
 import AppLayout from '@/layouts/AppLayout'
@@ -13,9 +14,26 @@ export const getStaticProps: GetStaticProps = async ({ locale }: GetStaticPropsC
 }
 
 export default function Home() {
+  const openGraph = useMemo(() => {
+    return {
+      title: process.env.NEXT_PUBLIC_APP_NAME,
+      description:
+        'A constructive and inclusive social network for software developers. With you every step of your journey.',
+      url: process.env.NEXT_PUBLIC_DOMAIN,
+      type: 'website',
+      siteName: process.env.NEXT_PUBLIC_APP_NAME,
+      images: [{ url: 'https://i.ibb.co/DK3fYhV/6hqmcjaxbgbon8ydw93z.png' }],
+    }
+  }, [])
+
   return (
-    <AppLayout>
+    <AppLayout
+      title={process.env.NEXT_PUBLIC_APP_NAME}
+      canonical={process.env.NEXT_PUBLIC_DOMAIN}
+      openGraph={openGraph}
+      description="A constructive and inclusive social network for software developers. With you every step of your journey.">
       <HomeFeedSection />
+
       <main>
         <div className="container mx-auto">
           <h1>Index</h1>

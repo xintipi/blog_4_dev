@@ -1,6 +1,7 @@
+import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
 import { OpenGraph } from 'next-seo/lib/types'
-import { ReactNode, useCallback, useRef, useState } from 'react'
+import { ReactNode, useCallback, useEffect, useRef, useState } from 'react'
 
 import AppFooter from '@/layouts/AppFooter'
 import AppHeader from '@/layouts/AppHeader'
@@ -14,6 +15,8 @@ interface AppLayoutProps {
   children: ReactNode
 }
 
+const variant = process.env.NEXT_PUBLIC_APP_NAME
+
 export default function AppLayout({
   title,
   description,
@@ -21,10 +24,19 @@ export default function AppLayout({
   openGraph,
   children,
 }: AppLayoutProps) {
-  const appName = process.env.NEXT_PUBLIC_APP_NAME
-
+  const [metaTile, setMetaTile] = useState<string>()
   const [mobileNav, setMobileNav] = useState<boolean>(false)
   const headerRef = useRef<HTMLDivElement>(null)
+
+  const { pathname } = useRouter()
+
+  useEffect(() => {
+    if (pathname === '/') {
+      setMetaTile(title)
+    } else {
+      setMetaTile(title ? `${title} - ${variant}` : variant)
+    }
+  }, [pathname])
 
   const onHandleMobileNav = useCallback((open: boolean) => {
     setMobileNav(open)
@@ -33,13 +45,14 @@ export default function AppLayout({
   return (
     <>
       <NextSeo
-        title={title ? `${title} - ${appName}` : appName}
+        title={metaTile}
         description={description}
         canonical={canonical}
         openGraph={openGraph}
       />
 
       <AppHeader mobileNav={onHandleMobileNav} ref={headerRef} />
+
       <AppHeaderMobile mobileNav={mobileNav} headerRef={headerRef} />
 
       {children}

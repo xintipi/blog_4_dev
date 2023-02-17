@@ -9,19 +9,21 @@ interface HeaderMobileProps {
   headerRef: RefObject<HTMLDivElement>
 }
 
-const TIMEOUT = 200
+const TIMEOUT = 100
 
 export default function AppHeaderMobile({ mobileNav, headerRef }: HeaderMobileProps) {
   const mobileMenuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    handlerResize()
+    window.addEventListener('resize', handlerResize)
+    // return () => window.removeEventListener('resize', handlerResize)
+  }, [headerRef])
+
+  const handlerResize = () => {
     mobileMenuInit()
     setTimeout(mobileNavDropdown, TIMEOUT)
-    window.addEventListener('resize', function () {
-      mobileMenuInit()
-      setTimeout(mobileNavDropdown, TIMEOUT)
-    })
-  }, [headerRef])
+  }
 
   const mobileNavDropdown = () => {
     const dropdownMenu = document.querySelector('#mobile-menu .dropdown-menu')
@@ -37,12 +39,8 @@ export default function AppHeaderMobile({ mobileNav, headerRef }: HeaderMobilePr
   const mobileMenuInit = debounce(() => {
     const maxWidth = DeviceDemension.MaxWidth
     const menuContents = headerRef.current?.innerHTML
-    if (window.innerWidth < maxWidth) {
-      if (typeof menuContents === 'string') {
-        const target = mobileMenuRef.current as HTMLDivElement
-        target.innerHTML = menuContents
-      }
-    }
+    const target = mobileMenuRef.current as HTMLDivElement
+    target.innerHTML = window.innerWidth < maxWidth ? (menuContents as string) : ''
   }, TIMEOUT)
 
   return (
