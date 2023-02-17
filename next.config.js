@@ -17,6 +17,9 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   i18n,
+  env: {
+    NEXT_PUBLIC_APP_NAME: 'DEV Blog 👩‍💻👨‍💻',
+  },
 }
 
 module.exports = withBundleAnalyzer({

@@ -1,3 +1,3 @@
 export enum DeviceDemension {
-  maxWidth = 992,
+  MaxWidth = 992,
 }

@@ -1,12 +1,12 @@
-import { faGithub, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { faFacebook, faGithub, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import styles from '@/styles/modules/Footer.module.scss'
+import styles from '@/styles/modules/AppFooter.module.scss'
 
-export default function Footer() {
+export default function AppFooter() {
   return (
     <footer className="mt-10 bg-white pt-8">
       <div className="container mx-auto">
@@ -94,7 +94,7 @@ export default function Footer() {
               <h3 className={clsx(styles['footer-section-title'])}>Last Tweet</h3>
               <ul className="footer-section-content">
                 <li className={clsx(styles['footer-section-content-twitt'])}>
-                  <FontAwesomeIcon icon={faTwitter} />
+                  <FontAwesomeIcon icon={faTwitter} width={27} />
                   <h4>
                     <Link href="#" className="text-secondary hover:underline" title="microsoft">
                       @microsoft{' '}
@@ -111,7 +111,7 @@ export default function Footer() {
                 </li>
 
                 <li className={clsx(styles['footer-section-content-twitt'])}>
-                  <FontAwesomeIcon icon={faTwitter} />
+                  <FontAwesomeIcon icon={faTwitter} width={27} />
                   <h4>
                     <Link href="#" className="text-secondary hover:underline" title="microsoft">
                       @microsoft{' '}
@@ -128,7 +128,7 @@ export default function Footer() {
                 </li>
 
                 <li className={clsx(styles['footer-section-content-twitt'])}>
-                  <FontAwesomeIcon icon={faTwitter} />
+                  <FontAwesomeIcon icon={faTwitter} width={27} />
                   <h4>
                     <Link href="#" className="text-secondary hover:underline" title="microsoft">
                       @microsoft{' '}
@@ -182,18 +182,30 @@ export default function Footer() {
         <div className="copyright flex flex-col items-center justify-between border-t border-solid border-borderColor py-5 md:flex-row-reverse">
           <ul className="flex">
             <li>
-              <Link href="#" className="social-icon" title="Twitter">
-                <FontAwesomeIcon icon={faTwitter} />
+              <Link
+                href="https://tinyurl.com/yc2ekzfd"
+                className="social-icon"
+                title="Facebook"
+                target="_blank">
+                <FontAwesomeIcon icon={faFacebook} width={18} />
               </Link>
             </li>
             <li>
-              <Link href="#" className="social-icon" title="Github">
-                <FontAwesomeIcon icon={faGithub} />
+              <Link
+                href="https://tinyurl.com/yx9dy849"
+                className="social-icon"
+                title="Github"
+                target="_blank">
+                <FontAwesomeIcon icon={faGithub} width={18} />
               </Link>
             </li>
             <li>
-              <Link href="#" className="social-icon" title="LinkedIn">
-                <FontAwesomeIcon icon={faLinkedin} />
+              <Link
+                href="https://tinyurl.com/3xneh8zm"
+                className="social-icon"
+                title="LinkedIn"
+                target="_blank">
+                <FontAwesomeIcon icon={faLinkedin} width={18} />
               </Link>
             </li>
           </ul>

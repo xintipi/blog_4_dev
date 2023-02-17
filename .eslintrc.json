@@ -44,6 +44,7 @@
     "import/newline-after-import": "error",
     "import/no-duplicates": "error",
     "import/no-anonymous-default-export": "off",
+    "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/ban-ts-comment": "off",

@@ -11,7 +11,7 @@ interface HeaderMobileProps {
 
 const TIMEOUT = 100
 
-export default function HeaderMobile({ mobileNav, headerRef }: HeaderMobileProps) {
+export default function AppHeaderMobile({ mobileNav, headerRef }: HeaderMobileProps) {
   const mobileMenuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export default function HeaderMobile({ mobileNav, headerRef }: HeaderMobileProps
   }
 
   const mobileMenuInit = debounce(() => {
-    const maxWidth = DeviceDemension.maxWidth
+    const maxWidth = DeviceDemension.MaxWidth
     const menuContents = headerRef.current?.innerHTML
     if (window.innerWidth < maxWidth) {
       if (typeof menuContents === 'string') {

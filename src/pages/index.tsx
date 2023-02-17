@@ -1,10 +1,8 @@
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { useCallback, useRef, useState } from 'react'
 
-import Footer from '@/layouts/Footer'
-import Header from '@/layouts/Header'
-import HeaderMobile from '@/layouts/HeaderMobile'
+import HomeFeedSection from '@/components/Home/HomeFeedSection'
+import AppLayout from '@/layouts/AppLayout'
 
 export const getStaticProps: GetStaticProps = async ({ locale }: GetStaticPropsContext) => {
   return {
@@ -15,19 +13,14 @@ export const getStaticProps: GetStaticProps = async ({ locale }: GetStaticPropsC
 }
 
 export default function Home() {
-  const [mobileNav, setMobileNav] = useState<boolean>(false)
-  const headerRef = useRef<HTMLDivElement>(null)
-
-  const onHandleMobileNav = useCallback((open: boolean) => {
-    setMobileNav(open)
-  }, [])
-
   return (
-    <>
-      <Header mobileNav={onHandleMobileNav} ref={headerRef} />
-      <HeaderMobile mobileNav={mobileNav} headerRef={headerRef} />
-      <h2>test</h2>
-      <Footer />
-    </>
+    <AppLayout>
+      <HomeFeedSection />
+      <main>
+        <div className="container mx-auto">
+          <h1>Index</h1>
+        </div>
+      </main>
+    </AppLayout>
   )
 }

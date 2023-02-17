@@ -5,13 +5,13 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { ChangeEvent, forwardRef, MouseEvent, useRef, useState } from 'react'
 
-import styles from '@/styles/modules/Header.module.scss'
+import styles from '@/styles/modules/AppFooter.module.scss'
 
 interface HeaderProps {
   mobileNav: (open: boolean) => void
 }
 
-const Header = forwardRef<HTMLDivElement, HeaderProps>((props, ref) => {
+const AppHeader = forwardRef<HTMLDivElement, HeaderProps>((props, ref) => {
   const [open, setOpen] = useState<boolean>(false)
 
   const searchFormRef = useRef<HTMLFormElement>(null)
@@ -55,19 +55,6 @@ const Header = forwardRef<HTMLDivElement, HeaderProps>((props, ref) => {
             <Link href="/" title="Logo">
               <Image src="/img/webp/logo_2x.webp" alt="Dblog Logo" width={32} height={32} />
             </Link>
-          </div>
-          <div className="header-top-text hidden lg:block">
-            <p className="font-primary">
-              <span className="italic">“{t('header_modern_js')}”</span>
-              <span>{t('header_book_available')}</span>
-              <Link
-                href="/shop"
-                className="header-top-text-link relative text-secondary hover:text-primary hover:underline"
-                title="Modern Javascript Book">
-                {t('header_checkout')}
-                <i className="pe-7s-angle-right absolute text-2xl"></i>
-              </Link>
-            </p>
           </div>
           <div className="relative flex items-center">
             <div className="header-top-search mr-2.5 lg:mr-0">
@@ -166,15 +153,16 @@ const Header = forwardRef<HTMLDivElement, HeaderProps>((props, ref) => {
               </Link>
             </li>
             <li className="buyproducts-link ml-auto flex">
+              <i className="pe-7s-bookmarks mr-2.5 text-2xl"></i>
               <select
                 onChange={handleLocaleChange}
                 value={router.locale}
                 className="group flex items-center bg-white text-secondary outline-none">
                 <option value="en" className="group-hover:underline">
-                  🇺🇸 English
+                  English
                 </option>
                 <option value="vi" className="group-hover:underline">
-                  🇻🇳 Vietnam
+                  Vietnam
                 </option>
               </select>
             </li>
@@ -185,4 +173,4 @@ const Header = forwardRef<HTMLDivElement, HeaderProps>((props, ref) => {
   )
 })
 
-export default Header
+export default AppHeader

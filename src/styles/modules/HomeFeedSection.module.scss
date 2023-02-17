@@ -1,0 +1,16 @@
+.banner-wrapper {
+  @apply relative bg-white shadow-block p-1.5 mb-5;
+  &-content {
+    @apply absolute z-10 py-5.5 px-7.5 bg-bannerMobileBg group-hover:bg-bannerHover transition-colors duration-200 ease-in-out;
+    width: calc(100% - 12px);
+    height: calc(100% - 12px);
+  }
+}
+
+.category-tag {
+  @apply text-xs text-white border-white border border-solid rounded-10 uppercase py-0.25 px-2;
+}
+
+.banner-time {
+  @apply absolute bottom-5.5 left-7.5 text-timeColor text-15px;
+}
