@@ -5,6 +5,7 @@
     font-family: 'Lato';
     font-style: normal;
     font-weight: 400;
+    font-display: swap;
     src: url('../../../../public/fonts/lato-v20-latin-ext_latin-regular.woff2') format('woff2'),
     url('../../../../public/fonts/lato-v20-latin-ext_latin-regular.woff') format('woff'),
     url('../../../../public/fonts/lato-v20-latin-ext_latin-regular.ttf') format('truetype');
@@ -14,6 +15,7 @@
     font-family: 'Lato';
     font-style: normal;
     font-weight: 900;
+    font-display: swap;
     src: url('../../../../public/fonts/lato-v20-latin-ext_latin-900.woff2') format('woff2'),
     url('../../../../public/fonts/lato-v20-latin-ext_latin-900.woff') format('woff'),
     url('../../../../public/fonts/lato-v20-latin-ext_latin-900.ttf') format('truetype');
@@ -23,6 +25,7 @@
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
+    font-display: swap;
     src: url('../../../../public/fonts/lato-v20-latin-ext_latin-700.woff2') format('woff2'),
     url('../../../../public/fonts/lato-v20-latin-ext_latin-700.woff') format('woff'),
     url('../../../../public/fonts/lato-v20-latin-ext_latin-700.ttf') format('truetype');
@@ -33,6 +36,7 @@
     font-family: 'Merriweather';
     font-style: normal;
     font-weight: 400;
+    font-display: swap;
     src: url('../../../../public/fonts/merriweather-v27-latin-ext_latin-regular.woff2') format('woff2'),
     url('../../../../public/fonts/merriweather-v27-latin-ext_latin-regular.woff') format('woff'),
     url('../../../../public/fonts/merriweather-v27-latin-ext_latin-regular.ttf') format('truetype');
@@ -42,6 +46,7 @@
     font-family: 'Merriweather';
     font-style: normal;
     font-weight: 700;
+    font-display: swap;
     src: url('../../../../public/fonts/merriweather-v27-latin-ext_latin-700.woff2') format('woff2'),
     url('../../../../public/fonts/merriweather-v27-latin-ext_latin-700.woff') format('woff'),
     url('../../../../public/fonts/merriweather-v27-latin-ext_latin-700.ttf') format('truetype');
@@ -51,6 +56,7 @@
     font-family: 'Merriweather';
     font-style: normal;
     font-weight: 900;
+    font-display: swap;
     src: url('../../../../public/fonts/merriweather-v27-latin-ext_latin-900.woff2') format('woff2'),
     url('../../../../public/fonts/merriweather-v27-latin-ext_latin-900.woff') format('woff'),
     url('../../../../public/fonts/merriweather-v27-latin-ext_latin-900.ttf') format('truetype');
@@ -58,6 +64,7 @@
 
 @font-face {
     font-family: 'Pe-icon-7-stroke';
+    font-display: swap;
     src: url('../../../../public/fonts/Pe-icon-7-stroke.woff') format('woff'),
     url('../../../../public/fonts/Pe-icon-7-stroke.ttf') format('truetype');
 }
