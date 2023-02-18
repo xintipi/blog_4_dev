@@ -56,7 +56,7 @@
 }
 
 .noscroll {
-  @apply overflow-hidden;
+  @apply overflow-hidden touch-none;
 }
 
 .mobile-nav {
@@ -75,7 +75,7 @@
         }
       }
       a {
-        @apply block py-4.5 border-b border-solid border-borderColor text-primary w-full;
+        @apply block py-4.5 border-b border-solid border-borderColor w-full;
         &.dropdown-toggle {
           @apply after:right-0 relative;
           &.show {

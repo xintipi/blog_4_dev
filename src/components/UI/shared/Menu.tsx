@@ -39,7 +39,7 @@ export default function Menu() {
                 href={item.path}
                 className={clsx({
                   'light-link': true,
-                  [item.activeLink]: pathname === item.path,
+                  'active-link': pathname === item.path,
                 })}
                 title={t<string>(item.target)}>
                 {t(item.target)}

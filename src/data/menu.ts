@@ -9,14 +9,14 @@ export const menu = [
   {
     id: 2,
     path: null,
-    activeLink: '',
+    activeLink: 'active-link',
     target: 'header_blog_articles',
     title: 'Blog articles',
     group: [
       {
         id: 'group1',
         path: '/blog-list',
-        activeLink: '',
+        activeLink: 'active-link',
         target: 'header_css',
         title: 'Blog CSS articles',
         backgroundCss: 'after:bg-blueColor',
@@ -24,7 +24,7 @@ export const menu = [
       {
         id: 'group2',
         path: '/blog-list',
-        activeLink: '',
+        activeLink: 'active-link',
         target: 'header_html',
         title: 'Blog HTML articles',
         backgroundCss: 'after:bg-redColor',
@@ -32,7 +32,7 @@ export const menu = [
       {
         id: 'group3',
         path: '/blog-list',
-        activeLink: '',
+        activeLink: 'active-link',
         target: 'header_javascript',
         title: 'Blog Javascript articles',
         backgroundCss: 'after:bg-yellowColor',
@@ -40,7 +40,7 @@ export const menu = [
       {
         id: 'group4',
         path: '/blog-list',
-        activeLink: '',
+        activeLink: 'active-link',
         target: 'header_graphic',
         title: 'Graphic',
         backgroundCss: 'after:bg-greenColor',
@@ -48,7 +48,7 @@ export const menu = [
       {
         id: 'group5',
         path: '/blog-list',
-        activeLink: '',
+        activeLink: 'active-link',
         target: 'header_blog_posts',
         title: 'Blog posts',
         backgroundCss: null,
@@ -58,21 +58,21 @@ export const menu = [
   {
     id: 3,
     path: '/about-me',
-    activeLink: '',
+    activeLink: 'active-link',
     target: 'header_about',
     group: null,
   },
   {
     id: 4,
     path: '/portfolio',
-    activeLink: '',
+    activeLink: 'active-link',
     target: 'header_my_projects',
     group: null,
   },
   {
     id: 5,
     path: '/contact',
-    activeLink: '',
+    activeLink: 'active-link',
     target: 'header_contact',
     group: null,
   },

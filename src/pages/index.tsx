@@ -1,14 +1,17 @@
-import { GetStaticProps, GetStaticPropsContext } from 'next'
+import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { getPlaiceholder } from 'plaiceholder'
 import { useMemo } from 'react'
 
 import HomeFeedSection from '@/components/Home/HomeFeedSection'
 import { feeds } from '@/data/feeds'
+import { Meta } from '@/enums/meta'
 import { HomeFeedsInterface } from '@/interface/homeFeeds.interface'
 import AppLayout from '@/layouts/AppLayout'
 
-export const getStaticProps: GetStaticProps = async ({ locale }: GetStaticPropsContext) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  locale,
+}: GetServerSidePropsContext) => {
   const images = await Promise.all(
     feeds.slice(0, 5).map(async (data) => {
       const { base64, img } = await getPlaiceholder(data.thumbnailUrl)
@@ -32,8 +35,8 @@ export default function Home({ images, feeds }: HomeFeedsInterface) {
   const openGraph = useMemo(() => {
     return {
       title: process.env.NEXT_PUBLIC_APP_NAME,
-      description:
-        'A constructive and inclusive social network for software developers. With you every step of your journey.',
+      description: Meta.Description,
+      keywords: Meta.Keywords,
       url: process.env.NEXT_PUBLIC_DOMAIN,
       type: 'website',
       siteName: process.env.NEXT_PUBLIC_APP_NAME,
@@ -46,7 +49,7 @@ export default function Home({ images, feeds }: HomeFeedsInterface) {
       title={process.env.NEXT_PUBLIC_APP_NAME}
       canonical={process.env.NEXT_PUBLIC_DOMAIN}
       openGraph={openGraph}
-      description="A constructive and inclusive social network for software developers. With you every step of your journey.">
+      description={Meta.Description}>
       <HomeFeedSection images={images} feeds={feeds} />
 
       <main>

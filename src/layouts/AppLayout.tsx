@@ -30,7 +30,7 @@ export default function AppLayout({
   const { pathname } = useRouter()
 
   useEffect(() => {
-    if (pathname === '/') {
+    if (['/', '/contact'].includes(pathname)) {
       setMetaTile(title)
     } else {
       setMetaTile(title ? `${title} - ${variant}` : variant)
