@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://blog-4-dev.vercel.app
+Host: https://dblog.one
 
 # Sitemaps
-Sitemap: https://blog-4-dev.vercel.app/sitemap.xml
+Sitemap: https://dblog.one/sitemap.xml
