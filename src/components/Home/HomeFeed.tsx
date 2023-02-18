@@ -31,7 +31,7 @@ export default function HomeFeed({ feed, image }: HomeFeed) {
         {...image}
         alt={feed?.thumbnailAlt as string}
         placeholder="blur"
-        loading="lazy"
+        priority
         onLoad={() => setIsImageReady(true)}
       />
     </div>
