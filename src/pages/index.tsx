@@ -23,7 +23,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }: GetStaticPropsC
     props: {
       images,
       feeds,
-      ...(await serverSideTranslations(locale as string, ['common', 'header'])),
+      ...(await serverSideTranslations(locale as string, ['header', 'footer'])),
     },
   }
 }

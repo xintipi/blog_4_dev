@@ -8,11 +8,20 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  font-family: "Merriweather", serif;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: transparent;
 }
 
 @media (prefers-color-scheme: dark) {
