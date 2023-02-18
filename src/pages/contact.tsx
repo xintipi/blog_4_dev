@@ -1,13 +1,11 @@
-import { GetServerSideProps, GetServerSidePropsContext } from 'next'
+import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useMemo } from 'react'
 
 import { Meta } from '@/enums/meta'
 import AppLayout from '@/layouts/AppLayout'
 
-export const getServerSideProps: GetServerSideProps = async ({
-  locale,
-}: GetServerSidePropsContext) => {
+export const getStaticProps: GetStaticProps = async ({ locale }: GetStaticPropsContext) => {
   return {
     props: {
       ...(await serverSideTranslations(locale as string, ['common', 'header'])),

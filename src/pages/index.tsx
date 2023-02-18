@@ -1,4 +1,4 @@
-import { GetServerSideProps, GetServerSidePropsContext } from 'next'
+import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { getPlaiceholder } from 'plaiceholder'
 import { useMemo } from 'react'
@@ -9,9 +9,7 @@ import { Meta } from '@/enums/meta'
 import { HomeFeedsInterface } from '@/interface/homeFeeds.interface'
 import AppLayout from '@/layouts/AppLayout'
 
-export const getServerSideProps: GetServerSideProps = async ({
-  locale,
-}: GetServerSidePropsContext) => {
+export const getStaticProps: GetStaticProps = async ({ locale }: GetStaticPropsContext) => {
   const images = await Promise.all(
     feeds.slice(0, 5).map(async (data) => {
       const { base64, img } = await getPlaiceholder(data.thumbnailUrl)
