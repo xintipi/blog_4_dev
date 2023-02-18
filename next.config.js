@@ -18,7 +18,7 @@ const nextConfig = {
   i18n,
   env: {
     NEXT_PUBLIC_APP_NAME: 'DEV Blog 👩‍💻👨‍💻',
-    NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: 'd-P3UvqL6a64Fx6u3Sq9IjZegJX_ACZx3SyxhSEGXMg',
+    NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: 'RPTItmVfol0y-KYF2ACSXyfeKgnm0D5KJEVIJr51DO0',
     NEXT_PUBLIC_GA_TRACKING_ID: 'G-BKY8G4X8WC',
   },
   images: {
