@@ -1,17 +1,14 @@
 import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
-import { OpenGraph } from 'next-seo/lib/types'
+import { NextSeoProps } from 'next-seo/lib/types'
 import { ReactNode, useCallback, useEffect, useState } from 'react'
 
 import AppFooter from '@/layouts/AppFooter'
 import AppHeader from '@/layouts/AppHeader'
 import AppHeaderMobile from '@/layouts/AppHeaderMobile'
 
-interface AppLayoutProps {
-  title?: string
-  description?: string
-  canonical?: string
-  openGraph?: OpenGraph
+type AppLayoutProps = Pick<NextSeoProps, 'title' | 'description' | 'canonical' | 'openGraph'> & {
+  keywords?: string | string[]
   children: ReactNode
 }
 
@@ -21,6 +18,7 @@ export default function AppLayout({
   title,
   description,
   canonical,
+  keywords,
   openGraph,
   children,
 }: AppLayoutProps) {
@@ -48,6 +46,28 @@ export default function AppLayout({
         description={description}
         canonical={canonical}
         openGraph={openGraph}
+        twitter={{
+          site: '@thepracticaldev',
+          cardType: 'summary_large_image',
+        }}
+        additionalMetaTags={[
+          {
+            name: 'keywords',
+            content: keywords as string,
+          },
+          {
+            name: 'twitter:title',
+            content: metaTile as string,
+          },
+          {
+            name: 'twitter:description',
+            content: description as string,
+          },
+          {
+            name: 'twitter:image:src',
+            content: 'https://i.ibb.co/DK3fYhV/6hqmcjaxbgbon8ydw93z.png',
+          },
+        ]}
       />
 
       <AppHeader mobileNav={onHandleMobileNav} />
