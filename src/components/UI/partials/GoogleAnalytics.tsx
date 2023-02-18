@@ -15,7 +15,6 @@ const GoogleAnalytics = ({ pageTitle }: GoogleAnalyticsProps) => {
 
   useEffect(() => {
     if (!location.host.includes('localhost')) {
-      console.log(pageTitle, pathname + searchParams.toString())
       gtag.pageview(pageTitle, pathname + searchParams.toString())
     }
   }, [pathname, searchParams, pageTitle])
