@@ -22,6 +22,9 @@ button,
 select,
 a {
   -webkit-tap-highlight-color: transparent;
+  &:focus {
+    outline: none;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
