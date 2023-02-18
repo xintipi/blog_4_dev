@@ -1,25 +1,24 @@
-import { usePathname, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/router'
 import Script from 'next/script'
 import { useEffect } from 'react'
 
 import { NEXT_PUBLIC_GA_TRACKING_ID } from '@/lib/constants'
 import * as gtag from '@/lib/gtag'
 
-interface GoogleAnalyticsProps {
-  pageTitle: string
-}
-
-const GoogleAnalytics = ({ pageTitle }: GoogleAnalyticsProps) => {
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
+const GoogleAnalytics = () => {
+  const router = useRouter()
 
   useEffect(() => {
-    if (!location.host.includes('localhost')) {
-      gtag.pageview(pageTitle, pathname + searchParams.toString())
+    const handleRouteChange = (url: string) => {
+      gtag.pageview(url)
     }
-  }, [pathname, searchParams, pageTitle])
 
-  if (!NEXT_PUBLIC_GA_TRACKING_ID) return null
+    router.events.on('routeChangeComplete', handleRouteChange)
+
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
 
   return (
     <>

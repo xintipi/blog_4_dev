@@ -19,7 +19,7 @@ const nextConfig = {
   env: {
     NEXT_PUBLIC_APP_NAME: 'DEV Blog 👩‍💻👨‍💻',
     NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: 'RPTItmVfol0y-KYF2ACSXyfeKgnm0D5KJEVIJr51DO0',
-    NEXT_PUBLIC_GA_TRACKING_ID: 'G-BKY8G4X8WC',
+    NEXT_PUBLIC_GA_TRACKING_ID: 'G-LQ88J1EDL3',
   },
   images: {
     domains: ['i.ibb.co'],
