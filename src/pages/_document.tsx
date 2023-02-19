@@ -12,11 +12,7 @@ export default function Document() {
           content={process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION}
         />
         <link rel="icon" href="/favicon.ico" />
-        <link
-          href={`https://www.googletagmanager.com/gtag/js?id=${NEXT_PUBLIC_GA_TRACKING_ID}`}
-          rel="preload"
-          as="script"
-        />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com/" />
       </Head>
       <body className="bg-bodyBg font-sans text-bodyColor">
         <Main />
