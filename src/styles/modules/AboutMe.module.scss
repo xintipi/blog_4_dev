@@ -1,0 +1,27 @@
+.author-nav-link {
+  @apply flex items-center py-4.5 px-6.5 text-15px text-primary border-t border-solid border-borderColor hover:bg-hoverColor hover:text-secondary transition-colors duration-200;
+}
+
+.details-header {
+  @apply text-24px leading-8 text-secondary font-black mb-8;
+}
+
+.philosophy-content {
+  &-text {
+    @apply text-sm leading-27px mb-4 text-bodyColor;
+  }
+}
+
+.skills-list-numbering {
+  @apply block text-6xl text-title font-black -rotate-90 mr-1.5 lg:mr-14px;
+}
+
+.skills-list-titles {
+  @apply text-lg text-secondary uppercase mb-2.5 font-black -mt-2.5;
+}
+
+.skills-right {
+  .skills-list-content {
+    @apply text-xs italic leading-22px text-bodyColor;
+  }
+}

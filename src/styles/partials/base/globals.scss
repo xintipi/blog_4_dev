@@ -115,3 +115,7 @@
 .form-control {
   @apply border-b border-solid border-primary text-15px text-primary py-3 leading-6 outline-0 bg-transparent w-full;
 }
+
+.author-info {
+  @apply text-primary block text-15px mb-0.5;
+}

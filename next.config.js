@@ -6,7 +6,7 @@ const { withPlaiceholder } = require('@plaiceholder/next')
 // })
 
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   swcMinify: true,
   typescript: {
     // !! WARN !!

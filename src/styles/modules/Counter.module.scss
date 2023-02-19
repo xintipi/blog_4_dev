@@ -1,0 +1,10 @@
+.counters-body {
+  @apply flex flex-col items-center justify-center my-13px md:my-0;
+}
+
+.counter-icon {
+  @apply flex items-center justify-center w-82px h-82px p-4.5 border-2 border-solid border-bodyBg hover:bg-secondary hover:text-white cursor-pointer;
+  i {
+    @apply text-42px;
+  }
+}
