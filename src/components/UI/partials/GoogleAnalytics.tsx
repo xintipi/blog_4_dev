@@ -24,10 +24,11 @@ const GoogleAnalytics = () => {
     <>
       {/* Global Site Tag (gtag.js) - Google Analytics */}
       <Script
+        defer
         src={`https://www.googletagmanager.com/gtag/js?id=${NEXT_PUBLIC_GA_TRACKING_ID}`}
         strategy="afterInteractive"
       />
-      <Script id="ga" strategy="afterInteractive">
+      <Script id="ga" defer strategy="afterInteractive">
         {`window.dataLayer = window.dataLayer || [];
           function gtag() { dataLayer.push(arguments); }
           gtag('js', new Date());
