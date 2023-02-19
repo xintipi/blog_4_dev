@@ -45,7 +45,7 @@ module.exports = {
       icons: ['Pe-icon-7-stroke'],
     },
     screens: {
-      sm: '576px',
+      sm: '375px',
       md: '768px',
       lg: '992px',
       xl: '1200px',

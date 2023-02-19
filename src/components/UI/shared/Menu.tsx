@@ -67,7 +67,7 @@ export default function Menu() {
             )}
           </li>
         ))}
-      <li className="buyproducts-link ml-auto flex">
+      <li className="buyproducts-link ml-auto flex items-center">
         <Language icon="pe-7s-bookmarks" />
       </li>
     </ul>

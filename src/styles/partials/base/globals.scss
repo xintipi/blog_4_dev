@@ -60,7 +60,7 @@
 }
 
 .mobile-nav {
-  @apply hidden bg-white py-2.5 fixed h-full overflow-scroll z-50 shadow-mobileNav w-full;
+  @apply hidden bg-white pb-2.5 pt-0 fixed h-full overflow-scroll z-50 shadow-mobileNav w-full;
   &-open {
     @apply block;
   }
@@ -75,7 +75,7 @@
         }
       }
       a {
-        @apply block py-4.5 border-b border-solid border-borderColor w-full;
+        @apply block py-3.5 border-b border-solid border-borderColor w-full text-sm;
         &.dropdown-toggle {
           @apply after:right-0 relative;
           &.show {
@@ -93,7 +93,7 @@
     @apply block;
   }
   li {
-    @apply relative lg:border-b lg:border-solid lg:border-borderColor text-15px after:absolute after:top-[calc(50%-4px)] after:right-5.5 after:h-2 after:w-2 after:rounded-lg hover:bg-hoverColor;
+    @apply relative lg:border-b lg:border-solid lg:border-borderColor after:absolute after:top-[calc(50%-4px)] after:right-5.5 after:h-2 after:w-2 after:rounded-lg hover:bg-hoverColor;
     a {
       @apply block py-4 px-5.5 text-primary;
     }
@@ -113,7 +113,7 @@
 }
 
 .form-control {
-  @apply border-b border-solid border-primary text-15px text-primary py-3 leading-6 outline-0 bg-transparent w-full;
+  @apply border-b border-solid border-primary text-15px text-primary py-2 leading-6 outline-0 bg-transparent w-full;
 }
 
 .author-info {

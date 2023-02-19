@@ -1,4 +1,5 @@
 import '@/styles/index.scss'
+import 'react-tippy/dist/tippy.css'
 
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'

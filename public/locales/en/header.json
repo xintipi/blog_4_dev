@@ -7,7 +7,8 @@
   "header_javascript": "JavaScript",
   "header_graphic": "Graphic",
   "header_blog_posts": "Blog posts",
-  "header_about": "About me",
+  "header_about": "About",
   "header_my_projects": "My projects",
-  "header_contact": "Contact me"
+  "header_contact": "Contact",
+  "header_placehoder_search": "Search..."
 }

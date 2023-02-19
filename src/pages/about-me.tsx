@@ -6,6 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { Tooltip } from 'react-tippy'
 
 import Counter from '@/components/UI/shared/Counter'
 import usePathOrigin from '@/hooks/usePathOrigin'
@@ -49,9 +50,13 @@ export default function AboutMe() {
               />
               <ul className="author-nav text-left">
                 <li>
-                  <Link className={clsx(styles['author-nav-link'])} href="#" title="">
+                  <Link
+                    className={clsx(styles['author-nav-link'])}
+                    href="/cv/CV_Nguyen_Huu_Trung_Frontend_Developer.pdf"
+                    target="_blank"
+                    title="My CV">
                     <i className="pe-7s-bookmarks mr-3 text-3xl"></i>
-                    {t('about_download_cv')}
+                    {t('about_preview_cv')}
                   </Link>
                 </li>
                 <li>
@@ -60,7 +65,7 @@ export default function AboutMe() {
                       'border-b border-solid border-borderColor': true,
                       [styles['author-nav-link']]: true,
                     })}
-                    href="#"
+                    href="/contact"
                     title="">
                     <i className="pe-7s-paper-plane mr-3 text-3xl"></i>
                     {t('about_write_message')}
@@ -70,85 +75,96 @@ export default function AboutMe() {
             </div>
             <div className="about-me-author-content relative basis-66/100 py-10 px-7.5 md:py-50px md:px-10 lg:basis-73/100">
               <div className="flex flex-col items-start justify-between md:flex-row md:items-center">
-                <h1 className="h1 mb-2 font-black text-secondary">I'am Bill Gates</h1>
+                <h1 className="h1 mb-2 font-black text-secondary">
+                  I'am{' '}
+                  <a
+                    href="https://tinyurl.com/3xneh8zm"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-blueColor">
+                    Xìn
+                  </a>
+                </h1>
                 <div className="author-social mb-2 flex items-center justify-center md:mb-0">
                   <Link
                     href="https://tinyurl.com/yc2ekzfd"
                     className="social-icon"
                     title="Facebook"
                     target="_blank">
-                    <FontAwesomeIcon icon={faFacebook} width={18} />
+                    <Tooltip title="Facebook" trigger="mouseenter" theme="light">
+                      <FontAwesomeIcon icon={faFacebook} width={18} />
+                    </Tooltip>
                   </Link>
                   <Link
                     href="https://tinyurl.com/yx9dy849"
                     className="social-icon"
                     title="Github"
                     target="_blank">
-                    <FontAwesomeIcon icon={faGithub} width={18} />
+                    <Tooltip title="Github" trigger="mouseenter" theme="light">
+                      <FontAwesomeIcon icon={faGithub} width={18} />
+                    </Tooltip>
                   </Link>
                   <Link
                     href="https://tinyurl.com/3xneh8zm"
                     className="social-icon"
                     title="LinkedIn"
                     target="_blank">
-                    <FontAwesomeIcon icon={faLinkedin} width={18} />
+                    <Tooltip title="Linkedin" trigger="mouseenter" theme="light">
+                      <FontAwesomeIcon icon={faLinkedin} width={18} />
+                    </Tooltip>
                   </Link>
                 </div>
               </div>
               <span className="mt-2 block text-15px text-primary">
-                Front-End Developer at Microsoft Company
+                Front-End Developer at Gumi Company
               </span>
-              <p className="font-secondary my-7.5">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad
-                minim veniam, quis nostrud exerci tation ulla corper suscipit lobortis nisl ut
-                aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendr rit in
-                vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis
-                at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril
-                delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sitamet,
-                consectetuer adipiscing elit.
+              <p className="my-7.5">
+                Hi, My name's Trung. I have five years' experience as a FE. During my career I have
+                luck facing many challenging projects and still seek for more challenge. I started
+                learning UI/UX FE, Framework VueJs, ReactJs and animation canvas to expand my
+                knowledge off the field. My goal is to improve my skill to make high quality
+                websites and that make me try hard every day to achieve it.
               </p>
-              <Image
-                src="/img/webp/signature.webp"
-                alt="Author Signature"
-                title="Author Signature"
-                width={112}
-                height={27}
-              />
             </div>
           </section>
           <section className="details mt-7.5 flex flex-col bg-white py-10 px-7.5 shadow-block md:flex-row md:py-50px md:px-11">
             <div className="philosophy basis-1/2 md:pr-5.5">
-              <h2 className={clsx(styles['details-header'])}>My philoshopy</h2>
+              <h2 className={clsx(styles['details-header'])}>Overview</h2>
               <div className={clsx(styles['philosophy-content'])}>
                 <p
                   className={clsx({
                     'font-secondary': true,
                     [styles['philosophy-content-text']]: true,
                   })}>
-                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                  euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Ut wisi enim ad
-                  minim veniam, quis nostrud exerci tation ulla corper suscipit lobortis nisl ut
-                  aliquip ex ea commodo consequat.
+                  Have five years of experience in programming with good communication and quick
+                  learning skills. Strong proficiency in JavaScript including DOM manipulation and
+                  the JavaScript object model
                 </p>
                 <p
                   className={clsx({
                     'font-secondary': true,
                     [styles['philosophy-content-text']]: true,
                   })}>
-                  Duis autem vel eum iriure dolor in hendr rit in vulputate velit esse molestie
-                  consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et
-                  iusto odio dignissim qui blandit praesent luptatum.
+                  Familiarity with newer specifications of EcmaScript and Typescript Experience with
+                  popular Vue.js (version 2, 3) workflows (such as Vuex, Pinia, Vee-validate, I18n,
+                  etc.)
                 </p>
                 <p
                   className={clsx({
                     'font-secondary': true,
                     [styles['philosophy-content-text']]: true,
                   })}>
-                  Zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor
-                  sitamet, consectetuer adipiscing elit. Ut wisi enim ad minim veniam, quis nostrud
-                  exerci tation ulla corper suscipit lobortis nisl ut aliquip ex ea commodo
-                  consequat.
+                  Experience with React.js workflows (such as Redux, Hooks, Formik, I18n, etc.).
+                  Experience with UI components such as Ant design, Element UI, Tailwindui
+                </p>
+                <p
+                  className={clsx({
+                    'font-secondary': true,
+                    [styles['philosophy-content-text']]: true,
+                  })}>
+                  Proficient use of source code management tools: SourceTree, GIT. Ability to build
+                  source code using Webpack, Vite, Gulp. Current working location: Ho Chi Minh, Viet
+                  Nam
                 </p>
               </div>
             </div>
@@ -214,10 +230,10 @@ export default function AboutMe() {
               </ol>
             </div>
           </section>
-          <section className="counters mt-7.5 flex flex-col items-center justify-around bg-white py-50px px-11 shadow-block md:flex-row">
+          <section className="counters mt-7.5 bg-white py-50px px-11 shadow-block sm:grid sm:grid-cols-2 sm:gap-2 md:grid md:grid-cols-4 md:gap-4">
             <Counter
               icon={<i className="pe-7s-cart" />}
-              target={100}
+              target={200}
               body={t('about_product_slaes')}
             />
             <Counter
@@ -227,12 +243,12 @@ export default function AboutMe() {
             />
             <Counter
               icon={<i className="pe-7s-photo" />}
-              target={300}
+              target={200}
               body={t('about_taking_photo')}
             />
             <Counter
               icon={<i className="pe-7s-tools" />}
-              target={400}
+              target={200}
               body={t('about_bug_fixed')}
             />
           </section>

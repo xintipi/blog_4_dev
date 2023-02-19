@@ -16,14 +16,14 @@ export default function Language({ icon }: LanguageProps) {
     <>
       <i
         className={clsx({
-          'mr-2.5 text-2xl': true,
+          'mr-2.5 text-xl': true,
           [`${icon}`]: !!icon,
         })}
       />
       <select
         onChange={change}
         value={router.locale}
-        className="change-language group flex items-center bg-white text-secondary outline-none">
+        className="change-language group flex items-center bg-white text-sm outline-none">
         <option value="en" className="group-hover:underline">
           {LanguageName.English}
         </option>

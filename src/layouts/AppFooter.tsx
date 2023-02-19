@@ -2,6 +2,7 @@ import { faFacebook, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-i
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
+import { Tooltip } from 'react-tippy'
 
 export default function AppFooter() {
   const { t } = useTranslation('footer')
@@ -16,7 +17,9 @@ export default function AppFooter() {
                 className="social-icon"
                 title="Facebook"
                 target="_blank">
-                <FontAwesomeIcon icon={faFacebook} width={18} />
+                <Tooltip title="Facebook" trigger="mouseenter" animation="scale" theme="light">
+                  <FontAwesomeIcon icon={faFacebook} width={18} />
+                </Tooltip>
               </Link>
             </li>
             <li>
@@ -25,7 +28,9 @@ export default function AppFooter() {
                 className="social-icon"
                 title="Github"
                 target="_blank">
-                <FontAwesomeIcon icon={faGithub} width={18} />
+                <Tooltip title="Github" trigger="mouseenter" animation="scale" theme="light">
+                  <FontAwesomeIcon icon={faGithub} width={18} />
+                </Tooltip>
               </Link>
             </li>
             <li>
@@ -34,14 +39,16 @@ export default function AppFooter() {
                 className="social-icon"
                 title="LinkedIn"
                 target="_blank">
-                <FontAwesomeIcon icon={faLinkedin} width={18} />
+                <Tooltip title="Linkedin" trigger="mouseenter" animation="scale" theme="light">
+                  <FontAwesomeIcon icon={faLinkedin} width={18} />
+                </Tooltip>
               </Link>
             </li>
           </ul>
           <p className="font-primary mt-2 text-center md:mt-0 md:text-left">
             {t('footer_copyright', { date: new Date().getFullYear() })} {t('footer_design_by')}{' '}
             <a
-              href="https://www.facebook.com/huutrung.mmt"
+              href="https://tinyurl.com/yc2ekzfd"
               target="_blank"
               rel="noreferrer"
               className="text-blueColor">

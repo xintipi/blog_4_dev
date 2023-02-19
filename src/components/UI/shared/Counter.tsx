@@ -14,19 +14,24 @@ export default function Counter({ icon, target, body }: CounterProps) {
 
   useEffect(() => {
     let counterTimeout: any = null
+    let count: any = null
     const updateCount = () => {
       const target = +(counterRef as any).current?.dataset.target
-      const count = +(counterRef as any).current.innerText
+      if ((counterRef as any).current) {
+        count = +(counterRef as any).current.innerText
+      }
       const speed = 1000
       const inc = target / speed
       if (count < target) {
         ;(counterRef as any).current.innerText = Math.ceil(count + inc)
         counterTimeout = setTimeout(updateCount, 1)
       } else {
-        ;(counterRef as any).current.innerText = target
+        if ((counterRef as any).current) {
+          ;(counterRef as any).current.innerText = target
+        }
       }
     }
-    updateCount()
+    setTimeout(updateCount, 200)
     return () => {
       clearTimeout(counterTimeout)
     }
