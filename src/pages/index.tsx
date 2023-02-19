@@ -4,7 +4,7 @@ import { getPlaiceholder } from 'plaiceholder'
 
 import HomeFeedSection from '@/components/Home/HomeFeedSection'
 import { feeds } from '@/data/feeds'
-import { Meta } from '@/enums/meta'
+import usePathOrigin from '@/hooks/usePathOrigin'
 import { HomeFeedsInterface } from '@/interface/homeFeeds.interface'
 import AppLayout from '@/layouts/AppLayout'
 
@@ -29,18 +29,17 @@ export const getStaticProps: GetStaticProps = async ({ locale }: GetStaticPropsC
 }
 
 export default function Home({ images, feeds }: HomeFeedsInterface) {
+  const ogUrl = usePathOrigin()
   return (
     <AppLayout
       title={process.env.NEXT_PUBLIC_APP_NAME}
-      canonical={process.env.NEXT_PUBLIC_DOMAIN}
-      description={Meta.Description}
-      keywords={Meta.Keywords}
+      canonical={ogUrl}
+      description="A constructive and inclusive social network for software developers. With you every step of your journey."
+      keywords="software development, engineering, rails, javascript, ruby"
       openGraph={{
         type: 'website',
-        title: process.env.NEXT_PUBLIC_APP_NAME,
-        description: Meta.Description,
-        url: process.env.NEXT_PUBLIC_DOMAIN,
         siteName: process.env.NEXT_PUBLIC_APP_NAME,
+        url: ogUrl,
         images: [{ url: 'https://i.ibb.co/DK3fYhV/6hqmcjaxbgbon8ydw93z.png' }],
       }}>
       <HomeFeedSection images={images} feeds={feeds} />

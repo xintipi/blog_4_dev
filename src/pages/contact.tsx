@@ -3,7 +3,7 @@ import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import { Meta } from '@/enums/meta'
+import usePathOrigin from '@/hooks/usePathOrigin'
 import AppLayout from '@/layouts/AppLayout'
 import styles from '@/styles/modules/Contact.module.scss'
 
@@ -17,18 +17,17 @@ export const getStaticProps: GetStaticProps = async ({ locale }: GetStaticPropsC
 
 export default function Contact() {
   const { t } = useTranslation('contact')
+  const ogUrl = usePathOrigin()
   return (
     <AppLayout
-      title="Contact DEV Blog 👩‍💻👨‍💻"
-      canonical={process.env.NEXT_PUBLIC_DOMAIN}
-      description={Meta.Description}
-      keywords={Meta.Keywords}
+      title="Contact DEV 👩‍💻👨‍💻"
+      canonical={ogUrl}
+      description="Contact DEV — DEV Blog 👩‍💻👨‍💻"
+      keywords="software development, engineering, rails, javascript, ruby"
       openGraph={{
         type: 'website',
-        title: process.env.NEXT_PUBLIC_APP_NAME,
-        description: Meta.Description,
-        url: process.env.NEXT_PUBLIC_DOMAIN,
         siteName: process.env.NEXT_PUBLIC_APP_NAME,
+        url: ogUrl,
         images: [{ url: 'https://i.ibb.co/DK3fYhV/6hqmcjaxbgbon8ydw93z.png' }],
       }}>
       <main className="mt-10">
