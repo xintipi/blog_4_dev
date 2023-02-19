@@ -13,7 +13,7 @@ export default function Counter({ icon, target, body }: CounterProps) {
   const counterRef = useRef<HTMLHeadingElement>(null)
 
   useEffect(() => {
-    let CounterTimeout: any = null
+    let counterTimeout: any = null
     const updateCount = () => {
       const target = +(counterRef as any).current?.dataset.target
       const count = +(counterRef as any).current.innerText
@@ -21,14 +21,14 @@ export default function Counter({ icon, target, body }: CounterProps) {
       const inc = target / speed
       if (count < target) {
         ;(counterRef as any).current.innerText = Math.ceil(count + inc)
-        CounterTimeout = setTimeout(updateCount, 1)
+        counterTimeout = setTimeout(updateCount, 1)
       } else {
         ;(counterRef as any).current.innerText = target
       }
     }
     updateCount()
     return () => {
-      clearTimeout(CounterTimeout)
+      clearTimeout(counterTimeout)
     }
   }, [counterRef])
 
