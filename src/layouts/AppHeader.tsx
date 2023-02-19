@@ -18,7 +18,6 @@ export default function AppHeader(props: HeaderProps) {
 
   const onHandlerToggleMenu = (event: MouseEvent<HTMLDivElement>) => {
     event.preventDefault()
-    document.documentElement.classList.toggle('noscroll')
     setOpen(!open)
     props.mobileNav(!open)
   }

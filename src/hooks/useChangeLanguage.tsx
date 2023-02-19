@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import { i18n } from 'next-i18next'
 import { ChangeEvent } from 'react'
 
 export const useChangeLanguage = () => {
@@ -12,6 +13,10 @@ export const useChangeLanguage = () => {
         locale: value,
       })
       .then((r) => r)
+
+    router.events.on('routeChangeComplete', () => {
+      i18n?.changeLanguage(value)
+    })
   }
 
   return { change }

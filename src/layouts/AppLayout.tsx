@@ -28,6 +28,12 @@ export default function AppLayout({
   const { pathname } = useRouter()
 
   useEffect(() => {
+    if (!mobileNav) {
+      document.documentElement.classList.remove('noscroll')
+    }
+  })
+
+  useEffect(() => {
     if (['/', '/contact'].includes(pathname)) {
       setMetaTile(title)
     } else {
@@ -35,9 +41,13 @@ export default function AppLayout({
     }
   }, [pathname])
 
-  const onHandleMobileNav = useCallback((open: boolean) => {
-    setMobileNav(open)
-  }, [])
+  const onHandleMobileNav = useCallback(
+    (open: boolean) => {
+      setMobileNav(open)
+      document.documentElement.classList.toggle('noscroll')
+    },
+    [mobileNav]
+  )
 
   return (
     <>
