@@ -1,4 +1,7 @@
-import { DATABASE_LANGUAGE_ID, NOTION_LANGUAGE_API_SECRET } from '@/lib/constants'
+import {
+  NEXT_PUBLIC_DATABASE_LANGUAGE_ID,
+  NEXT_PUBLIC_NOTION_LANGUAGE_API_SECRET,
+} from '@/lib/constants'
 import { Languages } from '@/lib/notion/interface'
 
 import * as responses from './response'
@@ -6,12 +9,12 @@ import * as responses from './response'
 const { Client } = require('@notionhq/client')
 
 const client = new Client({
-  auth: NOTION_LANGUAGE_API_SECRET,
+  auth: NEXT_PUBLIC_NOTION_LANGUAGE_API_SECRET,
 })
 
 export async function getMyLanguages(): Promise<Languages[]> {
   const res = await client.databases.query({
-    database_id: DATABASE_LANGUAGE_ID,
+    database_id: NEXT_PUBLIC_DATABASE_LANGUAGE_ID,
     sorts: [
       {
         timestamp: 'created_time',

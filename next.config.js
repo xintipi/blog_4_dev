@@ -20,8 +20,8 @@ const nextConfig = {
     NEXT_PUBLIC_APP_NAME: 'DEV Blog 👩‍💻👨‍💻',
     NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: 'RPTItmVfol0y-KYF2ACSXyfeKgnm0D5KJEVIJr51DO0',
     NEXT_PUBLIC_GA_TRACKING_ID: 'G-LQ88J1EDL3',
-    NOTION_LANGUAGE_API_SECRET: 'secret_LdSce86HezMAHBfsmzmmYzhnaVPTZhtq24yqcZ2GaNm',
-    DATABASE_LANGUAGE_ID: '38dea3fa707347a78c5bc18c86db91ac',
+    NEXT_PUBLIC_NOTION_LANGUAGE_API_SECRET: 'secret_LdSce86HezMAHBfsmzmmYzhnaVPTZhtq24yqcZ2GaNm',
+    NEXT_PUBLIC_DATABASE_LANGUAGE_ID: '38dea3fa707347a78c5bc18c86db91ac',
   },
   images: {
     domains: ['i.ibb.co'],
