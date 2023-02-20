@@ -6,23 +6,37 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { getPlaiceholder } from 'plaiceholder'
 import { Tooltip } from 'react-tippy'
 
 import Counter from '@/components/UI/shared/Counter'
 import { languages } from '@/data/languages'
 import usePathOrigin from '@/hooks/usePathOrigin'
+import { LanguagesInterface } from '@/interface/languages.interface'
 import AppLayout from '@/layouts/AppLayout'
 import styles from '@/styles/modules/AboutMe.module.scss'
 
 export const getStaticProps: GetStaticProps = async ({ locale }: GetStaticPropsContext) => {
+  const images = await Promise.all(
+    languages.map(async (data) => {
+      const { base64, img } = await getPlaiceholder(data.pathImg)
+      return {
+        ...img,
+        blurDataURL: base64,
+      }
+    })
+  ).then((value) => value)
+
   return {
     props: {
+      images,
+      languages,
       ...(await serverSideTranslations(locale as string, ['header', 'footer', 'about'])),
     },
   }
 }
 
-export default function AboutMe() {
+export default function AboutMe({ images, languages }: LanguagesInterface) {
   const ogUrl = usePathOrigin()
   const { t } = useTranslation('about')
 
@@ -145,24 +159,25 @@ export default function AboutMe() {
               </ul>
               <p className="my-3 text-xl text-secondary">👨🛠️ Languages and Tools :</p>
               <ul className="grid sm:grid-cols-4 sm:gap-y-3 md:grid-cols-8">
-                {languages.map((lang, index) => {
-                  return (
-                    <Link
-                      key={index}
-                      href={lang.sourceTarget}
-                      target="_blank"
-                      rel="noopener noreferrer">
-                      <Image
-                        src={lang.pathImg}
-                        title={lang.title}
-                        alt={lang.title}
-                        width="40"
-                        height="40"
-                        style={{ maxWidth: '100%' }}
-                      />
-                    </Link>
-                  )
-                })}
+                {languages.length &&
+                  languages.map((lang, index) => {
+                    const image = images[index]
+                    return (
+                      <Link
+                        key={lang?.id}
+                        href={lang?.sourceTarget as string}
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <Image
+                          {...image}
+                          alt={lang?.pathImg as string}
+                          width={40}
+                          height={40}
+                          placeholder="blur"
+                        />
+                      </Link>
+                    )
+                  })}
               </ul>
             </div>
           </section>

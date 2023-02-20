@@ -1,4 +1,11 @@
-export const languages = [
+export interface LanguageResponse {
+  id: number
+  sourceTarget: string
+  title: string
+  pathImg: string
+}
+
+export const languages: LanguageResponse[] = [
   {
     id: 1,
     sourceTarget: 'https://vuejs.org/',
