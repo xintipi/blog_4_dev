@@ -38,10 +38,6 @@ export const getStaticProps = async ({ locale }: GetStaticPropsContext) => {
       languages,
       ...(await serverSideTranslations(locale as string, ['header', 'footer', 'about'])),
     },
-    // Next.js will attempt to re-generate the page:
-    // - When a request comes in
-    // - At most once every 10 seconds
-    revalidate: 10,
   }
 }
 
