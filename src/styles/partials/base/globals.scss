@@ -15,7 +15,7 @@
 }
 
 .social-icon {
-  @apply mx-3px border border-solid border-borderColor text-lg text-white rounded-full h-34px w-34px flex items-center justify-center bg-socialIconsBgColor hover:bg-secondary hover:border-secondary transition-colors duration-200;
+  @apply mx-3px text-lg text-white rounded-full h-34px w-34px flex items-center justify-center bg-socialIconsBgColor hover:bg-secondary hover:border-secondary transition-colors duration-200;
 }
 
 .btn {

@@ -9,6 +9,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { Tooltip } from 'react-tippy'
 
 import Counter from '@/components/UI/shared/Counter'
+import { languages } from '@/data/languages'
 import usePathOrigin from '@/hooks/usePathOrigin'
 import AppLayout from '@/layouts/AppLayout'
 import styles from '@/styles/modules/AboutMe.module.scss'
@@ -40,14 +41,17 @@ export default function AboutMe() {
       <main className="mt-7.5">
         <div className="container mx-auto">
           <section className="flex flex-col bg-white shadow-block md:flex-row">
-            <div className="about-me-author basis-34/100 border-r border-solid border-borderColor pt-45px text-center lg:basis-27/100">
-              <Image
-                className=" mx-auto mb-12"
-                src="/img/webp/profile-picture_2x.webp"
-                alt="Profile picture"
-                width={100}
-                height={100}
-              />
+            <div className="about-me-author basis-34/100 border-r border-solid border-borderColor text-center lg:basis-27/100">
+              <div className="flex items-center justify-center overflow-hidden py-25px">
+                <Image
+                  className="rounded-full border border-solid border-borderColor"
+                  src="/img/me/me1.jpg"
+                  alt="Profile picture"
+                  loading="lazy"
+                  width={100}
+                  height={100}
+                />
+              </div>
               <ul className="author-nav text-left">
                 <li>
                   <Link
@@ -118,16 +122,51 @@ export default function AboutMe() {
               <span className="mt-2 block text-15px text-primary">
                 Front-End Developer at Gumi Company
               </span>
-              <p className="my-7.5">
-                Hi, My name's Trung. I have five years' experience as a FE. During my career I have
-                luck facing many challenging projects and still seek for more challenge. I started
-                learning UI/UX FE, Framework VueJs, ReactJs and animation canvas to expand my
-                knowledge off the field. My goal is to improve my skill to make high quality
-                websites and that make me try hard every day to achieve it.
-              </p>
+              <p className="my-3 text-xl text-secondary">👨‍💻 About Me :</p>
+              <ul className="mb-3 list-disc pl-5">
+                <li className="pb-2">
+                  🔭 I’m working as a Software Engineer and contributing to frontend for building
+                  web applications.
+                </li>
+                <li className="pb-2">
+                  🌱 I'm interesting websites that amazed my users as well as delivering them in
+                  high quality.
+                </li>
+                <li className="pb-2">
+                  ⚡ My goal is to improve my skill to make high quality websites and now I'm
+                  working with my dream and make it bigger.
+                </li>
+                <li className="pb-2">
+                  📫How to reach me:{' '}
+                  <Link href="https://tinyurl.com/3xneh8zm" title="LinkedIn" target="_blank">
+                    <FontAwesomeIcon icon={faLinkedin} width={18} />
+                  </Link>
+                </li>
+              </ul>
+              <p className="my-3 text-xl text-secondary">👨🛠️ Languages and Tools :</p>
+              <ul className="grid sm:grid-cols-4 sm:gap-y-3 md:grid-cols-8">
+                {languages.map((lang, index) => {
+                  return (
+                    <Link
+                      key={index}
+                      href={lang.sourceTarget}
+                      target="_blank"
+                      rel="noopener noreferrer">
+                      <Image
+                        src={lang.pathImg}
+                        title={lang.title}
+                        alt={lang.title}
+                        width="40"
+                        height="40"
+                        style={{ maxWidth: '100%' }}
+                      />
+                    </Link>
+                  )
+                })}
+              </ul>
             </div>
           </section>
-          <section className="details mt-7.5 flex flex-col bg-white py-10 px-7.5 shadow-block md:flex-row md:py-50px md:px-11">
+          <section className="details mt-7.5 flex grid grid-cols-2 flex-col gap-x-0 bg-white py-10 px-7.5 shadow-block md:py-50px md:px-11">
             <div className="philosophy basis-1/2 md:pr-5.5">
               <h2 className={clsx(styles['details-header'])}>Overview</h2>
               <div className={clsx(styles['philosophy-content'])}>
@@ -146,25 +185,33 @@ export default function AboutMe() {
                     [styles['philosophy-content-text']]: true,
                   })}>
                   Familiarity with newer specifications of EcmaScript and Typescript Experience with
-                  popular Vue.js (version 2, 3) workflows (such as Vuex, Pinia, Vee-validate, I18n,
-                  etc.)
+                  popular <span className="text-secondary">VueJS</span> workflows such as vuex,
+                  pinia, vee-validate, i18n, etc.
                 </p>
                 <p
                   className={clsx({
                     'font-secondary': true,
                     [styles['philosophy-content-text']]: true,
                   })}>
-                  Experience with React.js workflows (such as Redux, Hooks, Formik, I18n, etc.).
-                  Experience with UI components such as Ant design, Element UI, Tailwindui
+                  Experience with <span className="text-secondary">ReactJS</span> workflows such as
+                  redux, hooks, formik, i18n. Experience with UI components such as ant design,
+                  element UI, tailwind, etc.
                 </p>
                 <p
                   className={clsx({
                     'font-secondary': true,
                     [styles['philosophy-content-text']]: true,
                   })}>
-                  Proficient use of source code management tools: SourceTree, GIT. Ability to build
-                  source code using Webpack, Vite, Gulp. Current working location: Ho Chi Minh, Viet
-                  Nam
+                  Proficient use of source code management tools (sourcetree, git). Ability to build
+                  source code using webpack, vite, gulp
+                </p>
+                <p
+                  className={clsx({
+                    'font-secondary': true,
+                    [styles['philosophy-content-text']]: true,
+                  })}>
+                  Current working location:{' '}
+                  <span className="text-secondary">Ho Chi Minh, Vietnam</span>
                 </p>
               </div>
             </div>
@@ -174,7 +221,7 @@ export default function AboutMe() {
                 <li className="mb-7.5 flex items-start">
                   <span className={clsx(styles['skills-list-numbering'])}>01</span>
                   <div className={clsx(styles['skills-right'])}>
-                    <h3 className="skills-list-titles">HTML</h3>
+                    <h3 className={clsx(styles['skills-list-titles'])}>HTML/CSS</h3>
                     <p
                       className={clsx({
                         'font-secondary': true,
@@ -188,21 +235,21 @@ export default function AboutMe() {
                 <li className="mb-7.5 flex items-start">
                   <span className={clsx(styles['skills-list-numbering'])}>02</span>
                   <div className={clsx(styles['skills-right'])}>
-                    <h3 className={clsx(styles['skills-list-titles'])}>CSS</h3>
+                    <h3 className={clsx(styles['skills-list-titles'])}>Javascript</h3>
                     <p
                       className={clsx({
                         'font-secondary': true,
                         [styles['skills-list-content']]: true,
                       })}>
-                      Ut wisi enim ad minim veniam, quis nostrud exerci tation ulla corper suscipit
-                      lobortis nisl ut aliquip ex ea.
+                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
+                      nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
                     </p>
                   </div>
                 </li>
                 <li className="mb-7.5 flex items-start">
                   <span className={clsx(styles['skills-list-numbering'])}>03</span>
                   <div className={clsx(styles['skills-right'])}>
-                    <h3 className={clsx(styles['skills-list-titles'])}>Javascript</h3>
+                    <h3 className={clsx(styles['skills-list-titles'])}>VueJS/NuxtJS</h3>
                     <p
                       className={clsx({
                         'font-secondary': true,
@@ -216,14 +263,14 @@ export default function AboutMe() {
                 <li className="mb-7.5 flex items-start">
                   <span className={clsx(styles['skills-list-numbering'])}>04</span>
                   <div className={clsx(styles['skills-right'])}>
-                    <h3 className={clsx(styles['skills-list-titles'])}>Angular 2</h3>
+                    <h3 className={clsx(styles['skills-list-titles'])}>ReactJS/NextJS</h3>
                     <p
                       className={clsx({
                         'font-secondary': true,
                         [styles['skills-list-content']]: true,
                       })}>
-                      Ut wisi enim ad minim veniam, quis nostrud exerci tation ulla corper suscipit
-                      lobortis nisl ut aliquip ex ea.
+                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
+                      nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
                     </p>
                   </div>
                 </li>

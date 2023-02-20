@@ -27,6 +27,7 @@ module.exports = {
       bannerMobileBg: 'rgba(0, 0, 0, 0.15)',
       timeColor: '#f5f8f9',
       blueColor: '#38b7ea',
+      selectionColor: '#a8d1ff',
       redColor: '#ff7473',
       yellowColor: '#ffc952',
       greenColor: '#6dc8bf',
@@ -55,6 +56,7 @@ module.exports = {
         '2xl': '1.625rem',
         '3xl': '1.75rem',
         '4xl': '2rem',
+        inherit: 'inherit',
         paragraph: [
           '15px',
           {
