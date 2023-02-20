@@ -160,9 +160,13 @@ export default function AboutMe({ images, languages }: AboutMeProps) {
                   ⚡ My goal is to improve my skill to make high quality websites and now I'm
                   working with my dream and make it bigger.
                 </li>
-                <li className="pb-2">
-                  📫How to reach me:{' '}
-                  <Link href="https://tinyurl.com/3xneh8zm" title="LinkedIn" target="_blank">
+                <li className="inline-flex items-center pb-2">
+                  📫How to reach me:
+                  <Link
+                    href="https://tinyurl.com/3xneh8zm"
+                    title="LinkedIn"
+                    target="_blank"
+                    className="pl-1">
                     <FontAwesomeIcon icon={faLinkedin} width={18} />
                   </Link>
                 </li>
