@@ -1,4 +1,4 @@
-import { NEXT_PUBLIC_GA_TRACKING_ID } from './constants'
+import { NEXT_PUBLIC_GA_TRACKING_ID } from '../constants'
 
 type ShareArgument = {
   action: string

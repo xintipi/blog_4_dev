@@ -1,8 +1,8 @@
 import { faFacebook, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import clsx from 'clsx'
-import { GetStaticProps, GetStaticPropsContext } from 'next'
-import Image from 'next/image'
+import { GetStaticPropsContext } from 'next'
+import Image, { ImageLoaderProps } from 'next/image'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -10,22 +10,27 @@ import { getPlaiceholder } from 'plaiceholder'
 import { Tooltip } from 'react-tippy'
 
 import Counter from '@/components/UI/shared/Counter'
-import { languages } from '@/data/languages'
 import usePathOrigin from '@/hooks/usePathOrigin'
-import { LanguagesInterface } from '@/interface/languages.interface'
 import AppLayout from '@/layouts/AppLayout'
+import { getMyLanguages } from '@/lib/notion/client'
+import { Languages } from '@/lib/notion/interface'
 import styles from '@/styles/modules/AboutMe.module.scss'
 
-export const getStaticProps: GetStaticProps = async ({ locale }: GetStaticPropsContext) => {
+export const getStaticProps = async ({ locale }: GetStaticPropsContext) => {
+  const languages = await getMyLanguages()
+
   const images = await Promise.all(
     languages.map(async (data) => {
-      const { base64, img } = await getPlaiceholder(data.pathImg)
-      return {
-        ...img,
-        blurDataURL: base64,
-      }
+      const { base64, img } = await getPlaiceholder(data.path_img)
+      return { ...img, blurDataURL: base64 }
     })
-  ).then((value) => value)
+  )
+
+  if (!languages.length) {
+    return {
+      notFound: true,
+    }
+  }
 
   return {
     props: {
@@ -33,10 +38,19 @@ export const getStaticProps: GetStaticProps = async ({ locale }: GetStaticPropsC
       languages,
       ...(await serverSideTranslations(locale as string, ['header', 'footer', 'about'])),
     },
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every 10 seconds
+    revalidate: 10,
   }
 }
 
-export default function AboutMe({ images, languages }: LanguagesInterface) {
+type AboutMeProps = {
+  images: ImageLoaderProps[]
+  languages: Languages[]
+}
+
+export default function AboutMe({ images, languages }: AboutMeProps) {
   const ogUrl = usePathOrigin()
   const { t } = useTranslation('about')
 
@@ -94,7 +108,7 @@ export default function AboutMe({ images, languages }: LanguagesInterface) {
             <div className="about-me-author-content relative basis-66/100 py-10 px-7.5 md:py-50px md:px-10 lg:basis-73/100">
               <div className="flex flex-col items-start justify-between md:flex-row md:items-center">
                 <h1 className="h1 mb-2 font-black text-secondary">
-                  I'am{' '}
+                  {t('about_i_am')}{' '}
                   <a
                     href="https://tinyurl.com/3xneh8zm"
                     target="_blank"
@@ -134,12 +148,12 @@ export default function AboutMe({ images, languages }: LanguagesInterface) {
                 </div>
               </div>
               <span className="mt-2 block text-15px text-primary">
-                Front-End Developer at Gumi Company
+                {t('about_role', { role: 'Front-End' })}
               </span>
-              <p className="my-3 text-xl text-secondary">👨‍💻 About Me :</p>
+              <p className="my-3 text-xl text-secondary">👨‍💻 About me:</p>
               <ul className="mb-3 list-disc pl-5">
                 <li className="pb-2">
-                  🔭 I’m working as a Software Engineer and contributing to frontend for building
+                  🔭 I’m working as a Frontend Developer and contributing to frontend for building
                   web applications.
                 </li>
                 <li className="pb-2">
@@ -157,7 +171,7 @@ export default function AboutMe({ images, languages }: LanguagesInterface) {
                   </Link>
                 </li>
               </ul>
-              <p className="my-3 text-xl text-secondary">👨🛠️ Languages and Tools :</p>
+              <p className="my-3 text-xl text-secondary">🛠️ Languages:</p>
               <ul className="grid sm:grid-cols-4 sm:gap-y-3 md:grid-cols-8">
                 {languages.length &&
                   languages.map((lang, index) => {
@@ -165,12 +179,13 @@ export default function AboutMe({ images, languages }: LanguagesInterface) {
                     return (
                       <Link
                         key={lang?.id}
-                        href={lang?.sourceTarget as string}
+                        href={lang?.source_target as string}
                         target="_blank"
+                        title={lang?.title as string}
                         rel="noopener noreferrer">
                         <Image
                           {...image}
-                          alt={lang?.pathImg as string}
+                          alt={lang?.path_img as string}
                           width={40}
                           height={40}
                           placeholder="blur"
@@ -187,7 +202,6 @@ export default function AboutMe({ images, languages }: LanguagesInterface) {
               <div className={clsx(styles['philosophy-content'])}>
                 <p
                   className={clsx({
-                    'font-secondary': true,
                     [styles['philosophy-content-text']]: true,
                   })}>
                   Have five years of experience in programming with good communication and quick
@@ -196,25 +210,22 @@ export default function AboutMe({ images, languages }: LanguagesInterface) {
                 </p>
                 <p
                   className={clsx({
-                    'font-secondary': true,
                     [styles['philosophy-content-text']]: true,
                   })}>
                   Familiarity with newer specifications of EcmaScript and Typescript Experience with
-                  popular <span className="text-secondary">VueJS</span> workflows such as vuex,
-                  pinia, vee-validate, i18n, etc.
+                  popular <span className="font-bold">VueJS</span> workflows such as vuex, pinia,
+                  vee-validate, i18n, etc.
                 </p>
                 <p
                   className={clsx({
-                    'font-secondary': true,
                     [styles['philosophy-content-text']]: true,
                   })}>
-                  Experience with <span className="text-secondary">ReactJS</span> workflows such as
+                  Experience with <span className="font-bold">ReactJS</span> workflows such as
                   redux, hooks, formik, i18n. Experience with UI components such as ant design,
                   element UI, tailwind, etc.
                 </p>
                 <p
                   className={clsx({
-                    'font-secondary': true,
                     [styles['philosophy-content-text']]: true,
                   })}>
                   Proficient use of source code management tools (sourcetree, git). Ability to build
@@ -222,11 +233,10 @@ export default function AboutMe({ images, languages }: LanguagesInterface) {
                 </p>
                 <p
                   className={clsx({
-                    'font-secondary': true,
                     [styles['philosophy-content-text']]: true,
                   })}>
                   Current working location:{' '}
-                  <span className="text-secondary">Ho Chi Minh, Vietnam</span>
+                  <span className="text-sm font-bold">Ho Chi Minh, Vietnam</span>
                 </p>
               </div>
             </div>

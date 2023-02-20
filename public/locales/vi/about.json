@@ -4,5 +4,7 @@
   "about_product_slaes": "Sản phẩm đã bán",
   "about_lines_code": "Dòng code",
   "about_taking_photo": "Đang chụp ảnh",
-  "about_bug_fixed": "Lỗi đã sửa"
+  "about_bug_fixed": "Lỗi đã sửa",
+  "about_i_am": "Tôi là",
+  "about_role": "Lập trình viên {{ role }}"
 }

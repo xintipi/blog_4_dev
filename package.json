@@ -28,6 +28,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.3.0",
     "@fortawesome/react-fontawesome": "0.2.0",
     "@next/font": "13.1.6",
+    "@notionhq/client": "^2.2.3",
     "@plaiceholder/next": "^2.5.0",
     "@reduxjs/toolkit": "^1.9.2",
     "@types/node": "^18.13.0",
