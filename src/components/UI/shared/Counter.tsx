@@ -40,10 +40,10 @@ export default function Counter({ icon, target, body }: CounterProps) {
   return (
     <div className={clsx(styles['counters-body'])}>
       <span className={clsx(styles['counter-icon'])}>{icon}</span>
-      <h2 ref={counterRef} className="counter-number h2 mt-3 text-secondary" data-target={target}>
+      <h2 ref={counterRef} className="counter-number h2 mt-3" data-target={target}>
         0
       </h2>
-      <p className="font-secondary !text-sm !text-bodyColor">{body}</p>
+      <p className="!text-sm !text-bodyColor">{body}</p>
     </div>
   )
 }

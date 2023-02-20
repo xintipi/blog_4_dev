@@ -1,8 +1,7 @@
-import { faFacebook, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
-import { Tooltip } from 'react-tippy'
+import { FiFacebook, FiGithub, FiLinkedin } from 'react-icons/fi'
+import { GrFacebook, GrGithub, GrLinkedin, GrSkype } from 'react-icons/gr'
 
 export default function AppFooter() {
   const { t } = useTranslation('footer')
@@ -17,20 +16,7 @@ export default function AppFooter() {
                 className="social-icon"
                 title="Facebook"
                 target="_blank">
-                <Tooltip title="Facebook" trigger="mouseenter" animation="scale" theme="light">
-                  <FontAwesomeIcon icon={faFacebook} width={18} />
-                </Tooltip>
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="https://tinyurl.com/yx9dy849"
-                className="social-icon"
-                title="Github"
-                target="_blank">
-                <Tooltip title="Github" trigger="mouseenter" animation="scale" theme="light">
-                  <FontAwesomeIcon icon={faGithub} width={18} />
-                </Tooltip>
+                <GrFacebook size={19} className="text-fbColor" />
               </Link>
             </li>
             <li>
@@ -39,9 +25,23 @@ export default function AppFooter() {
                 className="social-icon"
                 title="LinkedIn"
                 target="_blank">
-                <Tooltip title="Linkedin" trigger="mouseenter" animation="scale" theme="light">
-                  <FontAwesomeIcon icon={faLinkedin} width={18} />
-                </Tooltip>
+                <GrLinkedin size={19} className="text-linkedinColor" />
+              </Link>
+            </li>
+            <Link
+              href="skype:huutrung.mmt?chat"
+              className="social-icon"
+              title="Skype"
+              target="_blank">
+              <GrSkype size={19} className="text-skypeColor" />
+            </Link>
+            <li>
+              <Link
+                href="https://tinyurl.com/yx9dy849"
+                className="social-icon"
+                title="Github"
+                target="_blank">
+                <GrGithub size={19} />
               </Link>
             </li>
           </ul>

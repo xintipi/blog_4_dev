@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { MouseEvent, useRef } from 'react'
+import { GrLanguage } from 'react-icons/gr'
 
 import Language from '@/components/UI/shared/Language'
 import { menu } from '@/data/menu'
@@ -68,7 +69,7 @@ export default function Menu() {
           </li>
         ))}
       <li className="buyproducts-link ml-auto flex items-center">
-        <Language icon="pe-7s-bookmarks" />
+        <Language icon={<GrLanguage size={20} />} />
       </li>
     </ul>
   )

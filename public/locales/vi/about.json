@@ -6,5 +6,15 @@
   "about_taking_photo": "Đang chụp ảnh",
   "about_bug_fixed": "Lỗi đã sửa",
   "about_i_am": "Tôi là",
-  "about_role": "Lập trình viên {{ role }}"
+  "about_role": "Lập trình viên {{ role }}",
+  "about_me": "Về tôi",
+  "about_myself_1": "Tôi là lập trình viên FE, nhiệm vụ của tôi là xây dựng giao diện và tương tác cho các ứng dụng web.",
+  "about_myself_2": "Tôi rất hứng thú với việc làm ra các website mà người dùng sẽ ngạc nhiên cũng như mang lại cho họ một sản phẩm chất lượng cao.",
+  "about_myself_3": "Mục tiêu của tôi là cải thiện kỹ năng của mình để tạo ra các trang web chất lượng cao và hiện tại tôi đang thực hiện mong ước của mình.",
+  "about_reach_me": "Liên hệ với tôi",
+  "about_overview_1": "Tôi có 5 năm kinh nghiệm trong lĩnh vực lập trình, có khả năng giao tiếp, và tìm hiểu tài liệu. Thành thạo JavaScript bao gồm thao tác DOM và mô hình đối tượng JavaScript",
+  "about_overview_2": "Tiếp cận với các kỹ thuật mới hơn của EcmaScript và TypeScript, Sử dụng các package của VueJS phổ biến như Vuex, Pinia, Vee-validate, I18n",
+  "about_overview_3": "Có kinh nghiệm với các package của ReactJS như Redux, Hooks, Formik, I18n. Có kinh nghiệm với component UI như Ant design, UI element, Tailwind",
+  "about_overview_4": "Sử dụng các công cụ quản lý code: Sourcetree, Git. Xây dựng mã nguồn bằng Webpack, Vite, Gulp",
+  "about_location": "Vị trí làm việc hiện tại"
 }

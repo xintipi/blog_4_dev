@@ -6,5 +6,15 @@
   "about_taking_photo": "Taking photos",
   "about_bug_fixed": "Bug fixed",
   "about_i_am": "I'am",
-  "about_role": "{{ role }} Developer"
+  "about_role": "{{ role }} Developer",
+  "about_me": "About me",
+  "about_myself_1": "I’m working as a Frontend Developer and contributing to frontend for building web applications.",
+  "about_myself_2": "I'm interesting websites that amazed my users as well as delivering them in high quality.",
+  "about_myself_3": "My goal is to improve my skill to make high quality websites and now I'm working with my dream and make it bigger.",
+  "about_reach_me": "How to reach me",
+  "about_overview_1": "Have five years of experience in programming with good communication and quick learning skills. Strong proficiency in JavaScript including DOM manipulation and the JavaScript object model",
+  "about_overview_2": "Familiarity with newer specifications of EcmaScript and Typescript Experience with popular VueJS workflows such as Vuex, pinia, Vee-validate, I18n",
+  "about_overview_3": "Experience with ReactJS workflows such as Redux, Hooks, Formik, I18n. Experience with UI components such as Ant design, Element UI, Tailwind",
+  "about_overview_4": "Proficient use of source code management tools: Sourcetree, Git. Ability to build source code using Eebpack, Vite, Gulp",
+  "about_location": "Current working location"
 }

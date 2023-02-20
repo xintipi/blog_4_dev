@@ -13,11 +13,11 @@
 }
 
 .skills-list-numbering {
-  @apply block text-5xl text-title font-black -rotate-90 mr-1.5 lg:mr-14px;
+  @apply block text-xl text-title mr-1.5 lg:mr-14px font-black;
 }
 
 .skills-list-titles {
-  @apply text-lg text-secondary mb-2.5 font-black -mt-2.5;
+  @apply text-sm font-black;
 }
 
 .skills-right {

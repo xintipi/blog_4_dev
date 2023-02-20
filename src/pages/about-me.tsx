@@ -1,5 +1,3 @@
-import { faFacebook, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import clsx from 'clsx'
 import { GetStaticPropsContext } from 'next'
 import Image, { ImageLoaderProps } from 'next/image'
@@ -7,7 +5,10 @@ import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { getPlaiceholder } from 'plaiceholder'
-import { Tooltip } from 'react-tippy'
+import { AiOutlineTool } from 'react-icons/ai'
+import { FiBookmark, FiSend } from 'react-icons/fi'
+import { GrFacebook, GrGithub, GrLinkedin, GrSkype } from 'react-icons/gr'
+import { HiOutlineNewspaper, HiOutlinePhotograph, HiOutlineShoppingCart } from 'react-icons/hi'
 
 import Counter from '@/components/UI/shared/Counter'
 import usePathOrigin from '@/hooks/usePathOrigin'
@@ -80,10 +81,10 @@ export default function AboutMe({ images, languages }: AboutMeProps) {
                 <li>
                   <Link
                     className={clsx(styles['author-nav-link'])}
-                    href="/cv/CV_Nguyen_Huu_Trung_Frontend_Developer.pdf"
+                    href="/CV_Nguyen_Huu_Trung_Frontend_Developer.pdf"
                     target="_blank"
                     title="My CV">
-                    <i className="pe-7s-bookmarks mr-3 text-3xl"></i>
+                    <FiBookmark size={24} className="mr-3" />
                     {t('about_preview_cv')}
                   </Link>
                 </li>
@@ -95,7 +96,7 @@ export default function AboutMe({ images, languages }: AboutMeProps) {
                     })}
                     href="/contact"
                     title="">
-                    <i className="pe-7s-paper-plane mr-3 text-3xl"></i>
+                    <FiSend size={24} className="mr-3" />
                     {t('about_write_message')}
                   </Link>
                 </li>
@@ -103,71 +104,63 @@ export default function AboutMe({ images, languages }: AboutMeProps) {
             </div>
             <div className="about-me-author-content relative basis-66/100 py-10 px-7.5 md:py-50px md:px-10 lg:basis-73/100">
               <div className="flex flex-col items-start justify-between md:flex-row md:items-center">
-                <h1 className="h1 mb-2 font-black text-secondary">
-                  {t('about_i_am')}{' '}
+                <h1 className="h1 mb-2 flex w-full items-center font-black text-secondary">
+                  {t('about_i_am')}
                   <a
                     href="https://tinyurl.com/3xneh8zm"
                     target="_blank"
                     rel="noreferrer"
-                    className="text-blueColor">
+                    className="ml-1 hover:underline">
                     Xìn
                   </a>
                 </h1>
-                <div className="author-social mb-2 flex items-center justify-center md:mb-0">
+                <div className="author-social flex items-center justify-center sm:w-full sm:justify-end">
                   <Link
                     href="https://tinyurl.com/yc2ekzfd"
                     className="social-icon"
                     title="Facebook"
                     target="_blank">
-                    <Tooltip title="Facebook" trigger="mouseenter" theme="light">
-                      <FontAwesomeIcon icon={faFacebook} width={18} />
-                    </Tooltip>
+                    <GrFacebook size={19} className="text-fbColor" />
+                  </Link>
+                  <Link
+                    href="https://tinyurl.com/3xneh8zm"
+                    className="social-icon"
+                    title="LinkedIn"
+                    target="_blank">
+                    <GrLinkedin size={19} className="text-linkedinColor" />
+                  </Link>
+                  <Link
+                    href="skype:huutrung.mmt?chat"
+                    className="social-icon"
+                    title="Skype"
+                    target="_blank">
+                    <GrSkype size={19} className="text-skypeColor" />
                   </Link>
                   <Link
                     href="https://tinyurl.com/yx9dy849"
                     className="social-icon"
                     title="Github"
                     target="_blank">
-                    <Tooltip title="Github" trigger="mouseenter" theme="light">
-                      <FontAwesomeIcon icon={faGithub} width={18} />
-                    </Tooltip>
-                  </Link>
-                  <Link
-                    href="https://tinyurl.com/3xneh8zm"
-                    className="social-icon"
-                    title="LinkedIn"
-                    target="_blank">
-                    <Tooltip title="Linkedin" trigger="mouseenter" theme="light">
-                      <FontAwesomeIcon icon={faLinkedin} width={18} />
-                    </Tooltip>
+                    <GrGithub size={19} />
                   </Link>
                 </div>
               </div>
               <span className="mt-2 block text-15px text-primary">
                 {t('about_role', { role: 'Front-End' })}
               </span>
-              <p className="my-3 text-xl text-secondary">👨‍💻 About me:</p>
+              <p className="my-3 text-xl text-secondary">👨‍💻 {t('about_me')}:</p>
               <ul className="mb-3 list-disc pl-5">
-                <li className="pb-2">
-                  🔭 I’m working as a Frontend Developer and contributing to frontend for building
-                  web applications.
-                </li>
-                <li className="pb-2">
-                  🌱 I'm interesting websites that amazed my users as well as delivering them in
-                  high quality.
-                </li>
-                <li className="pb-2">
-                  ⚡ My goal is to improve my skill to make high quality websites and now I'm
-                  working with my dream and make it bigger.
-                </li>
+                <li className="pb-2">🔭 {t('about_myself_1')}</li>
+                <li className="pb-2">🌱 {t('about_myself_2')}</li>
+                <li className="pb-2">⚡ {t('about_myself_3')}</li>
                 <li className="inline-flex items-center pb-2">
-                  📫How to reach me:
+                  📫 {t('about_reach_me')}:
                   <Link
                     href="https://tinyurl.com/3xneh8zm"
                     title="LinkedIn"
                     target="_blank"
                     className="pl-1">
-                    <FontAwesomeIcon icon={faLinkedin} width={18} />
+                    <GrLinkedin size={19} className="text-linkedinColor" />
                   </Link>
                 </li>
               </ul>
@@ -196,107 +189,74 @@ export default function AboutMe({ images, languages }: AboutMeProps) {
               </ul>
             </div>
           </section>
-          <section className="details mt-7.5 flex grid grid-cols-2 flex-col gap-x-0 bg-white py-10 px-7.5 shadow-block md:py-50px md:px-11">
+          <section className="details mt-7.5 flex grid gap-x-0 bg-white py-10 px-7.5 shadow-block md:grid-cols-2 md:py-50px md:px-11">
             <div className="philosophy basis-1/2 md:pr-5.5">
               <h2 className={clsx(styles['details-header'])}>Overview</h2>
               <div className={clsx(styles['philosophy-content'])}>
+                <p className={clsx(styles['philosophy-content-text'])}>{t('about_overview_1')}</p>
+                <p className={clsx(styles['philosophy-content-text'])}>{t('about_overview_2')}</p>
                 <p
                   className={clsx({
                     [styles['philosophy-content-text']]: true,
                   })}>
-                  Have five years of experience in programming with good communication and quick
-                  learning skills. Strong proficiency in JavaScript including DOM manipulation and
-                  the JavaScript object model
+                  {t('about_overview_3')}
                 </p>
-                <p
-                  className={clsx({
-                    [styles['philosophy-content-text']]: true,
-                  })}>
-                  Familiarity with newer specifications of EcmaScript and Typescript Experience with
-                  popular <span className="font-bold">VueJS</span> workflows such as vuex, pinia,
-                  vee-validate, i18n, etc.
-                </p>
-                <p
-                  className={clsx({
-                    [styles['philosophy-content-text']]: true,
-                  })}>
-                  Experience with <span className="font-bold">ReactJS</span> workflows such as
-                  redux, hooks, formik, i18n. Experience with UI components such as ant design,
-                  element UI, tailwind, etc.
-                </p>
-                <p
-                  className={clsx({
-                    [styles['philosophy-content-text']]: true,
-                  })}>
-                  Proficient use of source code management tools (sourcetree, git). Ability to build
-                  source code using webpack, vite, gulp
-                </p>
-                <p
-                  className={clsx({
-                    [styles['philosophy-content-text']]: true,
-                  })}>
-                  Current working location:{' '}
+                <p className={clsx(styles['philosophy-content-text'])}>{t('about_overview_4')}</p>
+                <p className={clsx(styles['philosophy-content-text'])}>
+                  {t('about_location')}:{' '}
                   <span className="text-sm font-bold">Ho Chi Minh, Vietnam</span>
                 </p>
               </div>
             </div>
             <div className="skills basis-1/2 md:pl-5.5">
               <h2 className={clsx(styles['details-header'])}>Skills</h2>
-              <ol className="skills-list">
-                <li className="mb-7.5 flex items-start">
+              <ol className="skills-list grid grid-cols-2">
+                <li className="mb-7.5 flex items-center">
                   <span className={clsx(styles['skills-list-numbering'])}>01</span>
                   <div className={clsx(styles['skills-right'])}>
                     <h3 className={clsx(styles['skills-list-titles'])}>HTML/CSS</h3>
-                    <p
-                      className={clsx({
-                        'font-secondary': true,
-                        [styles['skills-list-content']]: true,
-                      })}>
-                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
-                      nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                    </p>
                   </div>
                 </li>
-                <li className="mb-7.5 flex items-start">
+                <li className="mb-7.5 flex items-center">
                   <span className={clsx(styles['skills-list-numbering'])}>02</span>
                   <div className={clsx(styles['skills-right'])}>
                     <h3 className={clsx(styles['skills-list-titles'])}>Javascript</h3>
-                    <p
-                      className={clsx({
-                        'font-secondary': true,
-                        [styles['skills-list-content']]: true,
-                      })}>
-                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
-                      nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                    </p>
                   </div>
                 </li>
-                <li className="mb-7.5 flex items-start">
+                <li className="mb-7.5 flex items-center">
                   <span className={clsx(styles['skills-list-numbering'])}>03</span>
                   <div className={clsx(styles['skills-right'])}>
-                    <h3 className={clsx(styles['skills-list-titles'])}>VueJS/NuxtJS</h3>
-                    <p
-                      className={clsx({
-                        'font-secondary': true,
-                        [styles['skills-list-content']]: true,
-                      })}>
-                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
-                      nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                    </p>
+                    <h3 className={clsx(styles['skills-list-titles'])}>VueJS</h3>
                   </div>
                 </li>
-                <li className="mb-7.5 flex items-start">
+                <li className="mb-7.5 flex items-center">
                   <span className={clsx(styles['skills-list-numbering'])}>04</span>
                   <div className={clsx(styles['skills-right'])}>
-                    <h3 className={clsx(styles['skills-list-titles'])}>ReactJS/NextJS</h3>
-                    <p
-                      className={clsx({
-                        'font-secondary': true,
-                        [styles['skills-list-content']]: true,
-                      })}>
-                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
-                      nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                    </p>
+                    <h3 className={clsx(styles['skills-list-titles'])}>NuxtJS</h3>
+                  </div>
+                </li>
+                <li className="mb-7.5 flex items-center">
+                  <span className={clsx(styles['skills-list-numbering'])}>05</span>
+                  <div className={clsx(styles['skills-right'])}>
+                    <h3 className={clsx(styles['skills-list-titles'])}>ReactJS</h3>
+                  </div>
+                </li>
+                <li className="mb-7.5 flex items-center">
+                  <span className={clsx(styles['skills-list-numbering'])}>06</span>
+                  <div className={clsx(styles['skills-right'])}>
+                    <h3 className={clsx(styles['skills-list-titles'])}>NextJS</h3>
+                  </div>
+                </li>
+                <li className="mb-7.5 flex items-center">
+                  <span className={clsx(styles['skills-list-numbering'])}>07</span>
+                  <div className={clsx(styles['skills-right'])}>
+                    <h3 className={clsx(styles['skills-list-titles'])}>Typescript</h3>
+                  </div>
+                </li>
+                <li className="mb-7.5 flex items-center">
+                  <span className={clsx(styles['skills-list-numbering'])}>08</span>
+                  <div className={clsx(styles['skills-right'])}>
+                    <h3 className={clsx(styles['skills-list-titles'])}> Gulp / Webpack / Vite</h3>
                   </div>
                 </li>
               </ol>
@@ -304,25 +264,21 @@ export default function AboutMe({ images, languages }: AboutMeProps) {
           </section>
           <section className="counters mt-7.5 bg-white py-50px px-11 shadow-block sm:grid sm:grid-cols-2 sm:gap-2 md:grid md:grid-cols-4 md:gap-4">
             <Counter
-              icon={<i className="pe-7s-cart" />}
+              icon={<HiOutlineShoppingCart size={40} />}
               target={200}
               body={t('about_product_slaes')}
             />
             <Counter
-              icon={<i className="pe-7s-news-paper" />}
+              icon={<HiOutlineNewspaper size={40} />}
               target={200}
               body={t('about_lines_code')}
             />
             <Counter
-              icon={<i className="pe-7s-photo" />}
+              icon={<HiOutlinePhotograph size={40} />}
               target={200}
               body={t('about_taking_photo')}
             />
-            <Counter
-              icon={<i className="pe-7s-tools" />}
-              target={200}
-              body={t('about_bug_fixed')}
-            />
+            <Counter icon={<AiOutlineTool size={40} />} target={200} body={t('about_bug_fixed')} />
           </section>
         </div>
       </main>

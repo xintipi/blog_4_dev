@@ -1,11 +1,11 @@
-import clsx from 'clsx'
 import { useRouter } from 'next/router'
+import { ReactNode } from 'react'
 
 import { LanguageName } from '@/enums/languageName'
 import { useChangeLanguage } from '@/hooks/useChangeLanguage'
 
 interface LanguageProps {
-  icon?: string
+  icon?: ReactNode
 }
 
 export default function Language({ icon }: LanguageProps) {
@@ -14,16 +14,11 @@ export default function Language({ icon }: LanguageProps) {
 
   return (
     <>
-      <i
-        className={clsx({
-          'mr-2.5 text-xl': true,
-          [`${icon}`]: !!icon,
-        })}
-      />
+      {icon}
       <select
         onChange={change}
         value={router.locale}
-        className="change-language group flex items-center bg-white text-sm outline-none">
+        className="change-language group ml-2.5 flex items-center bg-white text-sm outline-none">
         <option value="en" className="group-hover:underline">
           {LanguageName.English}
         </option>

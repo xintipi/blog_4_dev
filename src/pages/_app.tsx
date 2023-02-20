@@ -1,5 +1,4 @@
 import '@/styles/index.scss'
-import 'react-tippy/dist/tippy.css'
 
 import type { AppProps } from 'next/app'
 import { appWithTranslation } from 'next-i18next'

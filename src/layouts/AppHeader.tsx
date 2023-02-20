@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import { MouseEvent, useState } from 'react'
+import { HiSearch } from 'react-icons/hi'
 
 import Menu from '@/components/UI/shared/Menu'
 import styles from '@/styles/modules/AppFooter.module.scss'
@@ -42,9 +43,9 @@ export default function AppHeader(props: HeaderProps) {
                   placeholder={t<string>('header_placehoder_search')}
                 />
                 <button
-                  className="absolute top-[calc(50%-23px)] right-3px text-3xl text-primary"
+                  className="absolute top-[calc(50%-12px)] right-3px text-3xl text-primary"
                   type="button">
-                  <i className="pe-7s-search" />
+                  <HiSearch size={24} />
                 </button>
               </form>
             </div>

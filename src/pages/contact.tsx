@@ -2,6 +2,7 @@ import clsx from 'clsx'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { FiMail, FiMapPin, FiPhone, FiSend } from 'react-icons/fi'
 
 import usePathOrigin from '@/hooks/usePathOrigin'
 import AppLayout from '@/layouts/AppLayout'
@@ -39,9 +40,9 @@ export default function Contact() {
                   {t('contact_touch_me')}
                 </h2>
                 <ul>
-                  <li className="mb-6 flex items-start">
+                  <li className="mb-6 flex items-center">
                     <div className="icon mr-6">
-                      <i className="pe-7s-mail text-4xl"></i>
+                      <FiMail size={26} />
                     </div>
                     <div className={clsx(styles['contact-info'])}>
                       <a
@@ -54,7 +55,7 @@ export default function Contact() {
                   </li>
                   <li className="my-6 flex items-center">
                     <div className="icon mr-6">
-                      <i className="pe-7s-call text-4xl"></i>
+                      <FiPhone size={26} />
                     </div>
                     <div className={clsx(styles['contact-info'])}>
                       <a className={clsx(styles['font-secondary'])} href="tel:+84-986-607-599">
@@ -65,7 +66,7 @@ export default function Contact() {
                   </li>
                   <li className="my-6 flex items-center">
                     <div className="icon mr-6">
-                      <i className="pe-7s-map-marker text-4xl"></i>
+                      <FiMapPin size={26} />
                     </div>
                     <div className={clsx(styles['contact-info'])}>
                       <p className={clsx(styles['font-secondary'])}>Ho Chi Minh city</p>
@@ -102,7 +103,7 @@ export default function Contact() {
                     name="question"
                   />
                   <button type="button" className="btn relative pl-16">
-                    <i className="pe-7s-paper-plane absolute top-7px left-5 text-2xl"></i>
+                    <FiSend size={20} className="absolute top-[11px] left-5" />
                     {t('contact_send')}
                   </button>
                 </form>
