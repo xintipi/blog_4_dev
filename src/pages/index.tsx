@@ -5,7 +5,7 @@ import { getPlaiceholder } from 'plaiceholder'
 import HomeFeedSection from '@/components/Home/HomeFeedSection'
 import { feeds } from '@/data/feeds'
 import usePathOrigin from '@/hooks/usePathOrigin'
-import { HomeFeedsInterface } from '@/interface/homeFeeds.interface'
+import { IHomeFeeds } from '@/interface/homeFeeds.interface'
 import AppLayout from '@/layouts/AppLayout'
 
 export const getStaticProps: GetStaticProps = async ({ locale }: GetStaticPropsContext) => {
@@ -28,7 +28,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }: GetStaticPropsC
   }
 }
 
-export default function Home({ images, feeds }: HomeFeedsInterface) {
+export default function Home({ images, feeds }: IHomeFeeds) {
   const ogUrl = usePathOrigin()
   return (
     <AppLayout

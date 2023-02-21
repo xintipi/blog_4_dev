@@ -1,7 +1,7 @@
 import { createApi } from '@reduxjs/toolkit/query/react'
 import { HYDRATE } from 'next-redux-wrapper'
 
-import { Languages } from '@/interface/about.interface'
+import { ILanguages } from '@/interface/about.interface'
 import axiosBaseQuery from '@/services/index'
 
 export const ABOUT_API_REDUCER_KEY = 'aboutAPI'
@@ -15,7 +15,7 @@ export const aboutAPI = createApi({
     }
   },
   endpoints: (builder) => ({
-    getLanguageList: builder.query<Languages[], void>({
+    getLanguageList: builder.query<ILanguages[], void>({
       query: () => ({
         url: 'language',
         method: 'GET',

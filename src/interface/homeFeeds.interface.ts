@@ -1,8 +1,8 @@
 import { ImageLoaderProps } from 'next/image'
 
-import { FeedsResponse } from '@/data/feeds'
+import { IFeedsResponse } from '@/data/feeds'
 
-export interface HomeFeedsInterface {
+export interface IHomeFeeds {
   images: ImageLoaderProps[]
-  feeds: Partial<FeedsResponse[]>
+  feeds: Partial<IFeedsResponse[]>
 }

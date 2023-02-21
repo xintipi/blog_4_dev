@@ -3,15 +3,15 @@ import Image, { ImageLoaderProps } from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 
-import { FeedsResponse } from '@/data/feeds'
+import { IFeedsResponse } from '@/data/feeds'
 import styles from '@/styles/modules/HomeFeed.module.scss'
 
-interface HomeFeed {
-  feed: FeedsResponse | undefined
+interface IHomeFeed {
+  feed: IFeedsResponse | undefined
   image: ImageLoaderProps
 }
 
-export default function HomeFeed({ feed, image }: HomeFeed) {
+export default function HomeFeed({ feed, image }: IHomeFeed) {
   const [isImageReady, setIsImageReady] = useState<boolean>(false)
 
   return (

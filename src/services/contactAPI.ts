@@ -1,7 +1,7 @@
 import { createApi } from '@reduxjs/toolkit/query/react'
 import { HYDRATE } from 'next-redux-wrapper'
 
-import { SendmailRequest } from '@/interface/contact.interface'
+import { ISendMailRequest } from '@/interface/contact.interface'
 import axiosBaseQuery from '@/services/index'
 
 export const CONTACT_API_REDUCER_KEY = 'contactAPI'
@@ -15,7 +15,7 @@ export const contactAPI = createApi({
     }
   },
   endpoints: (builder) => ({
-    sendMail: builder.mutation<any, SendmailRequest>({
+    sendMail: builder.mutation<any, ISendMailRequest>({
       query: (data) => {
         return {
           url: '/send-mail',

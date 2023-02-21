@@ -4,11 +4,11 @@ import { ReactNode } from 'react'
 import { LanguageName } from '@/enums/languageName'
 import { useChangeLanguage } from '@/hooks/useChangeLanguage'
 
-interface LanguageProps {
+interface ILanguageProps {
   icon?: ReactNode
 }
 
-export default function Language({ icon }: LanguageProps) {
+export default function Language({ icon }: ILanguageProps) {
   const router = useRouter()
   const { change } = useChangeLanguage()
 

@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-interface StateProps {
+interface IStateProps {
   theme: string
 }
 
-const initialState: StateProps = {
+const initialState: IStateProps = {
   theme: '',
 }
 

@@ -2,11 +2,11 @@ import clsx from 'clsx'
 
 import Menu from '@/components/UI/shared/Menu'
 
-interface HeaderMobileProps {
+interface IHeaderMobileProps {
   mobileNav: boolean
 }
 
-export default function AppHeaderMobile({ mobileNav }: HeaderMobileProps) {
+export default function AppHeaderMobile({ mobileNav }: IHeaderMobileProps) {
   return (
     <nav
       className={clsx({

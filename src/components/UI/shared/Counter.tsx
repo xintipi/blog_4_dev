@@ -3,13 +3,13 @@ import { ReactNode, useEffect, useRef } from 'react'
 
 import styles from '@/styles/modules/Counter.module.scss'
 
-interface CounterProps {
+interface ICounterProps {
   icon: ReactNode
   target: number
   body: string
 }
 
-export default function Counter({ icon, target, body }: CounterProps) {
+export default function Counter({ icon, target, body }: ICounterProps) {
   const counterRef = useRef<HTMLHeadingElement>(null)
 
   useEffect(() => {

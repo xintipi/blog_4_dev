@@ -8,11 +8,11 @@ import { HiSearch } from 'react-icons/hi'
 import Menu from '@/components/UI/shared/Menu'
 import styles from '@/styles/modules/AppFooter.module.scss'
 
-interface HeaderProps {
+interface IHeaderProps {
   mobileNav: (open: boolean) => void
 }
 
-export default function AppHeader(props: HeaderProps) {
+export default function AppHeader(props: IHeaderProps) {
   const [open, setOpen] = useState<boolean>(false)
 
   const { t } = useTranslation('header')

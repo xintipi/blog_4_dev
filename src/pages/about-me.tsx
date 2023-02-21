@@ -9,7 +9,7 @@ import { FiBookmark, FiSend } from 'react-icons/fi'
 import { GrFacebook, GrGithub, GrLinkedin, GrSkype } from 'react-icons/gr'
 
 import usePathOrigin from '@/hooks/usePathOrigin'
-import { Languages } from '@/interface/about.interface'
+import { ILanguages } from '@/interface/about.interface'
 import AppLayout from '@/layouts/AppLayout'
 import { getLanguageList } from '@/services/aboutAPI'
 import { AppStore, wrapper } from '@/store'
@@ -25,14 +25,14 @@ export const getStaticProps = wrapper.getStaticProps(
     const lists = await store.dispatch(getLanguageList.initiate())
     const resp = await lists.data
 
-    if (!(resp as Languages[]).length) {
+    if (!(resp as ILanguages[]).length) {
       return {
         notFound: true,
       }
     }
 
     const images = await Promise.all(
-      (resp as Languages[]).map(async (data) => {
+      (resp as ILanguages[]).map(async (data) => {
         const { base64, img } = await getPlaiceholder(data.path_img)
         return { ...img, blurDataURL: base64 }
       })
@@ -50,7 +50,7 @@ export const getStaticProps = wrapper.getStaticProps(
 
 type AboutMeProps = {
   images: ImageLoaderProps[]
-  lists: Languages[]
+  lists: ILanguages[]
 }
 
 export default function AboutMe({ images, lists }: AboutMeProps) {

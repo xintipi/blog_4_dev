@@ -1,4 +1,4 @@
-export interface FeedsResponse {
+export interface IFeedsResponse {
   id: number
   title: string
   categoryTag: string
@@ -8,7 +8,7 @@ export interface FeedsResponse {
   thumbnailAlt: string
 }
 
-export const feeds: FeedsResponse[] = [
+export const feeds: IFeedsResponse[] = [
   {
     id: 1,
     title: 'Leveling up in CSS',

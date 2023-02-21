@@ -1,9 +1,9 @@
 import clsx from 'clsx'
 
 import HomeFeed from '@/components/Home/HomeFeed'
-import { HomeFeedsInterface } from '@/interface/homeFeeds.interface'
+import { IHomeFeeds } from '@/interface/homeFeeds.interface'
 
-export default function HomeFeedSection({ images, feeds }: HomeFeedsInterface) {
+export default function HomeFeedSection({ images, feeds }: IHomeFeeds) {
   return (
     <section className="banners py-5 md:py-10">
       <div className="container mx-auto">

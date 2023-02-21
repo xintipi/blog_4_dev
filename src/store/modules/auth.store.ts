@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-interface StateProps {
+interface IStateProps {
   token: string
 }
 
-const initialState: StateProps = {
+const initialState: IStateProps = {
   token: '',
 }
 
