@@ -19,7 +19,7 @@ const handler = async (req: any, res: any) => {
   })
 
   try {
-    const { name, mail, question } = JSON.parse(req.body)
+    const { name, mail, question } = req.query
 
     if (!name || !mail || !question) return res.status(400).json({ message: 'Invalid request' })
 

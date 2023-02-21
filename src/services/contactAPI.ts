@@ -1,34 +1,26 @@
-import { createApi } from '@reduxjs/toolkit/query/react'
-import { HYDRATE } from 'next-redux-wrapper'
-
 import { ISendMailRequest } from '@/interface/contact.interface'
-import axiosBaseQuery from '@/services/index'
+import { api } from '@/services/api'
 
 export const CONTACT_API_REDUCER_KEY = 'contactAPI'
 
-export const contactAPI = createApi({
+export const contactAPI = api({
   reducerPath: CONTACT_API_REDUCER_KEY,
-  baseQuery: axiosBaseQuery({ baseUrl: 'http://localhost:3000/api' }),
-  extractRehydrationInfo(action, { reducerPath }) {
-    if (action.type === HYDRATE) {
-      return action.payload[reducerPath]
-    }
-  },
+  tagTypes: ['Contact'],
+}).injectEndpoints({
   endpoints: (builder) => ({
-    sendMail: builder.mutation<any, ISendMailRequest>({
-      query: (data) => {
-        return {
-          url: '/send-mail',
-          method: 'POST',
-          body: data,
-        }
-      },
+    processSendMail: builder.mutation<any, ISendMailRequest>({
+      query: (credentials) => ({
+        url: `send-mail`,
+        method: 'POST',
+        params: credentials,
+      }),
+      invalidatesTags: ['Contact'],
     }),
   }),
 })
 
 // export hooks for useage in functional components
-export const { useSendMailMutation } = contactAPI
+export const { useProcessSendMailMutation } = contactAPI
 
 // export endpoints for use in SSR
-export const { sendMail } = contactAPI.endpoints
+export const { processSendMail } = contactAPI.endpoints

@@ -1,25 +1,19 @@
-import { createApi } from '@reduxjs/toolkit/query/react'
-import { HYDRATE } from 'next-redux-wrapper'
-
 import { ILanguages } from '@/interface/about.interface'
-import axiosBaseQuery from '@/services/index'
+import { api } from '@/services/api'
 
 export const ABOUT_API_REDUCER_KEY = 'aboutAPI'
 
-export const aboutAPI = createApi({
+export const aboutAPI = api({
   reducerPath: ABOUT_API_REDUCER_KEY,
-  baseQuery: axiosBaseQuery({ baseUrl: 'http://localhost:3000/api' }),
-  extractRehydrationInfo(action, { reducerPath }) {
-    if (action.type === HYDRATE) {
-      return action.payload[reducerPath]
-    }
-  },
+  tagTypes: ['About'],
+}).injectEndpoints({
   endpoints: (builder) => ({
     getLanguageList: builder.query<ILanguages[], void>({
       query: () => ({
         url: 'language',
         method: 'GET',
       }),
+      providesTags: [{ type: 'About', id: 'id' }],
     }),
   }),
 })

@@ -10,8 +10,7 @@ const axiosBaseQuery =
       const axiosInstance = axios.create({
         baseURL: baseUrl,
         headers: {
-          'Content-Type': 'application/ld+json',
-          accept: 'application/ld+json',
+          'Content-Type': 'application/json',
         },
       })
       const token = (getState() as RootState).auth.token

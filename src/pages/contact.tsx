@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { GetStaticProps, GetStaticPropsContext } from 'next'
+import { GetStaticPropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { FormEvent, useState } from 'react'
@@ -8,10 +8,10 @@ import { GrSkype } from 'react-icons/gr'
 
 import usePathOrigin from '@/hooks/usePathOrigin'
 import AppLayout from '@/layouts/AppLayout'
-import { useSendMailMutation } from '@/services/contactAPI'
+import { useProcessSendMailMutation } from '@/services/contactAPI'
 import styles from '@/styles/modules/Contact.module.scss'
 
-export const getStaticProps: GetStaticProps = async ({ locale }: GetStaticPropsContext) => {
+export const getStaticProps = async ({ locale }: GetStaticPropsContext) => {
   return {
     props: {
       ...(await serverSideTranslations(locale as string, ['header', 'footer', 'contact'])),
@@ -26,23 +26,11 @@ export default function Contact() {
 
   const { t } = useTranslation('contact')
   const ogUrl = usePathOrigin()
-  const [sendMail, { data, isLoading, error }] = useSendMailMutation()
+  const [processSendMail] = useProcessSendMailMutation()
 
   const onSubmitSendmail = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    sendMail({ name, mail, question })
-      .unwrap()
-      .then(() => {})
-      .then((error) => {
-        console.log(error)
-      })
-    // const response = await fetch('/api/send-mail', {
-    //   method: 'POST',
-    //   body: JSON.stringify({ name: name, mail, question }),
-    // })
-    //
-    // const data = await response.json()
-    // console.log(data)
+    await processSendMail({ name, mail, question })
   }
 
   return (
