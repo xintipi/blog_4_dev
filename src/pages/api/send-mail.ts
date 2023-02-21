@@ -19,9 +19,9 @@ const handler = async (req: any, res: any) => {
   })
 
   try {
-    const { mail, name, question } = JSON.parse(req.body)
+    const { name, mail, question } = JSON.parse(req.body)
 
-    if (!mail || !name || !question) return res.status(400).json({ message: 'Invalid request' })
+    if (!name || !mail || !question) return res.status(400).json({ message: 'Invalid request' })
 
     const myAccessTokenObject = await myOAuth2Client.getAccessToken()
     const myAccessToken = myAccessTokenObject?.token

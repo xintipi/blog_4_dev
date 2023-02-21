@@ -9,9 +9,9 @@ import { FiBookmark, FiSend } from 'react-icons/fi'
 import { GrFacebook, GrGithub, GrLinkedin, GrSkype } from 'react-icons/gr'
 
 import usePathOrigin from '@/hooks/usePathOrigin'
+import { Languages } from '@/interface/about.interface'
 import AppLayout from '@/layouts/AppLayout'
-import { Languages } from '@/lib/notion/interface'
-import { getLanguageList } from '@/services/languageAPI'
+import { getLanguageList } from '@/services/aboutAPI'
 import { AppStore, wrapper } from '@/store'
 import styles from '@/styles/modules/AboutMe.module.scss'
 

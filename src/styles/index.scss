@@ -2,10 +2,6 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@layer utilities {
-  @import 'partials/utilities/icons';
-}
-
 @layer base {
   @import 'partials/base/fonts';
   @import 'partials/base/variables';

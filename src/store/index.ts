@@ -1,14 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { createWrapper } from 'next-redux-wrapper'
 
-import { languageAPI } from '@/services/languageAPI'
+import { aboutAPI } from '@/services/aboutAPI'
+import { contactAPI } from '@/services/contactAPI'
 
 import rootReducer from './rootReducer'
 
 export const makeStore = () =>
   configureStore({
     reducer: rootReducer,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware({}).concat([languageAPI.middleware]),
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({}).concat([aboutAPI.middleware, contactAPI.middleware]),
     devTools: process.env.NODE_ENV !== 'production',
   })
 

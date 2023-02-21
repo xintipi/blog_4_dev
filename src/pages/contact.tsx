@@ -8,6 +8,7 @@ import { GrSkype } from 'react-icons/gr'
 
 import usePathOrigin from '@/hooks/usePathOrigin'
 import AppLayout from '@/layouts/AppLayout'
+import { useSendMailMutation } from '@/services/contactAPI'
 import styles from '@/styles/modules/Contact.module.scss'
 
 export const getStaticProps: GetStaticProps = async ({ locale }: GetStaticPropsContext) => {
@@ -25,17 +26,23 @@ export default function Contact() {
 
   const { t } = useTranslation('contact')
   const ogUrl = usePathOrigin()
+  const [sendMail, { data, isLoading, error }] = useSendMailMutation()
 
-  const sendMail = async (event: FormEvent<HTMLFormElement>) => {
+  const onSubmitSendmail = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-
-    const response = await fetch('/api/send-mail', {
-      method: 'POST',
-      body: JSON.stringify({ name: name, mail, question }),
-    })
-
-    const data = await response.json()
-    console.log(data)
+    sendMail({ name, mail, question })
+      .unwrap()
+      .then(() => {})
+      .then((error) => {
+        console.log(error)
+      })
+    // const response = await fetch('/api/send-mail', {
+    //   method: 'POST',
+    //   body: JSON.stringify({ name: name, mail, question }),
+    // })
+    //
+    // const data = await response.json()
+    // console.log(data)
   }
 
   return (
@@ -104,7 +111,7 @@ export default function Contact() {
                   {t('contact_get_in_touch')}
                 </h2>
                 <p className="font-primary mt-2.5 mb-4">{t('contact_reference')}</p>
-                <form className="contact-form" onSubmit={sendMail}>
+                <form className="contact-form" onSubmit={onSubmitSendmail}>
                   <div className="mb-5.5 grid gap-x-0 md:grid-cols-2 md:gap-x-4">
                     <input
                       className="form-control col-span-1"

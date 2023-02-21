@@ -4,13 +4,14 @@ import axios, { AxiosError } from 'axios'
 import { RootState } from '@/store'
 
 const axiosBaseQuery =
-  ({ baseUrl } = { baseUrl: 'http://localhost:3000/api' }): BaseQueryFn =>
+  ({ baseUrl } = { baseUrl: '' }): BaseQueryFn =>
   async (requestOpts, { getState }) => {
     try {
       const axiosInstance = axios.create({
         baseURL: baseUrl,
         headers: {
-          Accept: 'application/json',
+          'Content-Type': 'application/ld+json',
+          accept: 'application/ld+json',
         },
       })
       const token = (getState() as RootState).auth.token
