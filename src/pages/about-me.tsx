@@ -10,41 +10,50 @@ import { GrFacebook, GrGithub, GrLinkedin, GrSkype } from 'react-icons/gr'
 
 import usePathOrigin from '@/hooks/usePathOrigin'
 import AppLayout from '@/layouts/AppLayout'
-import { getMyLanguages } from '@/lib/notion/client'
 import { Languages } from '@/lib/notion/interface'
+import { getLanguageList } from '@/services/languageAPI'
+import { AppStore, wrapper } from '@/store'
 import styles from '@/styles/modules/AboutMe.module.scss'
 
-export const getStaticProps = async ({ locale }: GetStaticPropsContext) => {
-  const languages = await getMyLanguages()
+// export async function getStaticPaths() {
+//   const store = makeStore()
+//   const result = await store.dispatch(getLanguageList.initiate())
+// }
 
-  const images = await Promise.all(
-    languages.map(async (data) => {
-      const { base64, img } = await getPlaiceholder(data.path_img)
-      return { ...img, blurDataURL: base64 }
-    })
-  )
+export const getStaticProps = wrapper.getStaticProps(
+  (store: AppStore) => async (context: GetStaticPropsContext) => {
+    const lists = await store.dispatch(getLanguageList.initiate())
+    const resp = await lists.data
 
-  if (!languages.length) {
+    if (!(resp as Languages[]).length) {
+      return {
+        notFound: true,
+      }
+    }
+
+    const images = await Promise.all(
+      (resp as Languages[]).map(async (data) => {
+        const { base64, img } = await getPlaiceholder(data.path_img)
+        return { ...img, blurDataURL: base64 }
+      })
+    )
+
     return {
-      notFound: true,
+      props: {
+        images,
+        lists: resp,
+        ...(await serverSideTranslations(context.locale as string, ['header', 'footer', 'about'])),
+      },
     }
   }
-
-  return {
-    props: {
-      images,
-      languages,
-      ...(await serverSideTranslations(locale as string, ['header', 'footer', 'about'])),
-    },
-  }
-}
+)
 
 type AboutMeProps = {
   images: ImageLoaderProps[]
-  languages: Languages[]
+  lists: Languages[]
 }
 
-export default function AboutMe({ images, languages }: AboutMeProps) {
+export default function AboutMe({ images, lists }: AboutMeProps) {
   const ogUrl = usePathOrigin()
   const { t } = useTranslation('about')
 
@@ -163,8 +172,8 @@ export default function AboutMe({ images, languages }: AboutMeProps) {
               </ul>
               <p className="my-3 text-xl text-secondary">🛠️ Languages:</p>
               <ul className="grid sm:grid-cols-4 sm:gap-y-3 md:grid-cols-8">
-                {languages.length &&
-                  languages.map((lang, index) => {
+                {lists.length &&
+                  lists.map((lang, index) => {
                     const image = images[index]
                     return (
                       <Link

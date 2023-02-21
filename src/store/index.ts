@@ -1,43 +1,19 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { persistReducer, persistStore } from 'redux-persist'
-import createWebStorage from 'redux-persist/lib/storage/createWebStorage'
+import { createWrapper } from 'next-redux-wrapper'
+
+import { languageAPI } from '@/services/languageAPI'
 
 import rootReducer from './rootReducer'
 
-const createNoopStorage = () => {
-  return {
-    getItem(_key: never) {
-      return Promise.resolve(null)
-    },
-    setItem(_key: never, value: never) {
-      return Promise.resolve(value)
-    },
-    removeItem(_key: never) {
-      return Promise.resolve()
-    },
-  }
-}
+export const makeStore = () =>
+  configureStore({
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({}).concat([languageAPI.middleware]),
+    devTools: process.env.NODE_ENV !== 'production',
+  })
 
-const storage = typeof window !== 'undefined' ? createWebStorage('local') : createNoopStorage()
+export type AppStore = ReturnType<typeof makeStore>
+export type RootState = ReturnType<AppStore['getState']>
+export type AppDispatch = AppStore['dispatch']
 
-const persistConfig = {
-  key: 'root',
-  storage,
-}
-
-const persistedReducer = persistReducer(persistConfig, rootReducer)
-
-export const store = configureStore({
-  reducer: persistedReducer,
-  devTools: process.env.NODE_ENV !== 'production',
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }),
-})
-
-export type State = ReturnType<typeof rootReducer>
-export type Dispatch = typeof store.dispatch
-export type Store = typeof store
-
-export const persistor = persistStore(store)
+export const wrapper = createWrapper<AppStore>(makeStore, { debug: true })

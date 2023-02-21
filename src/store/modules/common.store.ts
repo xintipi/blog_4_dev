@@ -8,7 +8,7 @@ const initialState: StateProps = {
   theme: '',
 }
 
-const commonStore = createSlice({
+export const commonStore = createSlice({
   name: 'common',
   initialState,
   reducers: {
@@ -19,5 +19,3 @@ const commonStore = createSlice({
 })
 
 export const { setThemeState } = commonStore.actions
-
-export default commonStore.reducer

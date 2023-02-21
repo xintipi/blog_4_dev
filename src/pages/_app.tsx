@@ -6,17 +6,18 @@ import NextNProgress from 'nextjs-progressbar'
 import { Provider } from 'react-redux'
 
 import GoogleAnalytics from '@/components/UI/partials/GoogleAnalytics'
-import { Store, store } from '@/store'
+import { AppStore, wrapper } from '@/store'
 
-const App = ({ Component, pageProps }: AppProps) => {
+const App = ({ Component, ...rest }: AppProps) => {
+  const { store, props } = wrapper.useWrappedStore(rest)
   return (
     <>
       <NextNProgress options={{ showSpinner: false }} />
 
       <GoogleAnalytics />
 
-      <Provider store={store as Store}>
-        <Component {...pageProps} />
+      <Provider store={store as AppStore}>
+        <Component {...props.pageProps} />
       </Provider>
     </>
   )
