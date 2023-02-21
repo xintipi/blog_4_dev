@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { MouseEvent, useRef } from 'react'
 import { GrLanguage } from 'react-icons/gr'
+import { IoIosArrowDown } from 'react-icons/io'
 
 import Language from '@/components/UI/shared/Language'
 import { menu } from '@/data/menu'
@@ -50,9 +51,10 @@ export default function Menu() {
                 <Link
                   href="#"
                   onClick={(event) => onToggleMenu(event)}
-                  className="dropdown-toggle light-link after:font-icons pb-10 after:absolute after:top-[calc(50%-18px)] after:-ml-0.5 after:text-24px after:transition-all after:content-['\e688'] lg:group-hover:after:rotate-180"
+                  className="dropdown-toggle light-link"
                   title={item.title}>
                   {t(item.target)}
+                  <IoIosArrowDown className="absolute top-[calc(50%-8px)] right-0 -ml-3 transition-all md:-right-[20px] lg:group-hover:rotate-180" />
                 </Link>
                 <ul className="dropdown-menu hidden lg:group-hover:block" ref={dropdownMenuRef}>
                   {item.group.length &&
