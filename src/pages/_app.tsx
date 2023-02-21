@@ -22,7 +22,7 @@ const App = ({ Component, ...rest }: AppProps) => {
   const router = useRouter()
 
   useEffect(() => {
-    NProgress.options({ height: 3, color: '#1f6feb' })
+    NProgress.options({ height: 4, color: '#1f6feb' })
 
     // do something when route change
     const handleRouteStart = () => NProgress.start()

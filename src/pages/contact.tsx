@@ -31,6 +31,9 @@ export default function Contact() {
   const onSubmitSendmail = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     await processSendMail({ name, mail, question })
+    setName('')
+    setMail('')
+    setQuestion('')
   }
 
   return (

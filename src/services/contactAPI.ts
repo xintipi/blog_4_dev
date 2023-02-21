@@ -1,4 +1,7 @@
+import NProgress from 'nprogress'
+
 import { ISendMailRequest } from '@/interface/contact.interface'
+import Ngprogress from '@/lib/ngprogress'
 import { api } from '@/services/api'
 
 export const CONTACT_API_REDUCER_KEY = 'contactAPI'
@@ -15,6 +18,15 @@ export const contactAPI = api({
         params: credentials,
       }),
       invalidatesTags: ['Contact'],
+      async onQueryStarted({ name, mail, question }, { dispatch, queryFulfilled }) {
+        try {
+          Ngprogress.start()
+          await queryFulfilled
+          Ngprogress.done()
+        } catch {
+          Ngprogress.done()
+        }
+      },
     }),
   }),
 })
