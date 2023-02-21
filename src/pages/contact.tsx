@@ -2,7 +2,8 @@ import clsx from 'clsx'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { FiMail, FiMapPin, FiPhone, FiSend } from 'react-icons/fi'
+import { FormEvent, useState } from 'react'
+import { FiMail, FiMapPin, FiSend } from 'react-icons/fi'
 import { GrSkype } from 'react-icons/gr'
 
 import usePathOrigin from '@/hooks/usePathOrigin'
@@ -18,8 +19,25 @@ export const getStaticProps: GetStaticProps = async ({ locale }: GetStaticPropsC
 }
 
 export default function Contact() {
+  const [name, setName] = useState<string>('')
+  const [mail, setMail] = useState<string>('')
+  const [question, setQuestion] = useState<string>('')
+
   const { t } = useTranslation('contact')
   const ogUrl = usePathOrigin()
+
+  const sendMail = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    const response = await fetch('/api/send-mail', {
+      method: 'POST',
+      body: JSON.stringify({ name: name, mail, question }),
+    })
+
+    const data = await response.json()
+    console.log(data)
+  }
+
   return (
     <AppLayout
       title="Contact DEV 👩‍💻👨‍💻"
@@ -86,16 +104,20 @@ export default function Contact() {
                   {t('contact_get_in_touch')}
                 </h2>
                 <p className="font-primary mt-2.5 mb-4">{t('contact_reference')}</p>
-                <form className="contact-form">
+                <form className="contact-form" onSubmit={sendMail}>
                   <div className="mb-5.5 grid gap-x-0 md:grid-cols-2 md:gap-x-4">
                     <input
                       className="form-control col-span-1"
+                      onChange={(event) => setName(event.target.value)}
+                      value={name}
                       type="text"
                       placeholder={t<string>('contact_name')}
                       name="name"
                     />
                     <input
                       className="form-control col-span-1"
+                      onChange={(event) => setMail(event.target.value)}
+                      value={mail}
                       type="email"
                       placeholder="Email"
                       name="email"
@@ -103,11 +125,13 @@ export default function Contact() {
                   </div>
                   <textarea
                     className="form-control mb-11"
+                    onChange={(event) => setQuestion(event.target.value)}
+                    value={question}
                     rows={6}
                     placeholder={t<string>('contact_question')}
                     name="question"
                   />
-                  <button type="button" className="btn relative pl-16">
+                  <button type="submit" className="btn relative pl-16">
                     <FiSend size={20} className="absolute top-[11px] left-5" />
                     {t('contact_send')}
                   </button>
