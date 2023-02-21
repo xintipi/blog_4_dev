@@ -1,6 +1,8 @@
 import 'nprogress/nprogress.css'
 import '@/styles/index.scss'
+import 'isomorphic-fetch'
 
+import { default as AbortController } from 'abort-controller'
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import { appWithTranslation } from 'next-i18next'
@@ -10,6 +12,10 @@ import { Provider } from 'react-redux'
 import GoogleAnalytics from '@/components/UI/partials/GoogleAnalytics'
 import NProgress from '@/lib/ngprogress'
 import { AppStore, wrapper } from '@/store'
+
+Object.assign(globalThis, {
+  AbortController,
+})
 
 const App = ({ Component, ...rest }: AppProps) => {
   const { store, props } = wrapper.useWrappedStore(rest)
