@@ -50,7 +50,7 @@ export default function Menu() {
                 <Link
                   href="#"
                   onClick={(event) => onToggleMenu(event)}
-                  className="dropdown-toggle light-link pb-10 after:absolute after:top-[calc(50%-18px)] after:-ml-0.5 after:font-icons after:text-24px after:transition-all after:content-['\e688'] lg:group-hover:after:rotate-180"
+                  className="dropdown-toggle light-link after:font-icons pb-10 after:absolute after:top-[calc(50%-18px)] after:-ml-0.5 after:text-24px after:transition-all after:content-['\e688'] lg:group-hover:after:rotate-180"
                   title={item.title}>
                   {t(item.target)}
                 </Link>
