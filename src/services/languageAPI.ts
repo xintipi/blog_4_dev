@@ -8,9 +8,7 @@ export const LANGUAGES_API_REDUCER_KEY = 'languageAPI'
 
 export const languageAPI = createApi({
   reducerPath: LANGUAGES_API_REDUCER_KEY,
-  baseQuery: axiosBaseQuery({
-    baseUrl: 'http://localhost:3000/api',
-  }),
+  baseQuery: axiosBaseQuery(),
   extractRehydrationInfo(action, { reducerPath }) {
     if (action.type === HYDRATE) {
       return action.payload[reducerPath]

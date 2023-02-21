@@ -4,7 +4,7 @@ import axios, { AxiosError } from 'axios'
 import { RootState } from '@/store'
 
 const axiosBaseQuery =
-  ({ baseUrl } = { baseUrl: '' }): BaseQueryFn =>
+  ({ baseUrl } = { baseUrl: 'http://localhost:3000/api' }): BaseQueryFn =>
   async (requestOpts, { getState }) => {
     try {
       const axiosInstance = axios.create({
