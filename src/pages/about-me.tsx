@@ -22,28 +22,31 @@ import styles from '@/styles/modules/AboutMe.module.scss'
 
 export const getStaticProps = wrapper.getStaticProps(
   (store: AppStore) => async (context: GetStaticPropsContext) => {
-    const lists = await store.dispatch(getLanguageList.initiate())
-    const resp = await lists.data
+    try {
+      const lists = await store.dispatch(getLanguageList.initiate())
+      const resp = await lists.data
+      const images = await Promise.all(
+        (resp as ILanguages[])?.map(async (data) => {
+          const { base64, img } = await getPlaiceholder(data.path_img)
+          return { ...img, blurDataURL: base64 }
+        })
+      )
 
-    if (!(resp as ILanguages[])?.length) {
+      return {
+        props: {
+          images,
+          lists: resp,
+          ...(await serverSideTranslations(context.locale as string, [
+            'header',
+            'footer',
+            'about',
+          ])),
+        },
+      }
+    } catch (_) {
       return {
         notFound: true,
       }
-    }
-
-    const images = await Promise.all(
-      (resp as ILanguages[])?.map(async (data) => {
-        const { base64, img } = await getPlaiceholder(data.path_img)
-        return { ...img, blurDataURL: base64 }
-      })
-    )
-
-    return {
-      props: {
-        images,
-        lists: resp,
-        ...(await serverSideTranslations(context.locale as string, ['header', 'footer', 'about'])),
-      },
     }
   }
 )

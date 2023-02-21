@@ -13,7 +13,6 @@ export const api = ({ reducerPath, tagTypes }: IServiceApi) => {
   return createApi({
     reducerPath,
     tagTypes,
-    refetchOnMountOrArgChange: 900,
     baseQuery: axiosBaseQuery({
       baseUrl: NEXT_PUBLIC_API_URL as string,
     }),

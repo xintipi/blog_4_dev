@@ -5,7 +5,6 @@ export const ABOUT_API_REDUCER_KEY = 'aboutAPI'
 
 export const aboutAPI = api({
   reducerPath: ABOUT_API_REDUCER_KEY,
-  tagTypes: ['About'],
 }).injectEndpoints({
   endpoints: (builder) => ({
     getLanguageList: builder.query<ILanguages[], void>({
@@ -13,7 +12,6 @@ export const aboutAPI = api({
         url: 'language',
         method: 'GET',
       }),
-      providesTags: [{ type: 'About', id: 'id' }],
     }),
   }),
 })
