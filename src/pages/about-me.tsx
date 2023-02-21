@@ -25,14 +25,14 @@ export const getStaticProps = wrapper.getStaticProps(
     const lists = await store.dispatch(getLanguageList.initiate())
     const resp = await lists.data
 
-    if (!(resp as ILanguages[]).length) {
+    if (!(resp as ILanguages[])?.length) {
       return {
         notFound: true,
       }
     }
 
     const images = await Promise.all(
-      (resp as ILanguages[]).map(async (data) => {
+      (resp as ILanguages[])?.map(async (data) => {
         const { base64, img } = await getPlaiceholder(data.path_img)
         return { ...img, blurDataURL: base64 }
       })
