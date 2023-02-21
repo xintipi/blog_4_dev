@@ -3,6 +3,7 @@ import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { FiMail, FiMapPin, FiPhone, FiSend } from 'react-icons/fi'
+import { GrSkype } from 'react-icons/gr'
 
 import usePathOrigin from '@/hooks/usePathOrigin'
 import AppLayout from '@/layouts/AppLayout'
@@ -47,21 +48,25 @@ export default function Contact() {
                     <div className={clsx(styles['contact-info'])}>
                       <a
                         className={clsx(styles['font-secondary'])}
-                        href="mailto: huutrung.mmt@gmail.com">
-                        huutrung.mmt@gmail.com
+                        href="mailto:huutrung.mmt@gmail.com"
+                        title="huutrung.mmt@gmail.com">
+                        Nguyen Huu Trung
                       </a>
                       <span className="block">{t('contact_email')}</span>
                     </div>
                   </li>
                   <li className="my-6 flex items-center">
                     <div className="icon mr-6">
-                      <FiPhone size={26} />
+                      <GrSkype size={26} />
                     </div>
                     <div className={clsx(styles['contact-info'])}>
-                      <a className={clsx(styles['font-secondary'])} href="tel:+84-986-607-599">
-                        +84 986 607 599
+                      <a
+                        className={clsx(styles['font-secondary'])}
+                        href="skype:huutrung.mmt?chat"
+                        title="live:huutrung.mmt_1">
+                        Nguyen Huu Trung
                       </a>
-                      <span className="block">{t('contact_phone')}</span>
+                      <span className="block">{t('contact_skype')}</span>
                     </div>
                   </li>
                   <li className="my-6 flex items-center">

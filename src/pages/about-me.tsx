@@ -262,24 +262,6 @@ export default function AboutMe({ images, languages }: AboutMeProps) {
               </ol>
             </div>
           </section>
-          <section className="counters mt-7.5 bg-white py-50px px-11 shadow-block sm:grid sm:grid-cols-2 sm:gap-2 md:grid md:grid-cols-4 md:gap-4">
-            <Counter
-              icon={<HiOutlineShoppingCart size={40} />}
-              target={200}
-              body={t('about_product_slaes')}
-            />
-            <Counter
-              icon={<HiOutlineNewspaper size={40} />}
-              target={200}
-              body={t('about_lines_code')}
-            />
-            <Counter
-              icon={<HiOutlinePhotograph size={40} />}
-              target={200}
-              body={t('about_taking_photo')}
-            />
-            <Counter icon={<AiOutlineTool size={40} />} target={200} body={t('about_bug_fixed')} />
-          </section>
         </div>
       </main>
     </AppLayout>
