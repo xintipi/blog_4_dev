@@ -57,16 +57,16 @@ export const menu = [
   },
   {
     id: 3,
-    path: '/about-me',
+    path: '/portfolio',
     activeLink: 'active-link',
-    target: 'header_about',
+    target: 'header_portfolio',
     group: null,
   },
   {
     id: 4,
-    path: '/portfolio',
+    path: '/about-me',
     activeLink: 'active-link',
-    target: 'header_my_projects',
+    target: 'header_about',
     group: null,
   },
   {

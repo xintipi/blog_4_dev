@@ -46,8 +46,6 @@ module.exports = {
     fontFamily: {
       serif: ['Merriweather', 'serif'],
       sans: ['Lato', 'sans-serif'],
-      FA5Brands: ["'Font Awesome 5 Brands'"],
-      icons: ['Pe-icon-7-stroke'],
     },
     screens: {
       sm: '375px',
