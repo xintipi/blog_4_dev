@@ -1,11 +1,11 @@
 {
   "contact_touch_me": "Contact me",
-  "contact_email": "Email",
+  "contact_email": "Enter your email",
   "contact_skype": "Skype",
   "contact_adress": "Address",
   "contact_get_in_touch": "Get in touch",
   "contact_reference": "DEV Blog \uD83D\uDC69\u200D\uD83D\uDCBB\uD83D\uDC68\u200D\uD83D\uDCBB would love to hear from you!",
-  "contact_name": "Name",
-  "contact_question": "Question",
+  "contact_name": "Enter your name",
+  "contact_question": "Enter yout question",
   "contact_send": "Send"
 }

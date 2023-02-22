@@ -119,3 +119,7 @@
 .author-info {
   @apply text-primary block text-15px mb-0.5;
 }
+
+.error-text {
+  @apply w-full my-2 text-sm text-redColor;
+}

@@ -1,11 +1,11 @@
 {
   "contact_touch_me": "Liên hệ với tôi",
-  "contact_email": "Thư diện tử",
+  "contact_email": "Nhập email của bạn",
   "contact_skype": "Skype",
   "contact_adress": "Địa chỉ",
   "contact_get_in_touch": "Liên hệ",
   "contact_reference": "DEV Blog \uD83D\uDC69\u200D\uD83D\uDCBB\uD83D\uDC68\u200D\uD83D\uDCBB rất mong nhận được phản hồi từ bạn!",
-  "contact_name": "Tên",
-  "contact_question": "Câu hỏi",
+  "contact_name": "Nhập tên của bạn",
+  "contact_question": "Nhập câu hỏi của bạn",
   "contact_send": "Gửi"
 }
