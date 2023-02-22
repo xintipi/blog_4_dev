@@ -24,10 +24,10 @@ export const getStaticProps = wrapper.getStaticProps(
   (store: AppStore) => async (context: GetStaticPropsContext) => {
     try {
       const getLanguageListQueryResult = await store.dispatch(getLanguageList.initiate())
-      const { data } = getLanguageListQueryResult as unknown as { data: ILanguages[] }
+      const { data } = await getLanguageListQueryResult
 
       const images = await Promise.all(
-        data.map(async (data) => {
+        (data as ILanguages[]).map(async (data) => {
           const { base64, img } = await getPlaiceholder(data.path_img)
           return { ...img, blurDataURL: base64 }
         })
