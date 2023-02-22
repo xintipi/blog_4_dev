@@ -59,7 +59,7 @@ export default function Contact() {
                         title="huutrung.mmt@gmail.com">
                         Nguyen Huu Trung
                       </a>
-                      <span className="block">{t('contact_email')}</span>
+                      <span className="block">Email</span>
                     </div>
                   </li>
                   <li className="my-6 flex items-center">

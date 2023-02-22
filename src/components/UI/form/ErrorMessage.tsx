@@ -8,8 +8,7 @@ export interface ErrorMessageProps {
 }
 
 export const ErrorMessage = ({ error }: ErrorMessageProps) => {
-  const { t, i18n } = useTranslation('translation')
-  console.log(i18n.language)
+  const { t } = useTranslation('translation')
 
   if (error === undefined) {
     return null

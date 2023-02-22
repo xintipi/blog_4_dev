@@ -34,7 +34,7 @@ export default function AppHeader(props: IHeaderProps) {
           <div className="header-top-logo w-1/2">
             <div className="flex items-center">
               <Link href="/" title="Logo">
-                <Image src="/img/webp/logo_2x.webp" alt="Dblog Logo" width={32} height={32} />
+                <Image src="/img/logo.png" alt="Dblog Logo" width={35} height={35} />
               </Link>
               <form className="absolute top-[calc(50%-24px)] left-[50px] mr-10 w-200px lg:mr-0">
                 <input

@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
 import { NextSeoProps } from 'next-seo/lib/types'
 import { ReactNode, useCallback, useEffect, useState } from 'react'
@@ -11,8 +10,6 @@ type AppLayoutProps = Pick<NextSeoProps, 'title' | 'description' | 'canonical' |
   keywords?: string | string[]
   children: ReactNode
 }
-
-const variant = process.env.NEXT_PUBLIC_APP_NAME
 
 export default function AppLayout({
   title,
@@ -49,14 +46,11 @@ export default function AppLayout({
         canonical={canonical}
         openGraph={openGraph}
         twitter={{
+          handle: '@trung_xin',
           site: '@thepracticaldev',
           cardType: 'summary_large_image',
         }}
         additionalMetaTags={[
-          {
-            name: 'keywords',
-            content: keywords as string,
-          },
           {
             name: 'twitter:title',
             content: metaTile as string,
@@ -68,6 +62,10 @@ export default function AppLayout({
           {
             name: 'twitter:image:src',
             content: 'https://i.ibb.co/DK3fYhV/6hqmcjaxbgbon8ydw93z.png',
+          },
+          {
+            name: 'keywords',
+            content: keywords as string,
           },
         ]}
       />
