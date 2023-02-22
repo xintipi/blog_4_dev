@@ -22,24 +22,16 @@ export default function AppLayout({
   openGraph,
   children,
 }: AppLayoutProps) {
-  const [metaTile, setMetaTile] = useState<string>()
   const [mobileNav, setMobileNav] = useState<boolean>(false)
 
-  const { pathname } = useRouter()
+  const appName = process.env.NEXT_PUBLIC_APP_NAME
+  const metaTile = title ? `${title} - ${appName}` : appName
 
   useEffect(() => {
     if (!mobileNav) {
       document.documentElement.classList.remove('noscroll')
     }
   })
-
-  useEffect(() => {
-    if (['/', '/contact'].includes(pathname)) {
-      setMetaTile(title)
-    } else {
-      setMetaTile(title ? `${title} - ${variant}` : variant)
-    }
-  }, [pathname])
 
   const onHandleMobileNav = useCallback(
     (open: boolean) => {

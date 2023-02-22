@@ -32,13 +32,13 @@ export default function Home({ images, feeds }: IHomeFeeds) {
   const ogUrl = usePathOrigin()
   return (
     <AppLayout
-      title={process.env.NEXT_PUBLIC_APP_NAME}
+      title="Home DEV"
       canonical={ogUrl}
       description="A constructive and inclusive social network for software developers. With you every step of your journey."
       keywords="software development, engineering, rails, javascript, ruby"
       openGraph={{
         type: 'website',
-        siteName: process.env.NEXT_PUBLIC_APP_NAME,
+        siteName: 'Home DEV',
         url: ogUrl,
         images: [{ url: 'https://i.ibb.co/DK3fYhV/6hqmcjaxbgbon8ydw93z.png' }],
       }}>

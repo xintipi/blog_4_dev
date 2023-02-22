@@ -65,11 +65,11 @@ export default function AboutMe({ images, data }: AboutMeProps) {
     <AppLayout
       title="About DEV"
       canonical={ogUrl}
-      description="About DEV — DEV Blog 👩‍💻👨‍💻"
+      description={`"About DEV — ${process.env.NEXT_PUBLIC_APP_NAME}"`}
       keywords="software development, engineering, rails, javascript, ruby"
       openGraph={{
         type: 'website',
-        siteName: process.env.NEXT_PUBLIC_APP_NAME,
+        siteName: 'About DEV',
         url: ogUrl,
         images: [{ url: 'https://i.ibb.co/DK3fYhV/6hqmcjaxbgbon8ydw93z.png' }],
       }}>

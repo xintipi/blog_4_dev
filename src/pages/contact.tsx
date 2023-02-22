@@ -83,13 +83,13 @@ export default function Contact() {
 
   return (
     <AppLayout
-      title="Contact DEV 👩‍💻👨‍💻"
+      title="Contact DEV"
       canonical={ogUrl}
-      description="Contact DEV — DEV Blog 👩‍💻👨‍💻"
+      description={`Contact DEV — ${process.env.NEXT_PUBLIC_APP_NAME}`}
       keywords="software development, engineering, rails, javascript, ruby"
       openGraph={{
         type: 'website',
-        siteName: process.env.NEXT_PUBLIC_APP_NAME,
+        siteName: 'Contact DEV',
         url: ogUrl,
         images: [{ url: 'https://i.ibb.co/DK3fYhV/6hqmcjaxbgbon8ydw93z.png' }],
       }}>
