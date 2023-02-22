@@ -8,6 +8,8 @@ import { getPlaiceholder } from 'plaiceholder'
 import { FiBookmark, FiSend } from 'react-icons/fi'
 import { GrFacebook, GrGithub, GrLinkedin, GrSkype } from 'react-icons/gr'
 
+import SocialMedia from '@/components/UI/shared/SocialMedia'
+import { social } from '@/data/social'
 import usePathOrigin from '@/hooks/usePathOrigin'
 import { ILanguages } from '@/interface/about.interface'
 import AppLayout from '@/layouts/AppLayout'
@@ -125,34 +127,15 @@ export default function AboutMe({ images, data }: AboutMeProps) {
                   </a>
                 </h1>
                 <div className="author-social flex items-center justify-center sm:w-full sm:justify-end">
-                  <Link
-                    href="https://tinyurl.com/yc2ekzfd"
-                    className="social-icon"
-                    title="Facebook"
-                    target="_blank">
-                    <GrFacebook size={19} className="text-fbColor" />
-                  </Link>
-                  <Link
-                    href="https://tinyurl.com/3xneh8zm"
-                    className="social-icon"
-                    title="LinkedIn"
-                    target="_blank">
-                    <GrLinkedin size={19} className="text-linkedinColor" />
-                  </Link>
-                  <Link
-                    href="skype:huutrung.mmt?chat"
-                    className="social-icon"
-                    title="Skype"
-                    target="_blank">
-                    <GrSkype size={19} className="text-skypeColor" />
-                  </Link>
-                  <Link
-                    href="https://tinyurl.com/yx9dy849"
-                    className="social-icon"
-                    title="Github"
-                    target="_blank">
-                    <GrGithub size={19} />
-                  </Link>
+                  {social.length &&
+                    social.map((item, index) => (
+                      <SocialMedia
+                        key={index}
+                        href={item.href}
+                        icon={item.icon}
+                        title={item.title}
+                      />
+                    ))}
                 </div>
               </div>
               <span className="mt-2 block text-15px text-primary">

@@ -9,13 +9,15 @@ import rootReducer from './rootReducer'
 export const makeStore = () =>
   configureStore({
     reducer: rootReducer,
-    middleware: (getDefaultMiddleware) =>
+    middleware: (getDefaultMiddleware: any) =>
       getDefaultMiddleware({}).concat([aboutAPI.middleware, contactAPI.middleware]),
     devTools: process.env.NODE_ENV !== 'production',
-  })
+  } as any)
 
 export type AppStore = ReturnType<typeof makeStore>
 export type RootState = ReturnType<AppStore['getState']>
 export type AppDispatch = AppStore['dispatch']
 
-export const wrapper = createWrapper<AppStore>(makeStore, { debug: true })
+export const wrapper = createWrapper<AppStore>(makeStore, {
+  debug: process.env.NODE_ENV !== 'production',
+})
