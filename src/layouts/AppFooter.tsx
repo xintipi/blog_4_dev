@@ -9,7 +9,7 @@ export default function AppFooter() {
     <footer className="mt-10 bg-white">
       <div className="container mx-auto">
         <div className="copyright flex flex-col items-center justify-between py-5 md:flex-row-reverse">
-          <ul className="flex" role="tablist">
+          <ul className="flex">
             <li role="presentation">
               <Link
                 href="https://tinyurl.com/yc2ekzfd"
