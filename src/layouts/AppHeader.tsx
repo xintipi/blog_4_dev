@@ -44,7 +44,8 @@ export default function AppHeader(props: IHeaderProps) {
                 />
                 <button
                   className="absolute top-[calc(50%-12px)] right-3px text-3xl text-primary"
-                  type="button">
+                  type="button"
+                  aria-label="search">
                   <HiSearch size={24} />
                 </button>
               </form>

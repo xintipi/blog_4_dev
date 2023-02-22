@@ -189,7 +189,7 @@ export default function Contact() {
                     placeholder={t<string>('contact_question')}
                     name="question"
                   />
-                  <button type="submit" className="btn relative pl-16">
+                  <button type="submit" className="btn relative pl-16" aria-label="send">
                     <FiSend size={20} className="absolute top-[11px] left-5" />
                     {t('contact_send')}
                   </button>
