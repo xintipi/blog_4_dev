@@ -5,6 +5,7 @@ import { ReactNode, useCallback, useEffect, useState } from 'react'
 import AppFooter from '@/layouts/AppFooter'
 import AppHeader from '@/layouts/AppHeader'
 import AppHeaderMobile from '@/layouts/AppHeaderMobile'
+import { NEXT_PUBLIC_FB_APP_ID } from '@/lib/constants'
 
 type AppLayoutProps = Pick<NextSeoProps, 'title' | 'description' | 'canonical' | 'openGraph'> & {
   keywords?: string | string[]
@@ -27,13 +28,15 @@ export default function AppLayout({
   useEffect(() => {
     if (!mobileNav) {
       document.documentElement.classList.remove('noscroll')
+      document.body.classList.remove('noscroll')
     }
-  })
+  }, [mobileNav])
 
   const onHandleMobileNav = useCallback(
     (open: boolean) => {
       setMobileNav(open)
       document.documentElement.classList.toggle('noscroll')
+      document.body.classList.toggle('noscroll')
     },
     [mobileNav]
   )
@@ -49,6 +52,9 @@ export default function AppLayout({
           handle: '@trung_xin',
           site: '@thepracticaldev',
           cardType: 'summary_large_image',
+        }}
+        facebook={{
+          appId: NEXT_PUBLIC_FB_APP_ID as string,
         }}
         additionalMetaTags={[
           {

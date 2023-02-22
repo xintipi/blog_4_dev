@@ -1,4 +1,5 @@
 import { GetStaticProps, GetStaticPropsContext } from 'next'
+import { i18n } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { getPlaiceholder } from 'plaiceholder'
 
@@ -40,6 +41,7 @@ export default function Home({ images, feeds }: IHomeFeeds) {
         type: 'website',
         siteName: 'Home DEV',
         url: ogUrl,
+        locale: i18n?.language === 'en' ? 'en_US' : 'vi_VN',
         images: [{ url: 'https://i.ibb.co/DK3fYhV/6hqmcjaxbgbon8ydw93z.png' }],
       }}>
       <HomeFeedSection images={images} feeds={feeds} />

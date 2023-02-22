@@ -56,7 +56,7 @@
 }
 
 .noscroll {
-  @apply overflow-hidden touch-none;
+  @apply overflow-hidden touch-none h-full relative;
 }
 
 .mobile-nav {

@@ -22,6 +22,7 @@ const nextConfig = {
     NEXT_PUBLIC_GA_TRACKING_ID: 'G-LQ88J1EDL3',
     NEXT_PUBLIC_NOTION_LANGUAGE_API_SECRET: 'secret_LdSce86HezMAHBfsmzmmYzhnaVPTZhtq24yqcZ2GaNm',
     NEXT_PUBLIC_DATABASE_LANGUAGE_ID: '38dea3fa707347a78c5bc18c86db91ac',
+    NEXT_PUBLIC_FB_APP_ID: '513655297563615',
   },
   images: {
     domains: ['i.ibb.co'],

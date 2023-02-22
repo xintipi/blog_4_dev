@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { GetStaticPropsContext } from 'next'
-import { useTranslation } from 'next-i18next'
+import { i18n, useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { FiMail, FiMapPin } from 'react-icons/fi'
 import { GrSkype } from 'react-icons/gr'
@@ -37,6 +37,7 @@ export default function Contact() {
         type: 'website',
         siteName: 'Contact DEV',
         url: ogUrl,
+        locale: i18n?.language === 'en' ? 'en_US' : 'vi_VN',
         images: [{ url: 'https://i.ibb.co/DK3fYhV/6hqmcjaxbgbon8ydw93z.png' }],
       }}>
       <main className="mt-10">

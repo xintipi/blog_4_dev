@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { GetStaticPropsContext } from 'next'
 import Image, { ImageLoaderProps } from 'next/image'
 import Link from 'next/link'
-import { useTranslation } from 'next-i18next'
+import { i18n, useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { getPlaiceholder } from 'plaiceholder'
 import { FiBookmark, FiSend } from 'react-icons/fi'
@@ -73,6 +73,7 @@ export default function AboutMe({ images, data }: AboutMeProps) {
         type: 'website',
         siteName: 'About DEV',
         url: ogUrl,
+        locale: i18n?.language === 'en' ? 'en_US' : 'vi_VN',
         images: [{ url: 'https://i.ibb.co/DK3fYhV/6hqmcjaxbgbon8ydw93z.png' }],
       }}>
       <main className="mt-7.5">
