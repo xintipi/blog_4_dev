@@ -6,7 +6,7 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { getPlaiceholder } from 'plaiceholder'
 import { FiBookmark, FiSend } from 'react-icons/fi'
-import { GrFacebook, GrGithub, GrLinkedin, GrSkype } from 'react-icons/gr'
+import { GrLinkedin } from 'react-icons/gr'
 
 import SocialMedia from '@/components/UI/shared/SocialMedia'
 import { social } from '@/data/social'
