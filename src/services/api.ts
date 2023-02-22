@@ -16,6 +16,9 @@ export const api = ({ reducerPath, tagTypes }: IServiceApi) => {
     baseQuery: axiosBaseQuery({
       baseUrl: NEXT_PUBLIC_API_URL as string,
     }),
+    refetchOnReconnect: true,
+    refetchOnMountOrArgChange: 30,
+    keepUnusedDataFor: 30,
     extractRehydrationInfo(action, { reducerPath }) {
       if (action.type === HYDRATE) {
         return action.payload[reducerPath]

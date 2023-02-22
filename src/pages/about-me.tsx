@@ -23,10 +23,11 @@ import styles from '@/styles/modules/AboutMe.module.scss'
 export const getStaticProps = wrapper.getStaticProps(
   (store: AppStore) => async (context: GetStaticPropsContext) => {
     try {
-      const lists = await store.dispatch(getLanguageList.initiate())
-      const resp = await lists.data
+      const getLanguageListQueryResult = await store.dispatch(getLanguageList.initiate())
+      const { data } = getLanguageListQueryResult as unknown as { data: ILanguages[] }
+
       const images = await Promise.all(
-        (resp as ILanguages[])?.map(async (data) => {
+        data.map(async (data) => {
           const { base64, img } = await getPlaiceholder(data.path_img)
           return { ...img, blurDataURL: base64 }
         })
@@ -35,7 +36,7 @@ export const getStaticProps = wrapper.getStaticProps(
       return {
         props: {
           images,
-          lists: resp,
+          data,
           ...(await serverSideTranslations(context.locale as string, [
             'header',
             'footer',
@@ -53,10 +54,10 @@ export const getStaticProps = wrapper.getStaticProps(
 
 type AboutMeProps = {
   images: ImageLoaderProps[]
-  lists: ILanguages[]
+  data: ILanguages[]
 }
 
-export default function AboutMe({ images, lists }: AboutMeProps) {
+export default function AboutMe({ images, data }: AboutMeProps) {
   const ogUrl = usePathOrigin()
   const { t } = useTranslation('about')
 
@@ -175,8 +176,8 @@ export default function AboutMe({ images, lists }: AboutMeProps) {
               </ul>
               <p className="my-3 text-xl text-secondary">🛠️ Languages:</p>
               <ul className="grid sm:grid-cols-4 sm:gap-y-3 md:grid-cols-8">
-                {lists.length &&
-                  lists.map((lang, index) => {
+                {data.length &&
+                  data.map((lang, index) => {
                     const image = images[index]
                     return (
                       <Link

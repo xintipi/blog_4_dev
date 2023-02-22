@@ -1,22 +1,7 @@
 const moduleTo = require('./client')
 
-function _validPageObject(pageObject) {
-  return pageObject.properties
-}
-
-function _transformData(pageObject) {
-  const prop = pageObject.properties
-
-  return {
-    id: pageObject.id,
-    source_target: prop.Source.url,
-    title: prop.Title.rich_text[0].plain_text,
-    path_img: prop.Image.url,
-  }
-}
-
 exports.getLanguageList = async () => {
-  const res = await moduleTo.client.databases.query({
+  return await moduleTo.client.databases.query({
     database_id: process.env.NEXT_PUBLIC_DATABASE_LANGUAGE_ID,
     sorts: [
       {
@@ -25,8 +10,4 @@ exports.getLanguageList = async () => {
       },
     ],
   })
-
-  return res.results
-    .filter((pageObject) => _validPageObject(pageObject))
-    .map((pageObject) => _transformData(pageObject))
 }

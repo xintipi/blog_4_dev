@@ -2,14 +2,31 @@ import clsx from 'clsx'
 import { GetStaticPropsContext } from 'next'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { FormEvent, useState } from 'react'
+import { FormEvent, useReducer } from 'react'
 import { FiMail, FiMapPin, FiSend } from 'react-icons/fi'
 import { GrSkype } from 'react-icons/gr'
 
 import usePathOrigin from '@/hooks/usePathOrigin'
+import { ISendMailRequest } from '@/interface/contact.interface'
 import AppLayout from '@/layouts/AppLayout'
-import { useProcessSendMailMutation } from '@/services/contactAPI'
+import { contactAPI, useProcessSendMailMutation } from '@/services/contactAPI'
 import styles from '@/styles/modules/Contact.module.scss'
+
+enum ChangedActionKind {
+  CHANGED_NAME = 'CHANGED_NAME',
+  CHANGED_MAIL = 'CHANGED_MAIL',
+  CHANGED_QUESTION = 'CHANGED_QUESTION',
+  CHANGED_RESET = 'CHANGED_RESET',
+}
+
+type ChangedNextAction = 'name' | 'mail' | 'question'
+
+type ChangedAction = {
+  type: ChangedActionKind
+  payload?: Partial<Record<ChangedNextAction, string>>
+}
+
+type ChangedtState = ISendMailRequest
 
 export const getStaticProps = async ({ locale }: GetStaticPropsContext) => {
   return {
@@ -19,21 +36,49 @@ export const getStaticProps = async ({ locale }: GetStaticPropsContext) => {
   }
 }
 
+const initialState: ChangedtState = { name: '', mail: '', question: '' }
+
+function changedReducer(state: ChangedtState, action: ChangedAction) {
+  switch (action.type) {
+    case ChangedActionKind.CHANGED_NAME: {
+      return {
+        ...state,
+        name: action.payload?.name,
+      } as ChangedtState
+    }
+    case ChangedActionKind.CHANGED_MAIL: {
+      return {
+        ...state,
+        mail: action.payload?.mail,
+      } as ChangedtState
+    }
+    case ChangedActionKind.CHANGED_QUESTION: {
+      return {
+        ...state,
+        question: action.payload?.question,
+      } as ChangedtState
+    }
+    case ChangedActionKind.CHANGED_RESET: {
+      return {
+        ...initialState,
+      }
+    }
+  }
+}
+
 export default function Contact() {
-  const [name, setName] = useState<string>('')
-  const [mail, setMail] = useState<string>('')
-  const [question, setQuestion] = useState<string>('')
+  const [state, dispatch] = useReducer(changedReducer, initialState)
+  const { name, mail, question } = state
 
   const { t } = useTranslation('contact')
   const ogUrl = usePathOrigin()
+
   const [processSendMail] = useProcessSendMailMutation()
 
   const onSubmitSendmail = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    await processSendMail({ name, mail, question })
-    setName('')
-    setMail('')
-    setQuestion('')
+    processSendMail({ name, mail, question }).abort()
+    dispatch({ type: ChangedActionKind.CHANGED_RESET })
   }
 
   return (
@@ -106,7 +151,12 @@ export default function Contact() {
                   <div className="mb-5.5 grid gap-x-0 md:grid-cols-2 md:gap-x-4">
                     <input
                       className="form-control col-span-1"
-                      onChange={(event) => setName(event.target.value)}
+                      onChange={(event) =>
+                        dispatch({
+                          type: ChangedActionKind.CHANGED_NAME,
+                          payload: { name: event.target.value },
+                        })
+                      }
                       value={name}
                       type="text"
                       placeholder={t<string>('contact_name')}
@@ -114,7 +164,12 @@ export default function Contact() {
                     />
                     <input
                       className="form-control col-span-1"
-                      onChange={(event) => setMail(event.target.value)}
+                      onChange={(event) =>
+                        dispatch({
+                          type: ChangedActionKind.CHANGED_MAIL,
+                          payload: { mail: event.target.value },
+                        })
+                      }
                       value={mail}
                       type="email"
                       placeholder="Email"
@@ -123,7 +178,12 @@ export default function Contact() {
                   </div>
                   <textarea
                     className="form-control mb-11"
-                    onChange={(event) => setQuestion(event.target.value)}
+                    onChange={(event) =>
+                      dispatch({
+                        type: ChangedActionKind.CHANGED_QUESTION,
+                        payload: { question: event.target.value },
+                      })
+                    }
                     value={question}
                     rows={6}
                     placeholder={t<string>('contact_question')}

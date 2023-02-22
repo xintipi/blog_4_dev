@@ -28,4 +28,5 @@ const axiosBaseQuery =
     }
   }
 
+// @ts-ignore
 export default axiosBaseQuery

@@ -1,5 +1,3 @@
-import NProgress from 'nprogress'
-
 import { ISendMailRequest } from '@/interface/contact.interface'
 import Ngprogress from '@/lib/ngprogress'
 import { api } from '@/services/api'
@@ -8,7 +6,6 @@ export const CONTACT_API_REDUCER_KEY = 'contactAPI'
 
 export const contactAPI = api({
   reducerPath: CONTACT_API_REDUCER_KEY,
-  tagTypes: ['Contact'],
 }).injectEndpoints({
   endpoints: (builder) => ({
     processSendMail: builder.mutation<any, ISendMailRequest>({
@@ -17,7 +14,6 @@ export const contactAPI = api({
         method: 'POST',
         params: credentials,
       }),
-      invalidatesTags: ['Contact'],
       async onQueryStarted({ name, mail, question }, { dispatch, queryFulfilled }) {
         try {
           Ngprogress.start()
