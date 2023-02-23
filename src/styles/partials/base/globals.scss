@@ -1,9 +1,5 @@
-.font-primary {
-  @apply font-sans text-paragraph text-primary;
-}
-
 .font-secondary {
-  @apply font-serif text-paragraph-secondary-mobile md:text-paragraph-secondary text-primary;
+  @apply text-paragraph-secondary-mobile md:text-paragraph-secondary text-primary;
 }
 
 .h1 {
@@ -25,7 +21,7 @@
 }
 
 .light-link {
-  @apply text-primary hover:text-secondary hover:underline transition-colors duration-200;
+  @apply hover:text-secondary hover:underline transition-colors duration-200;
 }
 
 .active-link {
@@ -33,7 +29,7 @@
 }
 
 .arrow {
-  @apply bg-white text-primary opacity-70 px-0.5 rounded-20 shadow-arrow hover:opacity-100 h-[37px] first:mr-2.5;
+  @apply bg-white opacity-70 px-0.5 rounded-20 shadow-arrow hover:opacity-100 h-[37px] first:mr-2.5;
 }
 
 #menu-animate-icon {
@@ -105,11 +101,11 @@
 }
 
 .form-control {
-  @apply border-b border-solid border-primary text-15px text-primary py-2 leading-6 outline-0 bg-transparent w-full;
+  @apply border-b border-solid border-primary text-15px py-2 leading-6 outline-0 bg-transparent w-full;
 }
 
 .author-info {
-  @apply text-primary block text-15px mb-0.5;
+  @apply block text-15px mb-0.5;
 }
 
 .error-text {

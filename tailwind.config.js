@@ -44,8 +44,7 @@ module.exports = {
       portfolioLigthGray: '#fbfbfb',
     },
     fontFamily: {
-      serif: ['Merriweather', 'serif'],
-      sans: ['Lato', 'sans-serif'],
+      sans: ['Noto Sans Japanese', 'sans-serif'],
     },
     screens: {
       sm: '375px',

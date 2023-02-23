@@ -24,7 +24,7 @@ export default function Document() {
           as="script"
         />
       </Head>
-      <body className="bg-bodyBg font-sans text-bodyColor">
+      <body className="bg-bodyBg text-bodyColor">
         <Main />
         <NextScript />
       </body>

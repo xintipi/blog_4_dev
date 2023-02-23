@@ -18,7 +18,7 @@ export default function Language({ icon }: ILanguageProps) {
       <select
         onChange={change}
         value={router.locale}
-        className="change-language group ml-2.5 flex items-center bg-white text-sm outline-none">
+        className="change-language group ml-2.5 flex h-[24px] items-center bg-white text-sm outline-none">
         <option value="en" className="group-hover:underline">
           {LanguageName.English}
         </option>

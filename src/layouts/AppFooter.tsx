@@ -39,7 +39,7 @@ export default function AppFooter() {
               <GrGithub size={19} />
             </Link>
           </div>
-          <p className="font-primary mt-2 text-center md:mt-0 md:text-left">
+          <p className="mt-2 text-center text-sm md:mt-0 md:text-left">
             {t('footer_copyright', { date: new Date().getFullYear() })} {t('footer_design_by')}{' '}
             <a
               href="https://tinyurl.com/yc2ekzfd"

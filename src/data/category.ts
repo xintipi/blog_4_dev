@@ -17,10 +17,4 @@ export const category = [
     dataFilter: 'frameworks',
     title: 'portfolio_frameworks',
   },
-  {
-    id: 4,
-    defaultClass: 'active',
-    dataFilter: 'layouts',
-    title: 'portfolio_layouts',
-  },
 ]

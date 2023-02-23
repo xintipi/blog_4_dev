@@ -1,63 +1,72 @@
 @charset "UTF-8";
 
-/* lato-regular - latin-ext_latin */
 @font-face {
-    font-family: 'Lato';
+    font-family: 'Noto Sans Japanese';
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+    src: url('../../../../public/fonts/NotoSansCJKjp-Thin.woff2') format('woff2'),
+    url('../../../../public/fonts/NotoSansCJKjp-Thin.woff') format('woff'),
+    url('../../../../public/fonts/NotoSansCJKjp-Thin.ttf')  format('truetype'),
+    url('../../../../public/fonts/NotoSansCJKjp-Thin.eot') format('embedded-opentype');
+}
+@font-face {
+    font-family: 'Noto Sans Japanese';
+    font-style: normal;
+    font-weight: 200;
+    font-display: swap;
+    src: url('../../../../public/fonts/NotoSansCJKjp-Light.woff2') format('woff2'),
+    url('../../../../public/fonts/NotoSansCJKjp-Light.woff') format('woff'),
+    url('../../../../public/fonts/NotoSansCJKjp-Light.ttf')  format('truetype'),
+    url('../../../../public/fonts/NotoSansCJKjp-Light.eot') format('embedded-opentype');
+}
+@font-face {
+    font-family: 'Noto Sans Japanese';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('../../../../public/fonts/NotoSansCJKjp-DemiLight.woff2') format('woff2'),
+    url('../../../../public/fonts/NotoSansCJKjp-DemiLight.woff') format('woff'),
+    url('../../../../public/fonts/NotoSansCJKjp-DemiLight.ttf')  format('truetype'),
+    url('../../../../public/fonts/NotoSansCJKjp-DemiLight.eot') format('embedded-opentype');
+}
+@font-face {
+    font-family: 'Noto Sans Japanese';
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('../../../../public/fonts/lato-v20-latin-ext_latin-regular.woff2') format('woff2'),
-    url('../../../../public/fonts/lato-v20-latin-ext_latin-regular.woff') format('woff'),
-    url('../../../../public/fonts/lato-v20-latin-ext_latin-regular.ttf') format('truetype');
+    src: url('../../../../public/fonts/NotoSansCJKjp-Regular.woff2') format('woff2'),
+    url('../../../../public/fonts/NotoSansCJKjp-Regular.woff') format('woff'),
+    url('../../../../public/fonts/NotoSansCJKjp-Regular.ttf')  format('truetype'),
+    url('../../../../public/fonts/NotoSansCJKjp-Regular.eot') format('embedded-opentype');
 }
-/* lato-900 - latin-ext_latin */
 @font-face {
-    font-family: 'Lato';
+    font-family: 'Noto Sans Japanese';
     font-style: normal;
-    font-weight: 900;
+    font-weight: 500;
     font-display: swap;
-    src: url('../../../../public/fonts/lato-v20-latin-ext_latin-900.woff2') format('woff2'),
-    url('../../../../public/fonts/lato-v20-latin-ext_latin-900.woff') format('woff'),
-    url('../../../../public/fonts/lato-v20-latin-ext_latin-900.ttf') format('truetype');
+    src: url('../../../../public/fonts/NotoSansCJKjp-Medium.woff2') format('woff2'),
+    url('../../../../public/fonts/NotoSansCJKjp-Medium.woff') format('woff'),
+    url('../../../../public/fonts/NotoSansCJKjp-Medium.ttf')  format('truetype'),
+    url('../../../../public/fonts/NotoSansCJKjp-Medium.eot') format('embedded-opentype');
 }
-/* lato-700 - latin-ext_latin */
 @font-face {
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url('../../../../public/fonts/lato-v20-latin-ext_latin-700.woff2') format('woff2'),
-    url('../../../../public/fonts/lato-v20-latin-ext_latin-700.woff') format('woff'),
-    url('../../../../public/fonts/lato-v20-latin-ext_latin-700.ttf') format('truetype');
-}
-
-/* merriweather-regular - latin-ext_latin */
-@font-face {
-    font-family: 'Merriweather';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url('../../../../public/fonts/merriweather-v27-latin-ext_latin-regular.woff2') format('woff2'),
-    url('../../../../public/fonts/merriweather-v27-latin-ext_latin-regular.woff') format('woff'),
-    url('../../../../public/fonts/merriweather-v27-latin-ext_latin-regular.ttf') format('truetype');
-}
-/* merriweather-700 - latin-ext_latin */
-@font-face {
-    font-family: 'Merriweather';
+    font-family: 'Noto Sans Japanese';
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url('../../../../public/fonts/merriweather-v27-latin-ext_latin-700.woff2') format('woff2'),
-    url('../../../../public/fonts/merriweather-v27-latin-ext_latin-700.woff') format('woff'),
-    url('../../../../public/fonts/merriweather-v27-latin-ext_latin-700.ttf') format('truetype');
+    src: url('../../../../public/fonts/NotoSansCJKjp-Bold.woff2') format('woff2'),
+    url('../../../../public/fonts/NotoSansCJKjp-Bold.woff') format('woff'),
+    url('../../../../public/fonts/NotoSansCJKjp-Bold.ttf')  format('truetype'),
+    url('../../../../public/fonts/NotoSansCJKjp-Bold.eot') format('embedded-opentype');
 }
-/* merriweather-900 - latin-ext_latin */
 @font-face {
-    font-family: 'Merriweather';
+    font-family: 'Noto Sans Japanese';
     font-style: normal;
     font-weight: 900;
     font-display: swap;
-    src: url('../../../../public/fonts/merriweather-v27-latin-ext_latin-900.woff2') format('woff2'),
-    url('../../../../public/fonts/merriweather-v27-latin-ext_latin-900.woff') format('woff'),
-    url('../../../../public/fonts/merriweather-v27-latin-ext_latin-900.ttf') format('truetype');
+    src: url('../../../../public/fonts/NotoSansCJKjp-Black.woff2') format('woff2'),
+    url('../../../../public/fonts/NotoSansCJKjp-Black.woff') format('woff'),
+    url('../../../../public/fonts/NotoSansCJKjp-Black.ttf')  format('truetype'),
+    url('../../../../public/fonts/NotoSansCJKjp-Black.eot') format('embedded-opentype');
 }

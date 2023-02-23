@@ -93,7 +93,7 @@ export default function Contact() {
                 <h2 className="mb-9 text-24px font-black leading-8 text-secondary">
                   {t('contact_get_in_touch')}
                 </h2>
-                <p className="font-primary mt-2.5 mb-4">{t('contact_reference')}</p>
+                <p className="mt-2.5 mb-4">{t('contact_reference')}</p>
                 <ContactForm />
               </div>
             </div>

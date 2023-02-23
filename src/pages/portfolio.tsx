@@ -9,7 +9,7 @@ import { project } from '@/data/project'
 import usePathOrigin from '@/hooks/usePathOrigin'
 import AppLayout from '@/layouts/AppLayout'
 
-export type IKeyProject = 'projectName' | 'tag' | 'desc' | 'thumbnail' | 'altThumbnail'
+export type IKeyProject = 'projectName' | 'tag' | 'desc' | 'thumbnail' | 'altThumbnail' | 'preview'
 
 export type IProjectCard = Record<Partial<IKeyProject>, string | null>
 

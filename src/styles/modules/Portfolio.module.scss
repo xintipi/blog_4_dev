@@ -9,11 +9,19 @@
       @apply flex items-end justify-center basis-full lg:basis-1/2 pt-5px px-5 md:p-0;
     }
     .btn {
-      @apply mt-7.5 lg:mt-0 lg:absolute bottom-7.5;
+      @apply mt-7.5 mb-2 lg:mt-0 lg:absolute bottom-7.5 text-sm;
     }
   }
   &-default {
-    @apply bg-portfolio-default bg-right-top bg-no-repeat bg-[length:350px_184px];
+    @apply relative overflow-hidden
+    before:bg-portfolio-default
+    before:absolute
+    before:bg-right-top
+    before:bg-no-repeat
+    before:bg-[length:350px_184px]
+    before:absolute
+    before:inset-0
+    before:-rotate-180;
   }
 }
 
@@ -22,7 +30,7 @@
 }
 
 .portfolio-text {
-  @apply font-sans text-17px leading-7 mt-3 text-primary tracking-light;
+  @apply text-[14px] leading-7 mt-3;
 }
 
 .menu-filter {
