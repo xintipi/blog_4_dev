@@ -32,7 +32,7 @@ export default function Contact() {
       title="Contact DEV"
       canonical={ogUrl}
       description="Contact with me if you want to hire me, in addition to learn various technologies"
-      keywords="software development, engineering, javascript, vuejs, nuxtjs, reactjs, nextjs"
+      keywords="software development, engineering, javascript, vuejs, nuxtjs, reactjs, nextjs, blog, profile, cv, resume"
       openGraph={{
         type: 'website',
         siteName: 'Contact DEV',

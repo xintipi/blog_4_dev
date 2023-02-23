@@ -36,7 +36,7 @@ export default function Home({ images, feeds }: IHomeFeeds) {
       title="Home DEV"
       canonical={ogUrl}
       description="Let's learn about the wonders of technology. Be it tutorials on web development, IT, or hiring a front-end developer and then what are waiting for?, let do it!"
-      keywords="software development, engineering, javascript, vuejs, nuxtjs, reactjs, nextjs"
+      keywords="software development, engineering, javascript, vuejs, nuxtjs, reactjs, nextjs, blog, profile, cv, resume"
       openGraph={{
         type: 'website',
         siteName: 'Home DEV',

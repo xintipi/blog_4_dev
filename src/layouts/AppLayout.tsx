@@ -50,7 +50,7 @@ export default function AppLayout({
         openGraph={openGraph}
         twitter={{
           handle: '@trung_xin',
-          site: '@thepracticaldev',
+          site: '@huutrung.mmt',
           cardType: 'summary_large_image',
         }}
         facebook={{
