@@ -35,8 +35,8 @@ export default function Home({ images, feeds }: IHomeFeeds) {
     <AppLayout
       title="Home DEV"
       canonical={ogUrl}
-      description="A constructive and inclusive social network for software developers. With you every step of your journey."
-      keywords="software development, engineering, rails, javascript, ruby"
+      description="Let's learn about the wonders of technology. Be it tutorials on web development, IT, or hiring a front-end developer and then what are waiting for?, let do it!"
+      keywords="software development, engineering, javascript, vuejs, nuxtjs, reactjs, nextjs"
       openGraph={{
         type: 'website',
         siteName: 'Home DEV',

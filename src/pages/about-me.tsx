@@ -67,8 +67,8 @@ export default function AboutMe({ images, data }: AboutMeProps) {
     <AppLayout
       title="About DEV"
       canonical={ogUrl}
-      description={`"About DEV — ${process.env.NEXT_PUBLIC_APP_NAME}"`}
-      keywords="software development, engineering, rails, javascript, ruby"
+      description="On this blog, you can see my overview, my cv and my profile, and besides, you can find various types of articles focusing on technology, from tutorials, and product comparisons, to opinions, and more."
+      keywords="software development, engineering, javascript, vuejs, nuxtjs, reactjs, nextjs"
       openGraph={{
         type: 'website',
         siteName: 'About DEV',

@@ -31,8 +31,8 @@ export default function Contact() {
     <AppLayout
       title="Contact DEV"
       canonical={ogUrl}
-      description={`Contact DEV — ${process.env.NEXT_PUBLIC_APP_NAME}`}
-      keywords="software development, engineering, rails, javascript, ruby"
+      description="Contact with me if you want to hire me, in addition to learn various technologies"
+      keywords="software development, engineering, javascript, vuejs, nuxtjs, reactjs, nextjs"
       openGraph={{
         type: 'website',
         siteName: 'Contact DEV',
