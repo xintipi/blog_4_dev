@@ -1,0 +1,40 @@
+.portfolio-item {
+  @apply p-1.5 lg:h-[306px] bg-white shadow-block mt-4;
+  &-wrapper {
+    @apply h-full flex relative flex-col lg:flex-row;
+    &-left {
+      @apply basis-full lg:basis-1/2 p-7.5 relative;
+    }
+    &-right {
+      @apply flex items-end justify-center basis-full lg:basis-1/2 pt-5px px-5 md:p-0;
+    }
+    .btn {
+      @apply mt-7.5 lg:mt-0 lg:absolute bottom-7.5;
+    }
+  }
+  &-default {
+    @apply bg-portfolio-default bg-right-top bg-no-repeat bg-[length:350px_184px];
+  }
+}
+
+.portfolio-category {
+  @apply uppercase text-title text-13px ml-2.5
+}
+
+.portfolio-text {
+  @apply font-sans text-17px leading-7 mt-3 text-primary tracking-light;
+}
+
+.menu-filter {
+  li {
+    @apply first:pl-0 pr-7.5 py-5px md:px-3.5;
+    a {
+      @apply uppercase text-primary text-15px hover:text-secondary transition-colors;
+    }
+    &.active {
+      a {
+        @apply text-secondary;
+      }
+    }
+  }
+}

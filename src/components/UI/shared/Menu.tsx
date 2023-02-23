@@ -45,7 +45,7 @@ export default function Menu() {
             })}>
             {!item.group ? (
               <Link
-                href={item.path}
+                href={item.path === '/portfolio' ? '/portfolio?tab=all' : item.path}
                 className={clsx({
                   'light-link': true,
                   'active-link': pathname === item.path,

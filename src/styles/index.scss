@@ -8,3 +8,7 @@
   @import 'partials/base/globals';
   @import 'partials/base/reset';
 }
+
+@layer components {
+  @import 'partials/components/button';
+}

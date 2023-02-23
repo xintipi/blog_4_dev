@@ -1,0 +1,7 @@
+.btn {
+  @apply border border-solid border-primary rounded-30 py-2.5 px-8.5 text-primary transition-colors leading-tight hover:bg-secondary hover:border-secondary hover:text-white hover:no-underline;
+}
+
+.btn-small {
+  @apply bg-white shadow-block rounded-2xl py-1.5 px-5.5 text-15px hover:underline hover:bg-primary transition-colors duration-200;
+}

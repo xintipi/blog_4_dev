@@ -179,7 +179,7 @@ module.exports = {
         arrow: '0px 0px 8px rgb(0 0 0 / 10%)',
       },
       backgroundImage: {
-        'portfolio-default': "url('./src/img/webp/portfolio-default@2x.webp')",
+        'portfolio-default': "url('../../../public/img/webp/portfolio-default@2x.webp')",
       },
     },
   },

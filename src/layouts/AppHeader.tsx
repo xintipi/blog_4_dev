@@ -52,20 +52,18 @@ export default function AppHeader(props: IHeaderProps) {
             </div>
           </div>
           <div className="relative flex items-center">
-            <Link href="#" className="light-link" title="Menu">
-              <div
-                onClick={onHandlerToggleMenu}
-                id="menu-animate-icon"
-                className={clsx({
-                  'relative ml-2.5 block h-4.5 w-6 rotate-0 cursor-pointer transition-transform lg:hidden':
-                    true,
-                  open,
-                })}>
-                <span className="top-0 origin-left"></span>
-                <span className="top-2 origin-left"></span>
-                <span className="top-4 origin-left"></span>
-              </div>
-            </Link>
+            <div
+              onClick={onHandlerToggleMenu}
+              id="menu-animate-icon"
+              className={clsx({
+                'relative block h-4.5 w-6 rotate-0 cursor-pointer transition-transform lg:hidden':
+                  true,
+                open,
+              })}>
+              <span className="top-0 origin-left"></span>
+              <span className="top-2 origin-left"></span>
+              <span className="top-4 origin-left"></span>
+            </div>
           </div>
         </div>
         <nav className="header-nav hidden py-5 lg:block">
