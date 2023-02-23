@@ -1,7 +1,17 @@
+import { GetStaticPropsContext } from 'next'
 import { i18n } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import usePathOrigin from '@/hooks/usePathOrigin'
 import AppLayout from '@/layouts/AppLayout'
+
+export const getStaticProps = async ({ locale }: GetStaticPropsContext) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale as string, ['header', 'footer', 'portfolio'])),
+    },
+  }
+}
 
 export default function Portfolio() {
   const ogUrl = usePathOrigin()
