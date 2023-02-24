@@ -7,7 +7,7 @@ import { TextAreaField } from '@/components/UI/form/TextAreaField'
 import { TextField } from '@/components/UI/form/TextField'
 import { ISendMailRequest } from '@/interface/contact.interface'
 import yup from '@/lib/yup/yupLocale'
-import { useProcessSendMailMutation } from '@/services/contactAPI'
+import { useProcessSendMailMutation } from '@/services/api/contactAPI'
 
 const initValue = {
   contactInfo: { name: '', mail: '', question: '' },

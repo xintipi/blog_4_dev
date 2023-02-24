@@ -1,21 +1,15 @@
 import clsx from 'clsx'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { useSearchParams } from 'next/navigation'
 import { useTranslation } from 'next-i18next'
 import { ReactNode } from 'react'
 
 import { category } from '@/data/category'
 import styles from '@/styles/modules/Portfolio.module.scss'
 
-export default function Tabs({
-  containerRender,
-  query: queryProps,
-}: {
-  containerRender: ReactNode
-  query: string
-}) {
+export default function Tabs({ containerRender }: { containerRender: ReactNode }) {
   const { t } = useTranslation('portfolio')
-  const { query, pathname } = useRouter()
+  const params = useSearchParams()
   return (
     <>
       <nav className={clsx(styles['menu-filter'], 'portfolio-menu')}>
@@ -23,13 +17,11 @@ export default function Tabs({
           {category.map((item, index) => (
             <li
               key={index}
-              className={clsx({ [styles[item.defaultClass]]: queryProps === item.dataFilter })}>
+              className={clsx({
+                [styles[item.defaultClass]]: params.get('tag') === item.dataFilter,
+              })}>
               <Link
-                href={{
-                  pathname: pathname,
-                  query: { ...query, tab: item.dataFilter },
-                }}
-                replace
+                href={`/portfolio/${item.dataFilter}`}
                 data-filter={item.dataFilter}
                 title={item.title}>
                 {t(item.title)}

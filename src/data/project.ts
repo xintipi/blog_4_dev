@@ -5,7 +5,7 @@ export const project = [
     tag: 'applications',
     desc: `I'm going to work with the HTML5 canvas and Javascript to create a dynamic run car game. 
     Player use the mouse or finger to drag the directions which you want. 
-    The result a car will follow directions that you drawed .`,
+    The result a car will follow directions that you drawed.`,
     thumbnail: 'https://i.ibb.co/HgG99mg/portfolio-1.png',
     altThumbnail: 'PG Game',
     preview: null,

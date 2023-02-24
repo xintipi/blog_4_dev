@@ -8,7 +8,7 @@ const initialState: IStateProps = {
   token: '',
 }
 
-export const authStore = createSlice({
+export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
@@ -18,4 +18,4 @@ export const authStore = createSlice({
   },
 })
 
-export const { setToken } = authStore.actions
+export const { setToken } = authSlice.actions

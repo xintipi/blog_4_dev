@@ -9,7 +9,7 @@ import { IoIosArrowDown } from 'react-icons/io'
 import Language from '@/components/UI/shared/Language'
 import { menu } from '@/data/menu'
 import { DeviceDemension } from '@/enums/deviceDemension'
-import { usePrefetch } from '@/services/aboutAPI'
+import { usePrefetch } from '@/services/api/aboutAPI'
 
 export default function Menu() {
   const articleRef = useRef<HTMLAnchorElement>(null)
@@ -45,7 +45,7 @@ export default function Menu() {
             })}>
             {!item.group ? (
               <Link
-                href={item.path === '/portfolio' ? '/portfolio?tab=all' : item.path}
+                href={item.path}
                 className={clsx({
                   'light-link': true,
                   'active-link': pathname === item.path,

@@ -1,6 +1,7 @@
-import { ILanguages } from '@/interface/about.interface'
+import { ILanguageList } from '@/interface/about.interface'
 import * as responses from '@/interface/responseNotion.interface'
 import { PageObject, QueryDatabaseResponse } from '@/interface/responseNotion.interface'
+import { _validPageObject } from '@/lib/helps'
 import { api } from '@/services/api'
 
 export const ABOUT_API_REDUCER_KEY = 'aboutAPI'
@@ -9,27 +10,22 @@ export const aboutAPI = api({
   reducerPath: ABOUT_API_REDUCER_KEY,
 }).injectEndpoints({
   endpoints: (builder) => ({
-    getLanguageList: builder.query<ILanguages[], void>({
+    getLanguageList: builder.query<ILanguageList[], void>({
       query: () => ({
         url: 'language',
         method: 'GET',
       }),
       transformResponse: (response: QueryDatabaseResponse, args, meta) => {
-        return response.results
-          .filter((pageObject: PageObject) => _validPageObject(pageObject))
-          .map((pageObject: PageObject) => _transformData(pageObject)) as ILanguages[]
+        return _validPageObject(response).map((pageObject: PageObject) =>
+          _transformData(pageObject)
+        ) as ILanguageList[]
       },
     }),
   }),
 })
 
-function _validPageObject(pageObject: responses.PageObject) {
-  return pageObject.properties
-}
-
 function _transformData(pageObject: responses.PageObject) {
   const prop = pageObject.properties
-
   return {
     id: pageObject.id,
     source_target: prop.Source.url,
