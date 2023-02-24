@@ -13,22 +13,17 @@ import { AppStore, makeStore, wrapper } from '@/store'
 
 export const getStaticPaths = async () => {
   const store = makeStore()
-  try {
-    const getTagListQueryResult = await store.dispatch(getTagList.initiate())
-    const { data } = await getTagListQueryResult
-    const newData = [...new Set(data)]
-    const paths = newData.map((tag) => ({ params: { tag } }))
-    if (paths.length) {
-      return {
-        paths,
-        fallback: 'blocking',
-      }
-    }
-  } catch (err) {
-    return {
-      paths: [],
-      fallback: 'blocking',
-    }
+
+  const getTagListQueryResult = await store.dispatch(getTagList.initiate())
+  const { data } = await getTagListQueryResult
+
+  const newData = [...new Set(data)]
+
+  const paths = newData.map((tag) => ({ params: { tag } }))
+
+  return {
+    paths,
+    fallback: 'blocking',
   }
 }
 
