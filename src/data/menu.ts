@@ -57,7 +57,7 @@ export const menu = [
   },
   {
     id: 3,
-    path: '/portfolio',
+    path: '/portfolio/all',
     activeLink: 'active-link',
     target: 'header_portfolio',
     group: null,
