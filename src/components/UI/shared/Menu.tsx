@@ -16,6 +16,7 @@ export default function Menu() {
   const dropdownMenuRef = useRef<HTMLUListElement>(null)
 
   const { pathname } = useRouter()
+  const router = useRouter()
   const { t } = useTranslation('header')
 
   const prefetchGetLanguageList = usePrefetch('getLanguageList')
@@ -48,7 +49,9 @@ export default function Menu() {
                 href={item.path}
                 className={clsx({
                   'light-link': true,
-                  'active-link': pathname === item.path,
+                  'active-link': item.relatedPath.length
+                    ? item.relatedPath.includes(router.asPath)
+                    : pathname === item.path,
                 })}
                 title={t<string>(item.target)}
                 onMouseEnter={() => refetchData(item.path)}>
