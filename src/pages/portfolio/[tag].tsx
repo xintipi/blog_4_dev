@@ -17,7 +17,7 @@ export const getStaticPaths = async () => {
   const getTagListQueryResult = await store.dispatch(getTagList.initiate())
   const { data } = await getTagListQueryResult
 
-  const newData = [...new Set(data)]
+  const newData = [...new Set(data), 'all']
 
   const paths = newData.map((tag) => ({ params: { tag } }))
 
