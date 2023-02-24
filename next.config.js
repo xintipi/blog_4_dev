@@ -29,6 +29,7 @@ const nextConfig = {
   images: {
     domains: ['i.ibb.co'],
   },
+  outputFileTracing: false,
 }
 
 module.exports = withPlaiceholder(nextConfig)
