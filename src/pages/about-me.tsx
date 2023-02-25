@@ -35,8 +35,13 @@ export const getStaticProps = wrapper.getStaticProps(
         })
       )
 
+      const { base64, img } = await getPlaiceholder('/img/me/me1.jpg')
+
+      const avatar = { ...img, blurDataURL: base64 }
+
       return {
         props: {
+          avatar,
           images,
           data,
           ...(await serverSideTranslations(context.locale as string, [
@@ -55,11 +60,12 @@ export const getStaticProps = wrapper.getStaticProps(
 )
 
 type AboutMeProps = {
+  avatar: ImageLoaderProps
   images: ImageLoaderProps[]
   data: ILanguageList[]
 }
 
-export default function AboutMe({ images, data }: AboutMeProps) {
+export default function AboutMe({ avatar, images, data }: AboutMeProps) {
   const ogUrl = usePathOrigin()
   const { t } = useTranslation('about')
 
@@ -82,10 +88,10 @@ export default function AboutMe({ images, data }: AboutMeProps) {
             <div className="about-me-author basis-34/100 border-r border-solid border-borderColor text-center lg:basis-27/100">
               <div className="flex items-center justify-center overflow-hidden py-25px">
                 <Image
+                  {...avatar}
                   className="rounded-full border border-solid border-borderColor"
-                  src="/img/me/me1.jpg"
                   alt="Profile picture"
-                  loading="lazy"
+                  placeholder="blur"
                   width={100}
                   height={100}
                 />

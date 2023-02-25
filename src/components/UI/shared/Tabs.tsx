@@ -5,6 +5,7 @@ import { useTranslation } from 'next-i18next'
 import { ReactNode, useEffect, useState } from 'react'
 
 import { category } from '@/data/category'
+import { usePrefetch } from '@/services/api/projectAPI'
 import styles from '@/styles/modules/Portfolio.module.scss'
 
 export default function Tabs({ containerRender }: { containerRender: ReactNode }) {
@@ -12,9 +13,15 @@ export default function Tabs({ containerRender }: { containerRender: ReactNode }
   const { t } = useTranslation('portfolio')
   const params = useSearchParams()
 
+  const prefetchGetProjectByTag = usePrefetch('getProjectByTag')
+
   useEffect(() => {
     setTag(params.get('tag'))
   }, [params])
+
+  const prefetchData = (tag: string) => {
+    prefetchGetProjectByTag({ tag }, { force: true })
+  }
 
   return (
     <>
@@ -30,7 +37,8 @@ export default function Tabs({ containerRender }: { containerRender: ReactNode }
                 <Link
                   href={`/portfolio/${item.dataFilter}`}
                   data-filter={item.dataFilter}
-                  title={item.title}>
+                  title={t<string>(item.title)}
+                  onMouseEnter={() => prefetchData(item.dataFilter)}>
                   {t(item.title)}
                 </Link>
               </li>

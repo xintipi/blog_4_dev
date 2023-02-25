@@ -49,6 +49,7 @@ export const getStaticProps = wrapper.getStaticProps(
             data,
             ...(await serverSideTranslations(locale as string, ['header', 'footer', 'portfolio'])),
           },
+          revalidate: 60,
         }
       } catch (_) {
         return {

@@ -9,7 +9,8 @@ import { IoIosArrowDown } from 'react-icons/io'
 import Language from '@/components/UI/shared/Language'
 import { menu } from '@/data/menu'
 import { DeviceDemension } from '@/enums/deviceDemension'
-import { usePrefetch } from '@/services/api/aboutAPI'
+import { aboutAPI } from '@/services/api/aboutAPI'
+import { projectAPI } from '@/services/api/projectAPI'
 
 export default function Menu() {
   const articleRef = useRef<HTMLAnchorElement>(null)
@@ -19,10 +20,12 @@ export default function Menu() {
   const router = useRouter()
   const { t } = useTranslation('header')
 
-  const prefetchGetLanguageList = usePrefetch('getLanguageList')
+  const prefetchGetLanguageList = aboutAPI.usePrefetch('getLanguageList')
+  const prefetchGetProjectByTag = projectAPI.usePrefetch('getProjectByTag')
 
   const refetchData = (path: string) => {
     path === '/about-me' && prefetchGetLanguageList(undefined, { force: true })
+    path === '/portfolio/all' && prefetchGetProjectByTag({ tag: 'all' }, { force: true })
   }
 
   const onToggleMenu = (event: MouseEvent<HTMLAnchorElement>) => {
