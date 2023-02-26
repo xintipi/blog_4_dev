@@ -4,9 +4,6 @@ import {
   ITagResponse,
   ITagSchema,
 } from '@/interface/portfolio.interface'
-import * as responses from '@/interface/responseNotion.interface'
-import { PageObject, QueryDatabaseResponse } from '@/interface/responseNotion.interface'
-import { _validPageObject } from '@/lib/helps'
 import { api } from '@/services/api'
 
 export const PROJECT_API_REDUCER_KEY = 'projectAPI'
