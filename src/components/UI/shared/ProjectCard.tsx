@@ -3,25 +3,27 @@ import Image, { ImageLoaderProps } from 'next/image'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 
-import { IProjectList } from '@/interface/portfolio.interface'
+import { IProjectResponse } from '@/interface/portfolio.interface'
 import styles from '@/styles/modules/Portfolio.module.scss'
 
 interface IProjectCard {
-  item: IProjectList
+  item: IProjectResponse
   image: ImageLoaderProps
 }
 
 export default function ProjectCard({ item, image }: IProjectCard) {
   const { t } = useTranslation('portfolio')
   return (
-    <div className={clsx(styles['portfolio-item'], 'filter-item')} data-filter={item.tag}>
+    <div className={clsx(styles['portfolio-item'], 'filter-item')} data-filter={item.tag_name}>
       <div className={clsx(styles['portfolio-item-wrapper'], styles['portfolio-item-default'])}>
         <div className={clsx(styles['portfolio-item-wrapper-left'])}>
           <div className="flex flex-col md:flex-row md:items-center">
             <h2 className="h2">{item.project_name}</h2>
-            <span className={clsx(styles['portfolio-category'])}>{item.tag?.toUpperCase()}</span>
+            <span className={clsx(styles['portfolio-category'])}>
+              {item.tag_name?.toUpperCase()}
+            </span>
           </div>
-          <p className={clsx(styles['portfolio-text'])}>{item.desc}</p>
+          <p className={clsx(styles['portfolio-text'])}>{item.description}</p>
           {item.preview && (
             <Link
               className={clsx(styles['btn'], 'btn')}

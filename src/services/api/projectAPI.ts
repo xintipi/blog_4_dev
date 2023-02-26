@@ -1,4 +1,9 @@
-import { IProjectList } from '@/interface/portfolio.interface'
+import {
+  IProjectResponse,
+  IProjectSchema,
+  ITagResponse,
+  ITagSchema,
+} from '@/interface/portfolio.interface'
 import * as responses from '@/interface/responseNotion.interface'
 import { PageObject, QueryDatabaseResponse } from '@/interface/responseNotion.interface'
 import { _validPageObject } from '@/lib/helps'
@@ -10,51 +15,45 @@ export const projectAPI = api({
   reducerPath: PROJECT_API_REDUCER_KEY,
 }).injectEndpoints({
   endpoints: (builder) => ({
-    getTagList: builder.query<IProjectList[], void>({
-      query: () => {
-        return {
-          url: 'project',
-          method: 'GET',
-        }
-      },
-      transformResponse: (response: QueryDatabaseResponse, args, meta) => {
-        return _validPageObject(response).map((pageObject: PageObject) =>
-          _transformTag(pageObject)
-        ) as IProjectList[]
+    getTagList: builder.query<ITagResponse[], void>({
+      query: () => ({
+        url: '/tag',
+        method: 'GET',
+      }),
+      transformResponse: (response: ITagSchema[], args, meta) => {
+        return response.map((obj) => _transformTagData(obj))
       },
     }),
-    getProjectByTag: builder.query<IProjectList[], { tag: string }>({
+    getProjectByTag: builder.query<IProjectResponse[], { tag: string }>({
       query: ({ tag }) => {
         return {
-          url: 'project',
+          url: '/project',
           method: 'GET',
           params: { tag },
         }
       },
-      transformResponse: (response: QueryDatabaseResponse, args, meta) => {
-        return _validPageObject(response).map((pageObject: PageObject) =>
-          _transformData(pageObject)
-        ) as IProjectList[]
+      transformResponse: (response: IProjectSchema[], args, meta) => {
+        return response.map((pageObject) => _transformData(pageObject))
       },
     }),
   }),
 })
 
-function _transformTag(pageObject: responses.PageObject) {
-  const prop = pageObject.properties
-  return (prop.Tag.rich_text as any)[0].plain_text
+function _transformTagData(pageObject: ITagSchema) {
+  return {
+    tag: pageObject.name as ITagResponse['tag'],
+  }
 }
 
-function _transformData(pageObject: responses.PageObject) {
-  const prop = pageObject.properties
+function _transformData(pageObject: IProjectSchema) {
   return {
-    id: pageObject.id,
-    project_name: (prop.ProjectName.rich_text as any)[0].plain_text,
-    tag: (prop.Tag.rich_text as any)[0].plain_text,
-    desc: (prop.Description.rich_text as any)[0].plain_text,
-    thumbnail: prop.Thumbnail.url,
-    alt_thumbnail: (prop.AltThumbnail.rich_text as any)[0].plain_text,
-    preview: prop.Preview?.url || null,
+    id: pageObject._id,
+    project_name: pageObject.projectName,
+    tag_name: pageObject.tagName,
+    description: pageObject.description,
+    thumbnail: pageObject.thumbnail,
+    alt_thumbnail: pageObject.altThumbnail,
+    preview: pageObject.preview,
   }
 }
 

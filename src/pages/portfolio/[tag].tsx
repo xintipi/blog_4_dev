@@ -6,7 +6,7 @@ import { getPlaiceholder } from 'plaiceholder'
 
 import PortfolioSection from '@/components/UI/partials/PortfolioSection'
 import usePathOrigin from '@/hooks/usePathOrigin'
-import { IProjectList } from '@/interface/portfolio.interface'
+import { IProjectResponse, ITagResponse } from '@/interface/portfolio.interface'
 import AppLayout from '@/layouts/AppLayout'
 import { getProjectByTag, getTagList } from '@/services/api/projectAPI'
 import { AppStore, makeStore, wrapper } from '@/store'
@@ -16,10 +16,9 @@ export const getStaticPaths = async () => {
 
   const getTagListQueryResult = await store.dispatch(getTagList.initiate())
   const { data } = await getTagListQueryResult
+  const newData = [...(data as ITagResponse[]), { tag: 'all' }]
 
-  const newData = [...new Set(data), 'all']
-
-  const paths = newData.map((tag) => ({ params: { tag } }))
+  const paths = newData.map((item) => ({ params: { tag: item.tag } }))
 
   return {
     paths,
@@ -36,8 +35,10 @@ export const getStaticProps = wrapper.getStaticProps(
         )
         const { data } = await getProjectByTagQueryResult
 
+        console.log(data)
+
         const images = await Promise.all(
-          (data as IProjectList[]).map(async (data) => {
+          (data as IProjectResponse[]).map(async (data) => {
             const { base64, img } = await getPlaiceholder(data.thumbnail)
             return { ...img, blurDataURL: base64 }
           })
@@ -61,7 +62,7 @@ export const getStaticProps = wrapper.getStaticProps(
 
 type PortfolioProps = {
   images: ImageLoaderProps[]
-  data: IProjectList[]
+  data: IProjectResponse[]
 }
 
 export default function PortfolioSingle({ images, data }: PortfolioProps) {

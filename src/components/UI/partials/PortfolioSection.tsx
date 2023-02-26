@@ -5,10 +5,10 @@ import { AiOutlineWarning } from 'react-icons/ai'
 
 import ProjectCard from '@/components/UI/shared/ProjectCard'
 import Tabs from '@/components/UI/shared/Tabs'
-import { IProjectList } from '@/interface/portfolio.interface'
+import { IProjectResponse } from '@/interface/portfolio.interface'
 
 type IPortfolioSection = {
-  data: IProjectList[]
+  data: IProjectResponse[]
   images: ImageLoaderProps[]
 }
 

@@ -8,20 +8,14 @@ const { withPlaiceholder } = require('@plaiceholder/next')
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  typescript: {
-    // !! WARN !!
-    // Dangerously allow production builds to successfully complete even if
-    // your project has type errors.
-    // !! WARN !!
-    ignoreBuildErrors: true,
-  },
+  // typescript: {
+  //   ignoreBuildErrors: true,
+  // },
   i18n,
   env: {
     NEXT_PUBLIC_APP_NAME: 'DEV Blog 👩‍💻👨‍💻',
     NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: 'RPTItmVfol0y-KYF2ACSXyfeKgnm0D5KJEVIJr51DO0',
     NEXT_PUBLIC_GA_TRACKING_ID: 'G-LQ88J1EDL3',
-    NEXT_PUBLIC_NOTION_LANGUAGE_API_SECRET: 'secret_LdSce86HezMAHBfsmzmmYzhnaVPTZhtq24yqcZ2GaNm',
-    NEXT_PUBLIC_DATABASE_LANGUAGE_ID: '38dea3fa707347a78c5bc18c86db91ac',
     NEXT_PUBLIC_NOTION_PROJECT_API_SECRET: 'secret_uI1c1tZb6LkzCjOYqBI3Not3QeY4nnmQ7mhnvS0vP9d',
     NEXT_PUBLIC_DATABASE_PROJECT_ID: '9fffc3db6c8f423cadfa6ff419bd39a0',
     NEXT_PUBLIC_FB_APP_ID: '513655297563615',

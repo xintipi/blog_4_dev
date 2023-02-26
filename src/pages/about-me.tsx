@@ -11,7 +11,7 @@ import { GrLinkedin } from 'react-icons/gr'
 import SocialMedia from '@/components/UI/shared/SocialMedia'
 import { social } from '@/data/social'
 import usePathOrigin from '@/hooks/usePathOrigin'
-import { ILanguageList } from '@/interface/about.interface'
+import { ILanguageResponse } from '@/interface/about.interface'
 import AppLayout from '@/layouts/AppLayout'
 import { getLanguageList } from '@/services/api/aboutAPI'
 import { AppStore, wrapper } from '@/store'
@@ -29,7 +29,7 @@ export const getStaticProps = wrapper.getStaticProps(
       const { data } = await getLanguageListQueryResult
 
       const images = await Promise.all(
-        (data as ILanguageList[]).map(async (data) => {
+        (data as ILanguageResponse[]).map(async (data) => {
           const { base64, img } = await getPlaiceholder(data.path_img)
           return { ...img, blurDataURL: base64 }
         })
@@ -62,7 +62,7 @@ export const getStaticProps = wrapper.getStaticProps(
 type AboutMeProps = {
   avatar: ImageLoaderProps
   images: ImageLoaderProps[]
-  data: ILanguageList[]
+  data: ILanguageResponse[]
 }
 
 export default function AboutMe({ avatar, images, data }: AboutMeProps) {

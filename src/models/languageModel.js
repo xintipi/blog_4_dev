@@ -6,7 +6,6 @@ const languageSchema = new mongoose.Schema({
   sourceTarget: {
     type: String,
     required: true,
-    unique: true,
     validate: {
       validator: function (v) {
         return validator.isURL(v)
@@ -17,7 +16,6 @@ const languageSchema = new mongoose.Schema({
   pathImg: {
     type: String,
     required: true,
-    unique: true,
     validate: {
       validator: function (v) {
         return validator.isURL(v)
@@ -25,7 +23,7 @@ const languageSchema = new mongoose.Schema({
       message: (props) => `${props.value} is not a valid URL!`,
     },
   },
-  createdOn: { type: Date, default: Date.now },
+  createdAt: { type: Date, default: Date.now },
 })
 
-module.exports = mongoose.model('Language', languageSchema)
+module.exports = mongoose.models.Language || mongoose.model('Language', languageSchema)

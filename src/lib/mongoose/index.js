@@ -1,7 +1,5 @@
 const mongoose = require('mongoose')
 
-const MONGODB_URI = process.env.NEXT_PUBLIC_MONGODB_URI
-
 module.exports = {
   connect: async (options = {}) => {
     const uri =

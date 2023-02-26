@@ -1,14 +1,10 @@
-const moduleToFetch = require('@/lib/notion/project.js')
-
-const getProjectByTag = moduleToFetch.getProjectByTag
+const controller = require('../../controlers/projectController.js')
 
 const handler = async (req: any, res: any) => {
   const { tag } = req.query
   try {
-    let response
-    if (!tag) response = await getProjectByTag()
-    if (tag) response = await getProjectByTag(tag)
-    res.status(200).json(response)
+    const projects = await controller.getProjectList(tag)
+    res.status(200).json(projects)
   } catch (error) {
     res.status(500).json({ errors: error })
   }

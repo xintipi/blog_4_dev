@@ -1,4 +1,4 @@
-const LanguageModel = require('../models/language.model')
+const LanguageModel = require('../models/languageModel')
 const mongooseDb = require('../lib/mongoose')
 
 module.exports.getLanguageList = async () => {

@@ -1,7 +1,4 @@
-import { ILanguageList } from '@/interface/about.interface'
-import * as responses from '@/interface/responseNotion.interface'
-import { PageObject, QueryDatabaseResponse } from '@/interface/responseNotion.interface'
-import { _validPageObject } from '@/lib/helps'
+import { ILanguageResponse, ILanguageSchema } from '@/interface/about.interface'
 import { api } from '@/services/api'
 
 export const ABOUT_API_REDUCER_KEY = 'aboutAPI'
@@ -10,27 +7,25 @@ export const aboutAPI = api({
   reducerPath: ABOUT_API_REDUCER_KEY,
 }).injectEndpoints({
   endpoints: (builder) => ({
-    getLanguageList: builder.query<ILanguageList[], void>({
+    getLanguageList: builder.query<ILanguageResponse[], void>({
       query: () => ({
-        url: 'language',
+        url: '/language',
         method: 'GET',
       }),
-      transformResponse: (response: QueryDatabaseResponse, args, meta) => {
-        return _validPageObject(response).map((pageObject: PageObject) =>
-          _transformData(pageObject)
-        ) as ILanguageList[]
+      transformResponse: (response: ILanguageSchema[], args, meta) => {
+        return response.map((pageObject) => _transformData(pageObject))
       },
     }),
   }),
 })
 
-function _transformData(pageObject: responses.PageObject) {
-  const prop = pageObject.properties
+function _transformData(pageObject: ILanguageSchema): ILanguageResponse {
   return {
-    id: pageObject.id,
-    source_target: prop.Source.url,
-    title: (prop.Title.rich_text as any)[0].plain_text,
-    path_img: prop.Image.url,
+    id: pageObject._id,
+    source_target: pageObject.sourceTarget,
+    title: pageObject.title,
+    path_img: pageObject.pathImg,
+    created_at: pageObject.createdAt,
   }
 }
 

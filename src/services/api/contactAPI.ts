@@ -10,7 +10,7 @@ export const contactAPI = api({
   endpoints: (builder) => ({
     processSendMail: builder.mutation<any, ISendMailRequest>({
       query: (credentials) => ({
-        url: `send-mail`,
+        url: '/send-mail',
         method: 'POST',
         params: credentials,
       }),
