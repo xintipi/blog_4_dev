@@ -7,17 +7,15 @@ module.exports = {
     const globalAny = global
     let clientPromise
 
-    if (!uri) {
-      throw new Error('Please add your Mongo URI to env')
-    }
+    if (!uri) throw new Error('Please add your Mongo URI to env')
 
     if (process.env.NODE_ENV === 'development') {
       // In development mode, use a global variable so that the value
       // is preserved across module reloads caused by HMR (Hot Module Replacement).
-      if (!globalAny._mongoClientPromise) {
-        globalAny._mongoClientPromise = await mongoose.connect(uri, options)
+      if (!globalAny.mongoose) {
+        globalAny.mongoose = await mongoose.connect(uri, options)
       }
-      clientPromise = globalAny._mongoClientPromise
+      clientPromise = await globalAny.mongoose
     } else {
       // In production mode, it's best to not use a global variable.
       clientPromise = await mongoose.connect(uri, options)
