@@ -49,6 +49,7 @@ export const getStaticProps = wrapper.getStaticProps(
             'footer',
             'about',
           ])),
+          fallback: 'blocking',
         },
       }
     } catch (_) {
