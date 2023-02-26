@@ -12,8 +12,13 @@ export const aboutAPI = api({
         url: '/language',
         method: 'GET',
       }),
+      // @ts-ignore
       transformResponse: (response: ILanguageSchema[], args, meta) => {
-        return response.map((pageObject) => _transformData(pageObject))
+        try {
+          return response.map((pageObject) => _transformData(pageObject))
+        } catch (error) {
+          return error
+        }
       },
     }),
   }),

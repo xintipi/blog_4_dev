@@ -1,5 +1,5 @@
 export interface IProjectResponse {
-  id: string | number
+  id: string
   project_name: string
   tag_name: string
   description: string

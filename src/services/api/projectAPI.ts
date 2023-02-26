@@ -1,3 +1,6 @@
+import { Simulate } from 'react-dom/test-utils'
+
+import { ILanguageSchema } from '@/interface/about.interface'
 import {
   IProjectResponse,
   IProjectSchema,
@@ -5,6 +8,7 @@ import {
   ITagSchema,
 } from '@/interface/portfolio.interface'
 import { api } from '@/services/api'
+import error = Simulate.error
 
 export const PROJECT_API_REDUCER_KEY = 'projectAPI'
 
@@ -17,8 +21,13 @@ export const projectAPI = api({
         url: '/tag',
         method: 'GET',
       }),
+      // @ts-ignore
       transformResponse: (response: ITagSchema[], args, meta) => {
-        return response.map((obj) => _transformTagData(obj))
+        try {
+          return response.map((obj) => _transformTagData(obj))
+        } catch (error) {
+          return error
+        }
       },
     }),
     getProjectByTag: builder.query<IProjectResponse[], { tag: string }>({
@@ -29,8 +38,13 @@ export const projectAPI = api({
           params: { tag },
         }
       },
+      // @ts-ignore
       transformResponse: (response: IProjectSchema[], args, meta) => {
-        return response.map((pageObject) => _transformData(pageObject))
+        try {
+          return response.map((pageObject) => _transformData(pageObject))
+        } catch (error) {
+          return error
+        }
       },
     }),
   }),
@@ -38,7 +52,7 @@ export const projectAPI = api({
 
 function _transformTagData(pageObject: ITagSchema) {
   return {
-    tag: pageObject.name as ITagResponse['tag'],
+    tag: pageObject.name,
   }
 }
 

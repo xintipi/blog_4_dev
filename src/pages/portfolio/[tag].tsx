@@ -14,15 +14,19 @@ import { AppStore, makeStore, wrapper } from '@/store'
 export const getStaticPaths = async () => {
   const store = makeStore()
 
-  const getTagListQueryResult = await store.dispatch(getTagList.initiate())
-  const { data } = await getTagListQueryResult
-  const newData = [...(data as ITagResponse[]), { tag: 'all' }]
+  try {
+    const getTagListQueryResult = await store.dispatch(getTagList.initiate())
+    const { data } = await getTagListQueryResult
+    const newData = [...(data as ITagResponse[]), { tag: 'all' }]
 
-  const paths = newData.map((item) => ({ params: { tag: item.tag } }))
+    const paths = newData.map((item) => ({ params: { tag: item.tag } }))
 
-  return {
-    paths,
-    fallback: 'blocking',
+    return {
+      paths,
+      fallback: 'blocking',
+    }
+  } catch (error) {
+    return { paths: [], fallback: 'blocking' }
   }
 }
 
@@ -34,9 +38,6 @@ export const getStaticProps = wrapper.getStaticProps(
           getProjectByTag.initiate({ tag: params?.tag as string })
         )
         const { data } = await getProjectByTagQueryResult
-
-        console.log(data)
-
         const images = await Promise.all(
           (data as IProjectResponse[]).map(async (data) => {
             const { base64, img } = await getPlaiceholder(data.thumbnail)
