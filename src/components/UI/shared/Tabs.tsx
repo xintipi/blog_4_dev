@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { ReactNode, useEffect, useState } from 'react'
 
@@ -11,13 +11,13 @@ import styles from '@/styles/modules/Portfolio.module.scss'
 export default function Tabs({ containerRender }: { containerRender: ReactNode }) {
   const [tag, setTag] = useState<string | null>(null)
   const { t } = useTranslation('portfolio')
-  const params = useSearchParams()
+  const r = useRouter()
 
   const prefetchGetProjectByTag = usePrefetch('getProjectByTag')
 
   useEffect(() => {
-    setTag(params.get('tag'))
-  }, [params])
+    setTag(r.query?.tag as string)
+  }, [r])
 
   const prefetchData = (tag: string) => {
     prefetchGetProjectByTag({ tag }, { force: true })

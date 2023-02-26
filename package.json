@@ -38,6 +38,7 @@
     "google-auth-library": "^8.7.0",
     "i18next": "^22.4.9",
     "isomorphic-fetch": "^3.0.0",
+    "mongoose": "^6.10.0",
     "next": "^13.1.6",
     "next-i18next": "^13.1.5",
     "next-redux-wrapper": "^8.1.0",
@@ -53,6 +54,7 @@
     "react-icons": "^4.7.1",
     "react-redux": "^8.0.5",
     "sharp": "^0.31.3",
+    "validator": "^13.9.0",
     "yup": "^1.0.0"
   },
   "devDependencies": {
