@@ -80,10 +80,13 @@ export default function Menu() {
                 <Link
                   href="#"
                   onClick={(event) => onToggleMenu(event)}
-                  className="dropdown-toggle light-link"
+                  className="dropdown-toggle"
                   title={item.title}>
                   {t(item.target)}
-                  <IoIosArrowDown className="light-link absolute right-0 -ml-3 transition-all sm:top-[calc(50%-8px)] lg:top-[calc(50%-12px)] lg:-right-[20px] lg:group-hover:rotate-180" />
+                  <IoIosArrowDown
+                    className="absolute right-0 -ml-3 transform
+                  transition duration-300 ease-in-out sm:top-[calc(50%-8px)] lg:top-[calc(50%-12px)] lg:-right-[20px] lg:group-hover:rotate-180"
+                  />
                 </Link>
                 <ul className="dropdown-menu lg:group-hover:block" ref={dropdownMenuRef}>
                   {item.group.length &&
@@ -103,7 +106,7 @@ export default function Menu() {
             )}
           </li>
         ))}
-      <li className="buyproducts-link ml-auto flex items-center">
+      <li className="buyproducts-link ml-auto flex items-start">
         <Language icon={<GrLanguage size={20} />} />
       </li>
     </ul>

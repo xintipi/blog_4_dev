@@ -55,7 +55,7 @@ export default function Contact() {
                     </div>
                     <div className={clsx(styles['contact-info'])}>
                       <a
-                        className={clsx(styles['font-secondary'])}
+                        className="text-blueColor hover:underline"
                         href="mailto:huutrung.mmt@gmail.com"
                         title="huutrung.mmt@gmail.com">
                         Nguyen Huu Trung
@@ -69,7 +69,7 @@ export default function Contact() {
                     </div>
                     <div className={clsx(styles['contact-info'])}>
                       <a
-                        className={clsx(styles['font-secondary'])}
+                        className="text-blueColor hover:underline"
                         href="skype:huutrung.mmt?chat"
                         title="live:huutrung.mmt_1">
                         Nguyen Huu Trung
