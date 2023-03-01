@@ -1,0 +1,9 @@
+.pagination-page-link {
+  @apply block text-15px bg-white text-primary py-0.5 px-2 mx-1 shadow-block hover:bg-primary hover:text-white transition-colors duration-200;
+}
+
+.pagination-active{
+  .pagination-page-link {
+    @apply bg-primary text-white;
+  }
+}

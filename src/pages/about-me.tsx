@@ -100,7 +100,7 @@ export default function AboutMe({ avatar, images, data }: AboutMeProps) {
               <ul className="author-nav text-left">
                 <li>
                   <Link
-                    className={clsx(styles['author-nav-link'])}
+                    className="author-nav-link"
                     href="/CV_Nguyen_Huu_Trung_Frontend_Developer.pdf"
                     target="_blank"
                     title="My CV">
@@ -110,12 +110,9 @@ export default function AboutMe({ avatar, images, data }: AboutMeProps) {
                 </li>
                 <li>
                   <Link
-                    className={clsx({
-                      'border-b border-solid border-borderColor': true,
-                      [styles['author-nav-link']]: true,
-                    })}
+                    className="author-nav-link border-b border-solid border-borderColor"
                     href="/contact"
-                    title="">
+                    title="Contact me">
                     <FiSend size={24} className="mr-3" />
                     {t('about_write_message')}
                   </Link>

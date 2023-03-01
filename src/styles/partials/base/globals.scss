@@ -105,7 +105,11 @@
 }
 
 .author-info {
-  @apply block text-15px mb-0.5;
+  @apply block text-[13px] mb-0.5 text-primary;
+}
+
+.author-nav-link {
+  @apply flex items-center py-4.5 px-6.5 text-15px text-primary border-t border-solid border-borderColor hover:bg-hoverColor hover:text-secondary transition-colors duration-200;
 }
 
 .error-text {
