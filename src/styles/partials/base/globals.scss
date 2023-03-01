@@ -76,7 +76,7 @@
 }
 
 .dropdown-menu {
-  @apply hidden static lg:absolute top-54px w-full lg:w-190px bg-white lg:shadow-dropdown z-50;
+  @apply hidden static lg:absolute top-[30px] w-full lg:w-190px bg-white lg:shadow-dropdown z-50;
   &.show {
     @apply block;
   }

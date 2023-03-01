@@ -22,7 +22,7 @@ export const menu = [
         activeLink: 'active-link',
         target: 'header_css',
         title: 'Blog CSS articles',
-        backgroundCss: 'after:bg-blueColor',
+        backgroundCss: 'blue',
       },
       {
         id: 'group2',
@@ -31,7 +31,7 @@ export const menu = [
         activeLink: 'active-link',
         target: 'header_html',
         title: 'Blog HTML articles',
-        backgroundCss: 'after:bg-redColor',
+        backgroundCss: 'red',
       },
       {
         id: 'group3',
@@ -40,7 +40,7 @@ export const menu = [
         activeLink: 'active-link',
         target: 'header_javascript',
         title: 'Blog Javascript articles',
-        backgroundCss: 'after:bg-yellowColor',
+        backgroundCss: 'yellow',
       },
       {
         id: 'group4',
@@ -49,7 +49,7 @@ export const menu = [
         activeLink: 'active-link',
         target: 'header_graphic',
         title: 'Graphic',
-        backgroundCss: 'after:bg-greenColor',
+        backgroundCss: 'green',
       },
       {
         id: 'group5',

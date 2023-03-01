@@ -12,6 +12,21 @@ import { DeviceDemension } from '@/enums/deviceDemension'
 import { aboutAPI } from '@/services/api/aboutAPI'
 import { projectAPI } from '@/services/api/projectAPI'
 
+const menuClassMap = {
+  blue: {
+    classes: 'after:bg-blueColor',
+  },
+  red: {
+    classes: 'after:bg-redColor',
+  },
+  yellow: {
+    classes: 'after:bg-yellowColor',
+  },
+  green: {
+    classes: 'after:bg-greenColor',
+  },
+}
+
 export default function Menu() {
   const articleRef = useRef<HTMLAnchorElement>(null)
   const dropdownMenuRef = useRef<HTMLUListElement>(null)
@@ -45,7 +60,7 @@ export default function Menu() {
             className={clsx({
               'ml-0 mr-5': index === 0,
               'mx-5': index > 0,
-              'group relative': index === 1,
+              'group relative pb-2': index === 1,
             })}>
             {!item.group ? (
               <Link
@@ -68,12 +83,16 @@ export default function Menu() {
                   className="dropdown-toggle light-link"
                   title={item.title}>
                   {t(item.target)}
-                  <IoIosArrowDown className="absolute top-[calc(50%-8px)] right-0 -ml-3 transition-all md:-right-[20px] lg:group-hover:rotate-180" />
+                  <IoIosArrowDown className="light-link absolute right-0 -ml-3 transition-all sm:top-[calc(50%-8px)] lg:top-[calc(50%-12px)] lg:-right-[20px] lg:group-hover:rotate-180" />
                 </Link>
-                <ul className="dropdown-menu hidden lg:group-hover:block" ref={dropdownMenuRef}>
+                <ul className="dropdown-menu lg:group-hover:block" ref={dropdownMenuRef}>
                   {item.group.length &&
                     item.group.map((group, key) => (
-                      <li key={key} className={group.backgroundCss as string}>
+                      <li
+                        key={key}
+                        className={
+                          menuClassMap[group.backgroundCss as keyof typeof menuClassMap]?.classes
+                        }>
                         <Link href={group.path} title={group.title}>
                           {t(group.target)}
                         </Link>
