@@ -3,7 +3,9 @@ const mongoose = require('mongoose')
 module.exports = {
   connect: async (options = {}) => {
     const uri =
-      'mongodb+srv://dblog_db:r7VNqYNHV3RnPHQ3@cluster0.l2habxs.mongodb.net/dblog?retryWrites=true&w=majority'
+      process.env.NODE_ENV !== 'development'
+        ? 'mongodb+srv://vercel-admin-user:yylcld8DkJD9ZSa5@cluster0.l2habxs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+        : 'mongodb+srv://dblog_db:r7VNqYNHV3RnPHQ3@cluster0.l2habxs.mongodb.net/dblog?retryWrites=true&w=majority'
     const globalAny = global
     let clientPromise
 
