@@ -24,7 +24,7 @@ export const projectAPI = api({
       // @ts-ignore
       transformResponse: (response: ITagSchema[], args, meta) => {
         try {
-          return response.map((obj) => _transformTagData(obj))
+          return response.map((pageObject) => _transformTagData(pageObject))
         } catch (error) {
           return error
         }

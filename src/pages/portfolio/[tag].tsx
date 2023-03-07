@@ -50,8 +50,8 @@ export const getStaticProps = wrapper.getStaticProps(
             images,
             data,
             ...(await serverSideTranslations(locale as string, ['header', 'footer', 'portfolio'])),
+            fallback: 'blocking',
           },
-          revalidate: 60,
         }
       } catch (_) {
         return {
