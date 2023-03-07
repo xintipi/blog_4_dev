@@ -26,7 +26,10 @@ export const getStaticPaths = async () => {
       fallback: 'blocking',
     }
   } catch (error) {
-    return { paths: [], fallback: 'blocking' }
+    return {
+      paths: [],
+      fallback: 'blocking',
+    }
   }
 }
 
@@ -50,8 +53,8 @@ export const getStaticProps = wrapper.getStaticProps(
             images,
             data,
             ...(await serverSideTranslations(locale as string, ['header', 'footer', 'portfolio'])),
-            fallback: 'blocking',
           },
+          revalidate: 60,
         }
       } catch (_) {
         return {
