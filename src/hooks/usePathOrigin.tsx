@@ -9,8 +9,8 @@ export default function usePathOrigin() {
     const host = window.location.host
     const baseUrl = `https://${host}`
 
-    setOgUrl(`${baseUrl}${router.pathname}`)
-  }, [router.pathname])
+    setOgUrl(`${baseUrl}${router.asPath}`)
+  }, [router.asPath])
 
   return ogUrl
 }
