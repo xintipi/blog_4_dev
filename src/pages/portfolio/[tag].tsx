@@ -23,12 +23,12 @@ export const getStaticPaths = async () => {
 
     return {
       paths,
-      fallback: false,
+      fallback: 'blocking',
     }
   } catch (error) {
     return {
       paths: [],
-      fallback: false,
+      fallback: 'blocking',
     }
   }
 }
