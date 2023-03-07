@@ -17,7 +17,7 @@
 
 ## Built With
 
-My personal portfolio <a href="https://dblog.one/" target="_blank">dblog.one</a> which features some of my github projects as well as my resume and technical skills.<br/>
+My personal portfolio <a href="https://blog-4-dev.vercel.app/" target="_blank">blog-4-dev.vercel.app</a> which features some of my github projects as well as my resume and technical skills.<br/>
 
 This project was built using these technologies.
 
