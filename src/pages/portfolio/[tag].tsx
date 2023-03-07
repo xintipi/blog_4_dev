@@ -23,12 +23,12 @@ export const getStaticPaths = async () => {
 
     return {
       paths,
-      fallback: 'blocking',
+      fallback: false,
     }
   } catch (error) {
     return {
       paths: [],
-      fallback: 'blocking',
+      fallback: false,
     }
   }
 }
@@ -54,7 +54,6 @@ export const getStaticProps = wrapper.getStaticProps(
             data,
             ...(await serverSideTranslations(locale as string, ['header', 'footer', 'portfolio'])),
           },
-          revalidate: 60,
         }
       } catch (_) {
         return {
