@@ -1,6 +1,6 @@
 <h2 align="center">
   DEV Blog and Portfolio<br/>
-  <a href="https://dblog.one/" target="_blank">dblog.one</a>
+  <a href="https://blog-4-dev.vercel.app/" target="_blank">blog-4-dev.vercel.app</a>
 </h2>
 <div align="center">
   <img alt="Read me" src="https://i.ibb.co/hWWJW3T/readme-img.png" />
